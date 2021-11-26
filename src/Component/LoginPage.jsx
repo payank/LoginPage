@@ -29,6 +29,7 @@ const LoginPage = () => {
     const [user, setUser] = useState(initialValue);
     const { username, password, submitted, loggedin=true } = user;
     let history = useHistory();
+    localStorage.setItem('isLoggedin', 'false');
 
     const onValueChange = (e) => {
         console.log(e.target.value);
