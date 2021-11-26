@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 const LoginPage = () => {
     const classes = useStyles();
     const [user, setUser] = useState(initialValue);
-    const { username, password, submitted, loggedin=true } = user;
+    const { username, password, submitted, loggedin } = user;
     let history = useHistory();
     localStorage.setItem('isLoggedin', 'false');
 
