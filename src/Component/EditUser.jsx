@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
 import { useHistory, useParams } from 'react-router-dom';
 import { getUsers, editUser } from '../Service/api';
+import NavBar from "../Component/NavBar"
 
 const initialValue = {
     name: '',
@@ -50,6 +51,8 @@ const EditUser = () => {
     }
 
     return (
+        <>
+        <NavBar />
         <FormGroup className={classes.container}>
             <Typography variant="h4">Edit Information</Typography>
             <FormControl>
@@ -72,6 +75,7 @@ const EditUser = () => {
                 <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Edit User</Button>
             </FormControl>
         </FormGroup>
+        </>
     )
 }
 

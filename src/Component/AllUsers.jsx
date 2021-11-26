@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Table, TableHead, TableCell, TableRow, TableBody, Button, makeStyles } from '@material-ui/core'
 import { getUsers, deleteUser } from '../Service/api';
 import { Link } from 'react-router-dom';
+import NavBar from "../Component/NavBar"
 
 const useStyles = makeStyles({
     table: {
@@ -42,6 +43,8 @@ const AllUsers = () => {
     }
 
     return (
+        <>
+        <NavBar />
         <Table className={classes.table}>
             <TableHead>
                 <TableRow className={classes.thead}>
@@ -69,6 +72,7 @@ const AllUsers = () => {
                 ))}
             </TableBody>
         </Table>
+        </>
     )
 }
 

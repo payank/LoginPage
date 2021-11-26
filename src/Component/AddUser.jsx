@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
 import { addUser } from '../Service/api';
 import { useHistory } from 'react-router-dom';
+import NavBar from "../Component/NavBar"
 
 const initialValue = {
     name: '',
@@ -37,6 +38,8 @@ const AddUser = () => {
     }
 
     return (
+        <>
+        <NavBar />
         <FormGroup className={classes.container}>
             <Typography variant="h4">Add User</Typography>
             <FormControl>
@@ -59,6 +62,7 @@ const AddUser = () => {
                 <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add User</Button>
             </FormControl>
         </FormGroup>
+        </>
     )
 }
 

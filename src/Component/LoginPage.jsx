@@ -1,14 +1,14 @@
 import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button } from '@material-ui/core';
-import { useHistory, Redirect } from 'react-router-dom';
-//import { Redirect } from 'react-router'
+import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import NavBar from "../Component/NavBar"
 
 
 const initialValue = {
     username: '',
     password: '',
     submitted: false,
-    loggedin: false 
+    loggedin: 'false' 
 }
 
 const useStyles = makeStyles({
@@ -38,12 +38,13 @@ const LoginPage = () => {
     const validLogin = () => {
         if (user.username === 'payank' && user.password === 'password') {
             setUser({...user, loggedin: true, submitted: true});
-            localStorage.setItem('isLoggedin', true);
+            localStorage.setItem('isLoggedin', 'true');
             history.push('/all');
             //<Redirect to="/all"/> // Here, nothings happens
         } else {
             console.log('Payank', user)
-            setUser({...user, loggedin: false, submitted: true});
+            localStorage.setItem('isLoggedin', 'false');
+            setUser({...user, loggedin: 'false', submitted: true});
         }
         
     }
@@ -52,7 +53,8 @@ const LoginPage = () => {
     //box give deafault div
     //typography gives default <p>
     return (
-
+        <>
+        <NavBar/>
         <FormGroup className={classes.container}>
             <Typography variant="h4">Login Page</Typography>
             <FormControl>
@@ -76,6 +78,7 @@ const LoginPage = () => {
                 }
             </FormControl>
         </FormGroup>
+        </>
     )
 }
 

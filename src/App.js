@@ -11,7 +11,7 @@ function App() {
   return (
 
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/all" component={AllUsers} />
