@@ -8,7 +8,7 @@ const initialValue = {
     username: '',
     password: '',
     submitted: false,
-    loggedin: 'false' 
+    loggedin: false
 }
 
 const useStyles = makeStyles({
@@ -45,7 +45,7 @@ const LoginPage = () => {
         } else {
             console.log('Payank', user)
             localStorage.setItem('isLoggedin', 'false');
-            setUser({...user, loggedin: 'false', submitted: true});
+            setUser({...user, loggedin: false, submitted: true});
         }
         
     }
