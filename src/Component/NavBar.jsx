@@ -31,7 +31,7 @@ const NavBar = () => {
     return (
         <AppBar position="static" className={classes.header}>
             <Toolbar>
-                <NavLink className={classes.tabs} to="/" replace exact>Login Page</NavLink>
+                <NavLink className={classes.tabs} to="/" replace exact>logout</NavLink>
                 {isloggedin && <NavLink className={classes.tabs} to="/all" replace exact>All Users</NavLink>}
                 {isloggedin && <NavLink className={classes.tabs} to="/add" replace exact>Add User</NavLink> }
             </Toolbar>

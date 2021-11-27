@@ -1,15 +1,8 @@
 {
   "users": [
     {
-      "name": "Payank Jain",
-      "username": "pjain39",
-      "email": "payankjain@gmail.com",
-      "phone": "9899770683",
-      "id": 7
-    },
-    {
       "name": "ABHISHEK JAIN",
-      "username": "pjain39",
+      "username": "pjain40",
       "email": "dbcoca@gmail.com",
       "phone": "+919999205108",
       "id": 8
@@ -20,6 +13,13 @@
       "email": "dbcoca@gmail.com",
       "phone": "+919999205108",
       "id": 9
+    },
+    {
+      "name": "swati",
+      "username": "sw",
+      "email": "sw@sw.com",
+      "phone": "56",
+      "id": 10
     }
   ]
 }

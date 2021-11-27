@@ -3,6 +3,7 @@ import { Table, TableHead, TableCell, TableRow, TableBody, Button, makeStyles } 
 import { getUsers, deleteUser } from '../Service/api';
 import { Link } from 'react-router-dom';
 import NavBar from "../Component/NavBar"
+import NotFound from "../Component/NotFound"
 
 const useStyles = makeStyles({
     table: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
+    let isloggedin = localStorage.getItem('isLoggedin') === 'true' ? true : false;
     const classes = useStyles();
 
     useEffect(() => {
@@ -42,7 +44,8 @@ const AllUsers = () => {
         setUsers(response.data);
     }
 
-    return (
+    return !isloggedin ? (<NotFound/>) :
+        (
         <>
         <NavBar />
         <Table className={classes.table}>
