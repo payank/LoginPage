@@ -1,5 +1,5 @@
 import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button  } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
 const initialValue = {
     username: '',
@@ -25,7 +25,7 @@ const LoginPage = ({setLoginState}) => {
     const classes = useStyles();
     const [user, setUser] = useState(initialValue);
     const { username, password, submitted, loggedin } = user;
-    console.log('Payank logIn')
+    console.log('Payank logIn page')
     localStorage.setItem('logIn', 'false');
 
     let userNameRef = null;
@@ -36,9 +36,9 @@ const LoginPage = ({setLoginState}) => {
         setUser({...user, [e.target.name]: e.target.value});
     }
 
-    useEffect(() => {
-        setLoginState(loggedin);
-    },[loggedin])
+    // useEffect(() => {
+    //     setLoginState(loggedin);
+    // },[loggedin])
 
     const validLogin = () => {
         userNameRef.focus();

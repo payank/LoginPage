@@ -18,14 +18,14 @@ function App() {
 
   const setLoginState = useCallback((pass) => {
     setIsLoggedIn(pass);
-  }, [isLoggedIn])
+  }, [])
 
 
 
   return (
     <BrowserRouter>
       <NavBar />
-
+    
       {isLoggedIn && <Redirect to="/all"/>}
       <Prompt
         when={!isLoggedIn}
