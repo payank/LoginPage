@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { Table, TableHead, TableCell, TableRow, TableBody, Button, makeStyles } from '@material-ui/core'
 import { getUsers, deleteUser } from '../Service/api';
 import { Link } from 'react-router-dom';
-import NavBar from "../Component/NavBar"
-import NotFound from "../Component/NotFound"
 
 const useStyles = makeStyles({
     table: {
@@ -27,7 +25,6 @@ const useStyles = makeStyles({
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
-    let isloggedin = localStorage.getItem('isLoggedin') === 'true' ? true : false;
     const classes = useStyles();
 
     useEffect(() => {
@@ -44,10 +41,7 @@ const AllUsers = () => {
         setUsers(response.data);
     }
 
-    return !isloggedin ? (<NotFound/>) :
-        (
-        <>
-        <NavBar />
+    return (
         <Table className={classes.table}>
             <TableHead>
                 <TableRow className={classes.thead}>
@@ -75,7 +69,6 @@ const AllUsers = () => {
                 ))}
             </TableBody>
         </Table>
-        </>
     )
 }
 

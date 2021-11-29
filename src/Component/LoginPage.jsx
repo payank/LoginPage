@@ -1,8 +1,6 @@
 import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
-import NavBar from "../Component/NavBar"
-
+import { useEffect, useState } from 'react';
 
 const initialValue = {
     username: '',
@@ -24,38 +22,36 @@ const useStyles = makeStyles({
     }
 })
 
-const LoginPage = () => {
+const LoginPage = (props) => {
     const classes = useStyles();
     const [user, setUser] = useState(initialValue);
     const { username, password, submitted, loggedin } = user;
-    let history = useHistory();
     localStorage.setItem('isLoggedin', 'false');
 
     const onValueChange = (e) => {
-        console.log(e.target.value);
         setUser({...user, [e.target.name]: e.target.value})
     }
+
+    useEffect(() => {
+        props.setLoginState(loggedin);
+    },[loggedin])
 
     const validLogin = () => {
         if (user.username === 'payank' && user.password === 'password') {
             setUser({...user, loggedin: true, submitted: true});
             localStorage.setItem('isLoggedin', 'true');
-            history.push('/all');
-            //<Redirect to="/all"/> // Here, nothings happens
+            props.setLoginState(true);
         } else {
-            console.log('Payank', user)
             localStorage.setItem('isLoggedin', 'false');
             setUser({...user, loggedin: false, submitted: true});
         }
         
     }
 
-
     //box give deafault div
     //typography gives default <p>
     return (
         <>
-        <NavBar/>
         <FormGroup className={classes.container}>
             <Typography variant="h4">Login Page</Typography>
             <FormControl>

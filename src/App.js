@@ -4,19 +4,50 @@ import EditUser from './Component/EditUser';
 import NavBar from './Component/NavBar';
 import NotFound from './Component/NotFound'; 
 import LoginPage from './Component/LoginPage';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, Prompt} from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+  let loggedIn = localStorage.getItem('isLoggedIn') === 'true' ? true : false;
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
 
   return (
-
     <BrowserRouter>
-      {/* <NavBar /> */}
+      <NavBar />
+
+      {isLoggedIn && <Redirect to="/all"/>}
+      <Prompt
+        when={!isLoggedIn}
+        message={(location)=> { 
+          return ['/all', '/add'].includes(location.pathname) ? 'Please Login' : true
+        }}
+      />
       <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route exact path="/all" component={AllUsers} />
-        <Route exact path="/add" component={AddUser} />
-        <Route exact path="/edit/:id" component={EditUser} />
+        {/* <Route exact path="/" component={LoginPage} /> */}
+        {/* <Route exact path="/all" component={AllUsers}  */}
+        {/* <Route exact path="/add" component={AddUser} /> */}
+        {/* <Route exact path="/edit/:id" component={EditUser} /> */}
+        
+
+        <Route exact path="/" render={(req)=> 
+          { 
+            return (<LoginPage setLoginState={(isLoggedIn) => {
+              setIsLoggedIn(isLoggedIn);
+            }}/>)}
+        }/>
+
+        <Route exact path="/all"  strict render={(req)=> 
+          { return (isLoggedIn ? <AllUsers/> : (<Redirect to="/"/>))}
+        }/>
+
+        <Route exact path="/add"  strict render={(req)=> 
+          { return (isLoggedIn ? <AddUser/> : (<Redirect to="/"/>))}
+        }/>
+
+        <Route exact path="/edit/:id" render={(req)=> 
+          { return (isLoggedIn ? <EditUser/> : (<Redirect to="/"/>))}
+        }/>
+
         <Route component={NotFound} />  
       </Switch>
     </BrowserRouter>

@@ -2,14 +2,7 @@
   "users": [
     {
       "name": "ABHISHEK JAIN",
-      "username": "pjain40",
-      "email": "dbcoca@gmail.com",
-      "phone": "+919999205108",
-      "id": 8
-    },
-    {
-      "name": "ABHISHEK JAIN",
-      "username": "payank",
+      "username": "payank1",
       "email": "dbcoca@gmail.com",
       "phone": "+919999205108",
       "id": 9
@@ -20,6 +13,20 @@
       "email": "sw@sw.com",
       "phone": "56",
       "id": 10
+    },
+    {
+      "name": "ABHISHEK JAIN",
+      "username": "ssad",
+      "email": "dbcoca@gmail.com",
+      "phone": "+919999205108",
+      "id": 11
+    },
+    {
+      "name": "ABHISHEK JAIN",
+      "username": "payank",
+      "email": "dbcoca@gmail.com",
+      "phone": "+919999205108",
+      "id": 12
     }
   ]
 }

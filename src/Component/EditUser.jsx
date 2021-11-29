@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
 import { useHistory, useParams } from 'react-router-dom';
 import { getUsers, editUser } from '../Service/api';
-import NavBar from "../Component/NavBar";
-import NotFound from "../Component/NotFound";
 
 const initialValue = {
     name: '',
@@ -28,7 +26,6 @@ const EditUser = () => {
     const { id } = useParams();
     const classes = useStyles();
     let history = useHistory();
-    let isloggedin = localStorage.getItem('isLoggedin') === 'true' ? true : false;
 
     useEffect(() => {
         const loadUserDetails = async() => {
@@ -51,10 +48,7 @@ const EditUser = () => {
         console.log(e.target.value);
         setUser({...user, [e.target.name]: e.target.value})
     }
-    return !isloggedin ? (<NotFound/>) :
-        (
-        <>
-        <NavBar />
+    return (
         <FormGroup className={classes.container}>
             <Typography variant="h4">Edit Information</Typography>
             <FormControl>
@@ -77,7 +71,6 @@ const EditUser = () => {
                 <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Edit User</Button>
             </FormControl>
         </FormGroup>
-        </>
     )
 }
 

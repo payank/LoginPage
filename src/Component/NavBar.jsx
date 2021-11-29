@@ -17,23 +17,13 @@ const useStyle = makeStyles({
 
 
 const NavBar = () => {
-    //const [isloggedin, setIsLoggedin] = useState(false);
-
-    // useEffect(() => {
-    //     let login = localStorage.getItem('isLoggedin') === 'true' ? true : false;
-    //     setIsLoggedin(login);
-    // }, [isloggedin])
-
-    let isloggedin = localStorage.getItem('isLoggedin') === 'true' ? true : false;
-
-    console.log('Payank localStorage', isloggedin);
     const classes = useStyle();
     return (
         <AppBar position="static" className={classes.header}>
             <Toolbar>
                 <NavLink className={classes.tabs} to="/" replace exact>logout</NavLink>
-                {isloggedin && <NavLink className={classes.tabs} to="/all" replace exact>All Users</NavLink>}
-                {isloggedin && <NavLink className={classes.tabs} to="/add" replace exact>Add User</NavLink> }
+                <NavLink className={classes.tabs} to="/all" replace exact>All Users</NavLink>
+                <NavLink className={classes.tabs} to="/add" replace exact>Add User</NavLink> 
             </Toolbar>
         </AppBar>
     )

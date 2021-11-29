@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
 import { addUser } from '../Service/api';
 import { useHistory } from 'react-router-dom';
-import NavBar from "../Component/NavBar";
-import NotFound from "../Component/NotFound";
 
 const initialValue = {
     name: '',
@@ -27,7 +25,6 @@ const AddUser = () => {
     const { name, username, email, phone } = user;
     const classes = useStyles();
     let history = useHistory();
-    let isloggedin = localStorage.getItem('isLoggedin') === 'true' ? true : false;
 
     const onValueChange = (e) => {
         console.log(e.target.value);
@@ -39,10 +36,7 @@ const AddUser = () => {
         history.push('./all');
     }
 
-    return !isloggedin ? (<NotFound/>) :
-    (
-        <>
-        <NavBar />
+    return (
         <FormGroup className={classes.container}>
             <Typography variant="h4">Add User</Typography>
             <FormControl>
@@ -65,7 +59,6 @@ const AddUser = () => {
                 <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add User</Button>
             </FormControl>
         </FormGroup>
-        </>
     )
 }
 
