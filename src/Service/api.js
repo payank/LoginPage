@@ -5,7 +5,15 @@ const usersUrl = 'http://localhost:3002/users';
 
 export const getUsers = async (id) => {
     id = id || '';
-    return await axios.get(`${usersUrl}/${id}`);
+    console.log('Paya1', id)
+
+    try {
+        let abc =  await axios.get(`${usersUrl}/${id}`);
+        return abc;
+    } catch(e) {
+        return {}
+
+    }
 }
 
 export const addUser = async (user) => {

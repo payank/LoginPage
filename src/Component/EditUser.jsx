@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
 import { useHistory, useParams } from 'react-router-dom';
 import { getUsers, editUser } from '../Service/api';
+import NotFound from '../Component/NotFound'; 
 
 const initialValue = {
+    found: true,
     name: '',
     username: '',
     email: '',
@@ -22,7 +24,7 @@ const useStyles = makeStyles({
 
 const EditUser = () => {
     const [user, setUser] = useState(initialValue);
-    const { name, username, email, phone } = user;
+    const { found, name, username, email, phone } = user;
     const { id } = useParams();
     const classes = useStyles();
     let history = useHistory();
@@ -30,9 +32,8 @@ const EditUser = () => {
     useEffect(() => {
         const loadUserDetails = async() => {
             const response = await getUsers(id);
-            response.data && setUser(response.data);
+            response.data ? setUser({...response.data, found: true}) : setUser({found: false})
         }
-
         id && loadUserDetails();
 
     }, [id]);
@@ -49,6 +50,7 @@ const EditUser = () => {
         setUser({...user, [e.target.name]: e.target.value})
     }
     return (
+        found ?
         <FormGroup className={classes.container}>
             <Typography variant="h4">Edit Information</Typography>
             <FormControl>
@@ -70,7 +72,7 @@ const EditUser = () => {
             <FormControl>
                 <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Edit User</Button>
             </FormControl>
-        </FormGroup>
+        </FormGroup> : <NotFound/>
     )
 }
 

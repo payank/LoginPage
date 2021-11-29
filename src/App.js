@@ -24,6 +24,14 @@ function App() {
       <NavBar />
 
         {/* {isLoggedIn  && <Redirect to="/all"/> } */}
+
+        <Prompt
+          when={!(loggedIn)}
+          message={(location)=> { 
+            return ['/all', '/add'].includes(location.pathname) ? 'Please Login' : true
+        }}
+        />
+
       <Switch>
         {/* <Route exact path="/" component={LoginPage} /> */}
         {/* <Route exact path="/all" component={AllUsers}  */}
@@ -49,13 +57,6 @@ function App() {
 
         <Route component={NotFound} />  
       </Switch>
-
-      <Prompt
-        when={!localStorage.getItem('logIn') === 'true'}
-        message={(location)=> { 
-          return ['/all', '/add'].includes(location.pathname) ? 'Please Login' : true
-        }}
-      />
 
     </BrowserRouter>
   );
