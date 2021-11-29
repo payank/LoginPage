@@ -5,34 +5,25 @@ import NavBar from './Component/NavBar';
 import NotFound from './Component/NotFound'; 
 import LoginPage from './Component/LoginPage';
 import { BrowserRouter, Route, Switch, Redirect, Prompt} from 'react-router-dom';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
 function App() {
   let loggedIn = localStorage.getItem('logIn') === 'true' ? true : false;
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
   console.log('Payank isLoggedIn', loggedIn, isLoggedIn)
 
-  // const setLoginState = (pass) => {
-  //   setIsLoggedIn(pass);
-  // }
 
-  const setLoginState = useCallback((pass) => {
+  const setLoginState = (pass) => {
     setIsLoggedIn(pass);
-  }, [])
-
+  }
 
 
   return (
+
     <BrowserRouter>
       <NavBar />
-    
-      {isLoggedIn && <Redirect to="/all"/>}
-      <Prompt
-        when={!isLoggedIn}
-        message={(location)=> { 
-          return ['/all', '/add'].includes(location.pathname) ? 'Please Login' : true
-        }}
-      />
+
+        {/* {isLoggedIn  && <Redirect to="/all"/> } */}
       <Switch>
         {/* <Route exact path="/" component={LoginPage} /> */}
         {/* <Route exact path="/all" component={AllUsers}  */}
@@ -41,11 +32,7 @@ function App() {
         
 
         <Route exact path="/" render={(req)=> 
-          { 
-            return (<LoginPage setLoginState={
-              (pass) => {
-              setLoginState(pass);
-            }}/>)}
+          { return (<LoginPage setLoginState={(pass) => {setLoginState(pass)}}/>)}
         }/>
 
         <Route exact path="/all"  strict render={(req)=> 
@@ -62,6 +49,14 @@ function App() {
 
         <Route component={NotFound} />  
       </Switch>
+
+      <Prompt
+        when={!localStorage.getItem('logIn') === 'true'}
+        message={(location)=> { 
+          return ['/all', '/add'].includes(location.pathname) ? 'Please Login' : true
+        }}
+      />
+
     </BrowserRouter>
   );
 

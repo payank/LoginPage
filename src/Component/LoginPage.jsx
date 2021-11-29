@@ -1,5 +1,6 @@
 import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button  } from '@material-ui/core';
-import {  useState } from 'react';
+import {  useState, useEffect } from 'react';
+import { useHistory,  } from 'react-router-dom';
 
 const initialValue = {
     username: '',
@@ -25,7 +26,13 @@ const LoginPage = ({setLoginState}) => {
     const classes = useStyles();
     const [user, setUser] = useState(initialValue);
     const { username, password, submitted, loggedin } = user;
-    console.log('Payank logIn page')
+    let history = useHistory();
+
+    useEffect(() => {
+        setLoginState(loggedin);
+    },[loggedin, setLoginState])
+    console.log('Payank logIn page', localStorage.getItem('logIn'))
+    //setLoginState(loggedin);
     localStorage.setItem('logIn', 'false');
 
     let userNameRef = null;
@@ -36,21 +43,20 @@ const LoginPage = ({setLoginState}) => {
         setUser({...user, [e.target.name]: e.target.value});
     }
 
-    // useEffect(() => {
-    //     setLoginState(loggedin);
-    // },[loggedin])
-
     const validLogin = () => {
         userNameRef.focus();
         if (user.username === 'payank' && user.password === 'password') {
             setUser({...user, loggedin: true, submitted: true});
-            console.log('Payank ', loggedin);
             localStorage.setItem('logIn', 'true');
+            console.log('Payank validlogin', localStorage.getItem('logIn'));
             setLoginState(true);
+            history.push('/all');
         } else {
             localStorage.setItem('logIn', 'false');
             setUser({...user, loggedin: false, submitted: true});
+            //localStorage.setItem('logIn', 'false');
         }
+
         
     }
 
