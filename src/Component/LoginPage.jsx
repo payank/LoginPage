@@ -1,4 +1,4 @@
-import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button } from '@material-ui/core';
+import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button  } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -28,8 +28,12 @@ const LoginPage = (props) => {
     const { username, password, submitted, loggedin } = user;
     localStorage.setItem('isLoggedin', 'false');
 
+    let userNameRef = null;
+    let passwordRef = null;
+    let submitRef = null;
+    
     const onValueChange = (e) => {
-        setUser({...user, [e.target.name]: e.target.value})
+        setUser({...user, [e.target.name]: e.target.value});
     }
 
     useEffect(() => {
@@ -37,15 +41,33 @@ const LoginPage = (props) => {
     },[loggedin])
 
     const validLogin = () => {
+        userNameRef.focus();
         if (user.username === 'payank' && user.password === 'password') {
             setUser({...user, loggedin: true, submitted: true});
             localStorage.setItem('isLoggedin', 'true');
             props.setLoginState(true);
         } else {
+
             localStorage.setItem('isLoggedin', 'false');
             setUser({...user, loggedin: false, submitted: true});
         }
         
+    }
+
+    const OnKeyUp = (e) => {
+        if (e.keyCode == 13) { //'Enter Key'
+            switch(e.target.name) {
+                case 'username' :
+                    passwordRef.focus();
+                    break;
+                case 'password' :
+                    submitRef.focus();
+                    break;
+                default:
+                    userNameRef.focus();
+            }
+
+        }
     }
 
     //box give deafault div
@@ -56,20 +78,26 @@ const LoginPage = (props) => {
             <Typography variant="h4">Login Page</Typography>
             <FormControl>
                 <InputLabel htmlFor="my-input">Username</InputLabel>
-                <Input  type="text" onChange={(e) => onValueChange(e)} name='username' value={username} id="my-input" />
+                <Input  inputRef={(input) => {userNameRef = input}} type="text" onChange={(e) => onValueChange(e)} name='username' value={username} id="my-input" 
+                onKeyUp={OnKeyUp}
+                />
+                
                 {submitted && !username &&
                             <Box className={classes.component}>Username is required</Box>
                 }   
             </FormControl>
             <FormControl>
                 <InputLabel htmlFor="my-password">Password</InputLabel>
-                <Input type="password" onChange={(e) => onValueChange(e)} name='password' value={password} id="my-password"/>
+                <Input type="password"  inputRef={(input) => {passwordRef = input}} onChange={(e) => onValueChange(e)} name='password' value={password} id="my-password"
+                onKeyUp={OnKeyUp}
+                />
                 {submitted && !password &&
                             <Box className={classes.component}>Password is required</Box>
                 }   
             </FormControl>
             <FormControl>
-                <Button variant="contained" color="primary" onClick={() => validLogin()}>Login</Button>
+                < Button variant="contained" ref={(input) => {submitRef = input}}  color="primary" onClick={() => validLogin()}
+                >Login</Button >
                 {submitted && !loggedin &&
                             <Box className={classes.component}>Invalid Credentials</Box>
                 }
