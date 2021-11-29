@@ -5,11 +5,22 @@ import NavBar from './Component/NavBar';
 import NotFound from './Component/NotFound'; 
 import LoginPage from './Component/LoginPage';
 import { BrowserRouter, Route, Switch, Redirect, Prompt} from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 function App() {
-  let loggedIn = localStorage.getItem('isLoggedIn') === 'true' ? true : false;
+  let loggedIn = localStorage.getItem('logIn') === 'true' ? true : false;
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
+  console.log('Payank isLoggedIn', loggedIn, isLoggedIn)
+
+  // const setLoginState = (pass) => {
+  //   setIsLoggedIn(pass);
+  // }
+
+  const setLoginState = useCallback((pass) => {
+    setIsLoggedIn(pass);
+  }, [isLoggedIn])
+
+
 
   return (
     <BrowserRouter>
@@ -31,8 +42,9 @@ function App() {
 
         <Route exact path="/" render={(req)=> 
           { 
-            return (<LoginPage setLoginState={(isLoggedIn) => {
-              setIsLoggedIn(isLoggedIn);
+            return (<LoginPage setLoginState={
+              (pass) => {
+              setLoginState(pass);
             }}/>)}
         }/>
 
@@ -54,5 +66,6 @@ function App() {
   );
 
 }
+
 
 export default App;

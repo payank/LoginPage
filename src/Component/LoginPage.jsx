@@ -1,5 +1,4 @@
 import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button  } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const initialValue = {
@@ -22,11 +21,12 @@ const useStyles = makeStyles({
     }
 })
 
-const LoginPage = (props) => {
+const LoginPage = ({setLoginState}) => {
     const classes = useStyles();
     const [user, setUser] = useState(initialValue);
     const { username, password, submitted, loggedin } = user;
-    localStorage.setItem('isLoggedin', 'false');
+    console.log('Payank logIn')
+    localStorage.setItem('logIn', 'false');
 
     let userNameRef = null;
     let passwordRef = null;
@@ -37,25 +37,25 @@ const LoginPage = (props) => {
     }
 
     useEffect(() => {
-        props.setLoginState(loggedin);
+        setLoginState(loggedin);
     },[loggedin])
 
     const validLogin = () => {
         userNameRef.focus();
         if (user.username === 'payank' && user.password === 'password') {
             setUser({...user, loggedin: true, submitted: true});
-            localStorage.setItem('isLoggedin', 'true');
-            props.setLoginState(true);
+            console.log('Payank ', loggedin);
+            localStorage.setItem('logIn', 'true');
+            setLoginState(true);
         } else {
-
-            localStorage.setItem('isLoggedin', 'false');
+            localStorage.setItem('logIn', 'false');
             setUser({...user, loggedin: false, submitted: true});
         }
         
     }
 
     const OnKeyUp = (e) => {
-        if (e.keyCode == 13) { //'Enter Key'
+        if (e.keyCode === 13) { //'Enter Key'
             switch(e.target.name) {
                 case 'username' :
                     passwordRef.focus();
