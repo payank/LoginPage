@@ -40,7 +40,7 @@ function App() {
         
 
         <Route exact path="/" render={(req)=> 
-          { return (<LoginPage setLoginState={(pass) => {setLoginState(pass)}}/>)}
+          { return (<LoginPage setLoginState={setLoginState}/>)}
         }/>
 
         <Route exact path="/all"  strict render={(req)=> 
