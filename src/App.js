@@ -1,69 +1,56 @@
-import AllUsers from './Component/AllUsers';
-import AddUser from './Component/AddUser';
-import EditUser from './Component/EditUser';
-import NavBar from './Component/NavBar';
-import NotFound from './Component/NotFound'; 
-import LoginPage from './Component/LoginPage';
-import { BrowserRouter, Route, Switch, Redirect, Prompt} from 'react-router-dom';
-import { useState } from 'react';
-import Footer from './Component/Footer';
+import AllUsers from "./Component/AllUsers";
+import AddUser from "./Component/AddUser";
+import EditUser from "./Component/EditUser";
+import NavBar from "./Component/NavBar";
+import NotFound from "./Component/NotFound";
+import LoginPage from "./Component/LoginPage";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+  Prompt,
+} from "react-router-dom";
+import { useState } from "react";
+import Footer from "./Component/Footer";
+import RapidusHome from "./Component/FirstPage";
 
 function App() {
-  let loggedIn = localStorage.getItem('logIn') === 'true' ? true : false;
+  let loggedIn = localStorage.getItem("logIn") === "true" ? true : false;
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
-  console.log('Payank isLoggedIn', loggedIn, isLoggedIn)
-
+  console.log("Payank isLoggedIn", loggedIn, isLoggedIn);
 
   const setLoginState = (pass) => {
     setIsLoggedIn(pass);
-  }
-
+  };
 
   return (
- <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-    <BrowserRouter>
-      <NavBar />
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
+      <BrowserRouter>
+        <NavBar />
+        <div style={{ flex: 1 }}>
+          <Switch>
+            {/* <Route exact path="/" component={LoginPage} /> */}
+            {/* <Route exact path="/all" component={AllUsers}  */}
+            {/* <Route exact path="/add" component={AddUser} /> */}
+            {/* <Route exact path="/edit/:id" component={EditUser} /> */}
 
-        {/* {isLoggedIn  && <Redirect to="/all"/> } */}
-
-        <Prompt
-          when={!(loggedIn)}
-          message={(location)=> { 
-            return ['/all', '/add'].includes(location.pathname) ? 'Please Login' : true
-        }}
-        />
-
-      <Switch>
-        {/* <Route exact path="/" component={LoginPage} /> */}
-        {/* <Route exact path="/all" component={AllUsers}  */}
-        {/* <Route exact path="/add" component={AddUser} /> */}
-        {/* <Route exact path="/edit/:id" component={EditUser} /> */}
-        
-
-        <Route exact path="/" render={(req)=> 
-          { return (<LoginPage setLoginState={setLoginState}/>)}
-        }/>
-
-        <Route exact path="/all"  strict render={(req)=> 
-          { return (isLoggedIn ? <AllUsers/> : (<Redirect to="/"/>))}
-        }/>
-
-        <Route exact path="/add"  strict render={(req)=> 
-          { return (isLoggedIn ? <AddUser/> : (<Redirect to="/"/>))}
-        }/>
-
-        <Route exact path="/edit/:id" render={(req)=> 
-          { return (isLoggedIn ? <EditUser/> : (<Redirect to="/"/>))}
-        }/>
-
-        <Route component={NotFound} />  
-      </Switch>
-      <Footer/>
-    </BrowserRouter>
+            <Route
+              exact
+              path="/"
+              render={(req) => {
+                return <LoginPage setLoginState={setLoginState} />;
+              }}
+            />
+            <Route exact path="/rapidusHome" component={RapidusHome} />
+          </Switch>
+        </div>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
-
 }
-
 
 export default App;
