@@ -6,6 +6,7 @@ import NotFound from './Component/NotFound';
 import LoginPage from './Component/LoginPage';
 import { BrowserRouter, Route, Switch, Redirect, Prompt} from 'react-router-dom';
 import { useState } from 'react';
+import Footer from './Component/Footer';
 
 function App() {
   let loggedIn = localStorage.getItem('logIn') === 'true' ? true : false;
@@ -19,7 +20,7 @@ function App() {
 
 
   return (
-
+ <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
     <BrowserRouter>
       <NavBar />
 
@@ -57,8 +58,9 @@ function App() {
 
         <Route component={NotFound} />  
       </Switch>
-
+      <Footer/>
     </BrowserRouter>
+    </div>
   );
 
 }

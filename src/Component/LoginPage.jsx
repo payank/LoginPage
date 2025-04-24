@@ -1,116 +1,298 @@
-import { Box, Typography, makeStyles, FormGroup, FormControl, InputLabel, Input, Button  } from '@material-ui/core';
-import {  useState, useEffect } from 'react';
-import { useHistory,  } from 'react-router-dom';
-
-const initialValue = {
-    username: '',
-    password: '',
-    submitted: false,
-    loggedin: false
-}
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Typography,
+  makeStyles,
+  FormGroup,
+  FormControl,
+  Box,
+  Link,
+  Button,
+} from "@material-ui/core";
+import { Form, Field } from "react-final-form";
+import { useHistory } from "react-router-dom";
+import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
+import { Refresh } from "@material-ui/icons";
 
 const useStyles = makeStyles({
-    component: {
-        color: "#ff0000",
+  component: {
+    color: "#ff0000",
+  },
+  container: {
+    width: "50%",
+    margin: "0 0 0 25%",
+    "& > *": {
+      marginTop: 20,
     },
-    container: {
-        width: '50%',
-        margin: '5% 0 0 25%',
-        '& > *': {
-            marginTop: 20
-        }
+    border: "2px solid #305e02",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "400px",
+  },
+  styleButton: {
+    backgroundColor: "#328037",
+    color: "white",
+    border: "none",
+    borderRadius: "3px",
+    height: "25px",
+    cursor: "pointer",
+    "&:hover":{
+      backgroundColor: "#076b10",
     }
-})
+  },
+  inputField: {
+    borderRadius: "5px",
+    border: "1px solid #328037",
+    padding: "8px",
+  },
+  form:{
+    display: "flex",
+    marginBottom: "20px",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "20px",
+  },
+  divElement:{
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    flex: 1,
+  }
 
-const LoginPage = ({setLoginState}) => {
-    const classes = useStyles();
-    const [user, setUser] = useState(initialValue);
-    const { username, password, submitted, loggedin } = user;
-    let history = useHistory();
+});
 
-    useEffect(() => {
-        setLoginState(loggedin);
-    },[loggedin, setLoginState])
-    console.log('Payank logIn page', localStorage.getItem('logIn'))
-    //setLoginState(loggedin);
-    localStorage.setItem('logIn', 'false');
+const LoginPage = ({ setLoginState }) => {
+  const classes = useStyles();
+  const history = useHistory();
+  const [captcha, setCaptcha] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const submitRef = useRef(null);
 
-    let userNameRef = null;
-    let passwordRef = null;
-    let submitRef = null;
-    
-    const onValueChange = (e) => {
-        setUser({...user, [e.target.name]: e.target.value});
+  const generateCaptcha = () => {
+    const random = Math.random().toString(36).substring(2, 8).toUpperCase();
+    setCaptcha(random);
+    setUserInput("");
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  const required = (value) => (value ? undefined : "Required");
+
+  const isEmail = (value) =>
+    value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+      ? "Invalid email address"
+      : value !== "payank@gmail.com" ? "Invalid email address" : undefined;
+
+  const hasLength8 = (value) =>
+    value && value.length !== 8 ? "User ID must be 8 characters" : value !== "12345678" ? "Invalid User ID" : undefined;
+  // const matchPassword = (value, allValues) =>
+  //   value !== allValues.password ? "Passwords do not match" : undefined;
+
+  const validateCaptcha = (currentCaptcha) => (value) =>
+    !value
+      ? "Required"
+      : value.toUpperCase() !== currentCaptcha
+      ? "Invalid CAPTCHA"
+      : undefined;
+
+   const validatePassword = (value) => !value? "Required" : value !=="password" ? "Invalid Password" : undefined;
+
+  const onSubmit = (values) => {
+    if (
+      values.email === "payank@gmail.com" &&
+      values.password === "password" &&
+      values.userId === "12345678"
+    ) {
+      setLoginState(true);
+      localStorage.setItem("logIn", "true");
+      history.push("/all");
+    } else {
+      setLoginState(false);
+      localStorage.setItem("logIn", "false");
     }
+  };
 
-    const validLogin = () => {
-        userNameRef.focus();
-        if (user.username === 'payank' && user.password === 'password') {
-            setUser({...user, loggedin: true, submitted: true});
-            localStorage.setItem('logIn', 'true');
-            console.log('Payank validlogin', localStorage.getItem('logIn'));
-            setLoginState(true);
-            history.push('/all');
-        } else {
-            localStorage.setItem('logIn', 'false');
-            setUser({...user, loggedin: false, submitted: true});
-            //localStorage.setItem('logIn', 'false');
-        }
+  return (
+    <>
+    <div style={{display:"flex", flexDirection:"row",height:'100px', alignItems:"center", justifyContent:"space-between" }} >
+      <h2 style={{marginLeft:'40px'}}>Wireframe(Login Screen)</h2>
+      <img src={Rapidus_logo} style={{marginRight:'20px', width:'20%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} />
+    </div>
+    <FormGroup
+      className={classes.container}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap:'15px'
+        }}
+      >
+        <img src={Rapidus_logo} width={200} alt="Rapidus Logo" />
+        <Typography variant="h6" style={{ marginTop: "-30px" }}>
+          Welcome to Rapidus Customer Portal
+        </Typography>
+      </div>
 
-        
-    }
+      <Form
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <form
+            onSubmit={handleSubmit}
+            className={classes.form}
+          >
+            <div
+              className={classes.divElement}
+            >
+              <Field
+                name="email"
+                validate={(value) => required(value) || isEmail(value)}
+              >
+                {({ input, meta }) => (
+                  <FormControl fullWidth>
+                    <label>Email</label>
+                    <input
+                      {...input}
+                      className={classes.inputField}
+                      placeholder="Enter Email"
+                    />
+                    {meta.touched && meta.error && (
+                      <Box className={classes.component}>{meta.error}</Box>
+                    )}
+                  </FormControl>
+                )}
+              </Field>
 
-    const OnKeyUp = (e) => {
-        if (e.keyCode === 13) { //'Enter Key'
-            switch(e.target.name) {
-                case 'username' :
-                    passwordRef.focus();
-                    break;
-                case 'password' :
-                    submitRef.focus();
-                    break;
-                default:
-                    userNameRef.focus();
-            }
+              <Field
+                name="userId"
+                validate={(value) => required(value) || hasLength8(value)}
+              >
+                {({ input, meta }) => (
+                  <FormControl fullWidth>
+                    <label>User ID</label>
+                    <input
+                      {...input}
+                      className={classes.inputField}
+                      placeholder="Enter UserId"
+                    />
+                    {meta.touched && meta.error && (
+                      <Box className={classes.component}>{meta.error}</Box>
+                    )}
+                  </FormControl>
+                )}
+              </Field>
 
-        }
-    }
+              <Field name="password" validate={(value) => required(value)|| validatePassword(value)}>
+                {({ input, meta }) => (
+                  <FormControl fullWidth>
+                    <label>Password</label>
+                    <input
+                      {...input}
+                      type="password"
+                      className={classes.inputField}
+                      placeholder="Enter Password"
+                    />
+                    {meta.touched && meta.error && (
+                      <Box className={classes.component}>{meta.error}</Box>
+                    )}
+                  </FormControl>
+                )}
+              </Field>
 
-    //box give deafault div
-    //typography gives default <p>
-    return (
-        <>
-        <FormGroup className={classes.container}>
-            <Typography variant="h4">Login Page</Typography>
-            <FormControl>
-                <InputLabel htmlFor="my-input">Username</InputLabel>
-                <Input  inputRef={(input) => {userNameRef = input}} type="text" onChange={(e) => onValueChange(e)} name='username' value={username} id="my-input" 
-                onKeyUp={OnKeyUp}
+              <FormControl>
+                <Link
+                  style={{
+                    color: "#23a0e8",
+                    fontSize: "15px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Forgot Password?
+                </Link>
+              </FormControl>
+            </div>
+
+            <div
+              className={classes.divElement}
+            >
+              <FormControl
+              fullWidth
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <input
+                  type="text"
+                  readOnly
+                  value={captcha}
+                  style={{ flex: 1 }}
+                  className={classes.inputField}
                 />
-                
-                {submitted && !username &&
-                            <Box className={classes.component}>Username is required</Box>
-                }   
-            </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="my-password">Password</InputLabel>
-                <Input type="password"  inputRef={(input) => {passwordRef = input}} onChange={(e) => onValueChange(e)} name='password' value={password} id="my-password"
-                onKeyUp={OnKeyUp}
-                />
-                {submitted && !password &&
-                            <Box className={classes.component}>Password is required</Box>
-                }   
-            </FormControl>
-            <FormControl>
-                < Button variant="contained" ref={(input) => {submitRef = input}}  color="primary" onClick={() => validLogin()}
-                >Login</Button >
-                {submitted && !loggedin &&
-                            <Box className={classes.component}>Invalid Credentials</Box>
-                }
-            </FormControl>
-        </FormGroup>
-        </>
-    )
-}
+                <button
+                  type="button"
+                  onClick={generateCaptcha}
+                  style={{ marginLeft: "-30px",  }}
+                >
+                  <Refresh />
+                </button>
+              </FormControl>
+              <FormControl fullWidth>
+                <Field name="captchaInput" validate={validateCaptcha(captcha)}>
+                  {({ input, meta }) => (
+                    <>
+                      <input
+                        {...input}
+                        className={classes.inputField}
+                        type="text"
+                        placeholder="Enter Captcha"
+                      />
+                      {meta.touched && meta.error && (
+                        <Box className={classes.component}>{meta.error}</Box>
+                      )}
+                    </>
+                  )}
+                </Field>
+              </FormControl>
+
+              <FormControl
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <input type="checkbox" />
+                <label>Remember my User ID</label>
+              </FormControl>
+              <FormControl >
+                <Button
+                  type="submit"
+                  className={classes.styleButton}
+                  ref={submitRef}
+                >
+                  Login
+                </Button>
+
+                <b style={{ fontSize: "10px" }}>
+                  Need help? Please check Help or Contact Us
+                </b>
+              </FormControl>
+            </div>
+            
+          </form>
+        )}
+      />
+    </FormGroup>
+    </>
+  );
+};
 
 export default LoginPage;
