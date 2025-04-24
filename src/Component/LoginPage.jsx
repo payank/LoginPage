@@ -12,6 +12,7 @@ import { Form, Field } from "react-final-form";
 import { useHistory } from "react-router-dom";
 import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
 import { Refresh } from "@material-ui/icons";
+import { useMsal } from "@azure/msal-react";
 
 const useStyles = makeStyles({
   component: {
@@ -70,6 +71,19 @@ const LoginPage = ({ setLoginState }) => {
   const [captcha, setCaptcha] = useState("");
   const [userInput, setUserInput] = useState("");
   const submitRef = useRef(null);
+  const { instance, accounts } = useMsal();
+    console.log("Payank isLoggedIn", instance, accounts);
+
+
+  useEffect(() => {
+    instance.handleRedirectPromise().then((response) => {
+    if (response) {
+      console.log("Payank Logged in:", response.account);
+    }
+    }).catch((err) => {
+    console.error(err);
+    });
+    }, [instance]);
 
   const generateCaptcha = () => {
     const random = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -85,11 +99,10 @@ const LoginPage = ({ setLoginState }) => {
 
   const isEmail = (value) =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-      ? "Invalid email address"
-      : value !== "payank@gmail.com" ? "Invalid email address" : undefined;
+      ? "Invalid email address": undefined;
 
   const hasLength8 = (value) =>
-    value && value.length !== 8 ? "User ID must be 8 characters" : value !== "12345678" ? "Invalid User ID" : undefined;
+    value && value.length !== 8 ? "User ID must be 8 characters" : undefined;
   // const matchPassword = (value, allValues) =>
   //   value !== allValues.password ? "Passwords do not match" : undefined;
 
@@ -100,21 +113,17 @@ const LoginPage = ({ setLoginState }) => {
       ? "Invalid CAPTCHA"
       : undefined;
 
-   const validatePassword = (value) => !value? "Required" : value !=="password" ? "Invalid Password" : undefined;
+   const validatePassword = (value) => !value? "Required" : undefined;
 
   const onSubmit = (values) => {
-    if (
-      values.email === "payank@gmail.com" &&
-      values.password === "password" &&
-      values.userId === "12345678"
-    ) {
+ 
       setLoginState(true);
       localStorage.setItem("logIn", "true");
+      instance.loginRedirect({
+        scopes: ["User.Read"], // Microsoft Graph scope to read profile
+      });
       history.push("/rapidusHome");
-    } else {
-      setLoginState(false);
-      localStorage.setItem("logIn", "false");
-    }
+    
   };
 
   return (

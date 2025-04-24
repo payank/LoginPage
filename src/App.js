@@ -18,10 +18,9 @@ import RapidusHome from "./Component/FirstPage";
 function App() {
   let loggedIn = localStorage.getItem("logIn") === "true" ? true : false;
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
-  console.log("Payank isLoggedIn", loggedIn, isLoggedIn);
 
   const setLoginState = (pass) => {
-    setIsLoggedIn(pass);
+
   };
 
   return (
