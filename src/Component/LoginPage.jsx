@@ -29,6 +29,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     height: "400px",
+    marginTop:'10px'
   },
   styleButton: {
     backgroundColor: "#328037",
@@ -109,7 +110,7 @@ const LoginPage = ({ setLoginState }) => {
     ) {
       setLoginState(true);
       localStorage.setItem("logIn", "true");
-      history.push("/all");
+      history.push("/rapidusHome");
     } else {
       setLoginState(false);
       localStorage.setItem("logIn", "false");
@@ -118,10 +119,7 @@ const LoginPage = ({ setLoginState }) => {
 
   return (
     <>
-    <div style={{display:"flex", flexDirection:"row",height:'100px', alignItems:"center", justifyContent:"space-between" }} >
-      <h2 style={{marginLeft:'40px'}}>Wireframe(Login Screen)</h2>
-      <img src={Rapidus_logo} style={{marginRight:'20px', width:'20%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} />
-    </div>
+    
     <FormGroup
       className={classes.container}
     >

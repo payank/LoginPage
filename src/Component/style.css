@@ -1,0 +1,259 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .my-online-dropdown {
+    background-color: #c9ebc1;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  .rapidus-main {
+    display: flex;
+    flex: 1;
+    background: #f8f8f8;
+  }
+  
+  .side-nav {
+    width: 160px;
+    background: #e8f3ce;
+    border-right: 1px solid #ccc;
+    padding: 10px 0;
+    justify-content: center;
+   
+  }
+  
+  .white-box {
+    background: #fff;
+    padding: 10px;
+  
+    width: 95px;
+    margin-left: 17px;
+    margin-bottom: 8px;
+  }
+  
+  .active{
+    width: 95px;
+    margin-left: 17px;
+    margin-bottom: 8px;
+  }
+  
+  
+  .side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .side-nav li {
+    padding: 8px 16px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .side-nav li.active {
+    background: green;
+    color: white;
+  }
+  
+  .content-area {
+    flex: 3;
+    background: white;
+  }
+  
+  .search-bar input {
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: none;
+    width:50%;
+    margin-left: 40px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 0px;
+  }
+  
+  .search-bar{
+    margin-bottom: 0px;
+    background-color: #f0f0f0;
+    height: 50px;
+    display: flex;
+    padding-top: 0px;
+    
+  }
+  
+  
+  
+  .header-icon{
+    display: flex;
+    padding-left: 30px;
+    padding-top: 10px;
+    gap: 10px
+  
+  }
+  
+  .my-online-dropdown{
+    border: solid 2px blue;
+    width: 250px;
+    border-radius: 4px;
+    margin-left: 50px;
+   margin-right: 30px;
+    height: 20px;
+    color: blue;
+    margin-top: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  
+  
+  
+  
+  .whats-new {
+     gap: 2px;   
+      
+  }
+  
+  
+  
+  
+  .whats-new .heading {
+    margin-left: 20px;
+    margin-top: 2px;
+    width: 100%;       /* Make the heading take the full width */
+    display: flex;
+    
+  }
+  
+  .featured-content {
+    background: greenyellow;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    float: left;
+    width: 30%;
+    text-align: left;
+    padding-bottom : 5px;
+    height: 195px;
+    margin-left: 12px;
+  }
+  
+  .featured-content p {
+    margin-top: -25px;
+    margin-left: 13px;  /* Shift the paragraph up by 5px */
+  }
+  
+  .featured-content .textbox{
+    background: greenyellow;
+    border: 1px solid white;
+    border-radius: 4px;
+    width: 150px;
+    display: block;  
+   
+  }
+  
+  .announcement{
+    height: 190px;
+    text-align: left;
+    background-color: #f0f0f0;
+    padding: 12px;
+  margin-left: 20px;
+    margin-bottom: 15px;
+    float: left;
+    width: 32%;
+  }
+  
+  .announcement button{
+    width: 120px;
+    height: 25px;
+    margin-top: 15px;
+    padding-top: 4px;
+    color: red;
+    background-color: #ffcccc;
+    border-radius: 3px;
+  }
+  
+  .date{
+    color: gray;
+    padding-left: 50px;
+  }
+  
+  
+  .Tanaka{
+    /* height: 3000px; */
+    text-align: left;
+    background-color: #f0f0f0;
+    padding: 12px;
+  margin-left: 20px;
+    margin-bottom: 15px;
+    float: left;
+    width: 26%;
+    display: flex;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom:  0px;
+  }
+  
+  .fav{
+    height: 180px;
+    text-align: left;
+    background-color: #f0f0f0;
+    padding: 12px;
+  margin-left: 20px;
+    
+    float: left;
+    width: 65%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;  /* Adjust spacing between cards */
+  }
+   
+  
+  
+  .icon img {
+    width: 30px;          
+    height: 30px;  
+    margin-left: 5px; 
+    margin-bottom: 24px;  
+    background-color: transparent;
+  }    
+  
+  .text{
+    margin-left: 10px;
+    margin-bottom: 24px;
+    
+  }
+  
+  .function-card{
+    display: flex;
+    margin-left: 5px;
+  
+  }
+  
+  .searching img{
+    padding-left: 400px;
+    width: 20px;          
+    height: 20px;  
+  }
+  
+  .search-icon {
+    position: absolute;
+    margin-top: 15px;
+    left: -190px; 
+    pointer-events: none; 
+    
+  }
+  
+  
+  
+  input[type="text"] {
+    padding-left: 40px;
+  }
