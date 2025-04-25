@@ -54,7 +54,10 @@ body {
 
 
 .active{
-  width: 95px;
+  background: #fff;
+  padding: 2px;
+  width: 123px;
+  height: 30px;
   margin-left: 17px;
   margin-bottom: 8px;
 }
@@ -72,10 +75,12 @@ body {
   cursor: pointer;
 }
 
-.side-nav li.active {
-  background: green;
-  color: white;
+.side-nav li:hover {
+  background-color: green;
+  color: white; 
 }
+
+
 
 .content-area {
   flex: 3;
