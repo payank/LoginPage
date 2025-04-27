@@ -1,0 +1,74 @@
+.wafer-controls {
+  display: flex;
+  gap: 15px;
+  padding: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: calc(100vh - 50px);
+  box-sizing: border-box;
+}
+
+.param-grid {
+  flex: 1 1 50%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  height: 450px;
+}
+
+
+
+.param-grid label {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 155px;
+  font-size: 15px;
+  color: rgb(50, 128, 55);
+}
+
+.param-grid select {
+  padding: 10px 15px;
+  border: 1px solid #131413;
+  font-size: 15px;
+  width : auto;
+  max-width:140px;
+  transition: all 0.3s ease;
+  background: white;
+
+}
+
+.param-grid input {
+  padding: 10px 15px;
+  border: 1px solid #131413;
+  font-size: 15px;
+  width : 52%;
+  transition: all 0.3s ease;
+  background: white;
+  height: 10px;
+
+}
+
+@media (max-width: 768px) {
+  .wafer-controls {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+  
+  .param-grid,
+  .wafer-map-container {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+    padding: 25px;
+  }
+  
+  .wafer-map-container {
+    height: 500px;
+  }
+}
