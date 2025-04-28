@@ -72,18 +72,26 @@ const LoginPage = ({ setLoginState }) => {
   const [userInput, setUserInput] = useState("");
   const submitRef = useRef(null);
   const { instance, accounts } = useMsal();
+  const [isLoggedIn, setIsLoggedIn] = useState(accounts.length>0);
     console.log("Payank isLoggedIn", instance, accounts);
 
 
   useEffect(() => {
     instance.handleRedirectPromise().then((response) => {
     if (response) {
-      console.log("Payank Logged in:", response.account);
+      setIsLoggedIn(true);
     }
     }).catch((err) => {
     console.error(err);
     });
     }, [instance]);
+
+    useEffect(() => {
+      if (isLoggedIn) {
+       
+        history.push("/rapidusHome");
+      }
+    }, [isLoggedIn]);
 
   const generateCaptcha = () => {
     const random = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -117,12 +125,10 @@ const LoginPage = ({ setLoginState }) => {
 
   const onSubmit = (values) => {
  
-      setLoginState(true);
-      localStorage.setItem("logIn", "true");
       instance.loginRedirect({
         scopes: ["User.Read"], // Microsoft Graph scope to read profile
       });
-      history.push("/rapidusHome");
+     
     
   };
 

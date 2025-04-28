@@ -4,6 +4,7 @@ import EditUser from "./Component/EditUser";
 import NavBar from "./Component/NavBar";
 import NotFound from "./Component/NotFound";
 import LoginPage from "./Component/LoginPage";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import {
   BrowserRouter,
   Route,
@@ -12,23 +13,20 @@ import {
   Prompt,
 } from "react-router-dom";
 import { useState } from "react";
+import { useMsal } from '@azure/msal-react';
 import Footer from "./Component/Footer";
 import RapidusHome from "./Component/FirstPage";
 import RapidusCalculator from "./Component/RapidusCalculator";
 
 function App() {
-  let loggedIn = localStorage.getItem("logIn") === "true" ? true : false;
-  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
-  const setLoginState = (pass) => {
-
-  };
+  const { accounts } = useMsal();
 
   return (
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <BrowserRouter>
-        <NavBar />
+        <CustomNavBar />
         <div style={{ flex: 1 }}>
           <Switch>
              {/* <Route exact path="/" component={LoginPage} /> */}
@@ -40,11 +38,18 @@ function App() {
               exact
               path="/"
               render={(req) => {
-                return <LoginPage setLoginState={setLoginState} />;
+                return <LoginPage/>;
               }}
             />
-            <Route exact path="/rapidusHome" component={RapidusHome}/>
-            <Route exact path="/rapidusCalculator" component={RapidusCalculator}/>
+                       <Route
+              path="/rapidusHome"
+              render={() => (accounts.length > 0 ? <RapidusHome /> : <Redirect to="/" />)}
+            />
+            <Route
+              path="/rapidusCalculator"
+              render={() => (accounts.length > 0 ? <RapidusCalculator /> : <Redirect to="/" />)}
+            />
+
             <Route component={NotFound} />
           </Switch>
         </div>
@@ -53,5 +58,17 @@ function App() {
     </div>
   );
 }
+const CustomNavBar = () => {
+  const location = useLocation();
+  
+  let title = "Wireframe(Login Screen)";
+  if (location.pathname === "/rapidusHome") {
+    title = "Wireframe(Rapidus Home)";
+  } else if (location.pathname === "/rapidusCalculator") {
+    title = "Wireframe(Rapidus Calculator)";
+  }
+
+  return <NavBar title={title} />;
+};
 
 export default App;

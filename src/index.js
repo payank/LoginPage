@@ -14,6 +14,10 @@ const msalConfig = {
     authority: "https://login.microsoftonline.com/2a1846ec-ffbb-4a63-8fdb-94711de1fd65", // 🔁 Replace with your tenant ID
     redirectUri: "http://localhost:3000",
   },
+  cache: {
+    cacheLocation: 'sessionStorage',  
+    storeAuthStateInCookie: true,  
+  },
 };
 
 const msalInstance = new PublicClientApplication(msalConfig);
