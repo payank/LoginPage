@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from 'axios';
 import {
   Typography,
   makeStyles,
@@ -131,6 +132,26 @@ const LoginPage = ({ setLoginState }) => {
      
     
   };
+
+// Once backend api is ready then we will use below code and remove the above one.
+
+  // const onSubmit = async (values) => {
+  //   const dataToSend = {
+  //     email: values.email,
+  //     userId: values.userId,
+  //     password: values.password,
+  //   };
+  
+  //   try {
+  //     const response = await axios.post('/endpoint', dataToSend);
+  //     instance.loginRedirect({
+  //       scopes: ["User.Read"],
+  //     });
+  //   } catch (error) {
+  //     console.error('Error sending data to backend:', error);
+  //   }
+  // };
+  
 
   return (
     <>
