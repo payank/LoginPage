@@ -17,6 +17,7 @@ import { useMsal } from '@azure/msal-react';
 import Footer from "./Component/Footer";
 import RapidusHome from "./Component/FirstPage";
 import RapidusCalculator from "./Component/RapidusCalculator";
+import ForgotPage from "./Component/ForgotPage";
 
 function App() {
   const { accounts } = useMsal();
@@ -29,11 +30,6 @@ function App() {
         <CustomNavBar />
         <div style={{ flex: 1 }}>
           <Switch>
-             {/* <Route exact path="/" component={LoginPage} /> */}
-            {/* <Route exact path="/all" component={AllUsers}  */}
-            {/* <Route exact path="/add" component={AddUser} /> */}
-            {/* <Route exact path="/edit/:id" component={EditUser} /> */}
-
             <Route
               exact
               path="/"
@@ -49,6 +45,7 @@ function App() {
               path="/rapidusCalculator"
               render={() => (accounts.length > 0 ? <RapidusCalculator /> : <Redirect to="/" />)}
             />
+            <Route exact path="/forgotPage" component={ForgotPage} />
 
             <Route component={NotFound} />
           </Switch>

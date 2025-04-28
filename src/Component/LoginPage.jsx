@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from 'axios';
 import {
   Typography,
   makeStyles,
   FormGroup,
   FormControl,
   Box,
-  Link,
   Button,
 } from "@material-ui/core";
 import { Form, Field } from "react-final-form";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
 import { Refresh } from "@material-ui/icons";
 import { useMsal } from "@azure/msal-react";
@@ -132,6 +133,26 @@ const LoginPage = ({ setLoginState }) => {
     
   };
 
+// Once backend api is ready then we will use below code and remove the above one.
+
+  // const onSubmit = async (values) => {
+  //   const dataToSend = {
+  //     email: values.email,
+  //     userId: values.userId,
+  //     password: values.password,
+  //   };
+  
+  //   try {
+  //     const response = await axios.post('/endpoint', dataToSend);
+  //     instance.loginRedirect({
+  //       scopes: ["User.Read"],
+  //     });
+  //   } catch (error) {
+  //     console.error('Error sending data to backend:', error);
+  //   }
+  // };
+  
+
   return (
     <>
     
@@ -155,6 +176,13 @@ const LoginPage = ({ setLoginState }) => {
 
       <Form
         onSubmit={onSubmit}
+        initialValues={{
+          email: "payank@gmail.com",
+          userId: "12345678",
+          password: "12345678",
+          captchaInput: "",
+        }}
+
         render={({ handleSubmit }) => (
           <form
             onSubmit={handleSubmit}
@@ -225,6 +253,7 @@ const LoginPage = ({ setLoginState }) => {
                     fontSize: "15px",
                     fontWeight: "bold",
                   }}
+                  to="/forgotPage"
                 >
                   Forgot Password?
                 </Link>
@@ -235,29 +264,38 @@ const LoginPage = ({ setLoginState }) => {
               className={classes.divElement}
             >
               <FormControl
-              fullWidth
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  width: "100%",
-                }}
-              >
-                <input
-                  type="text"
-                  readOnly
-                  value={captcha}
-                  style={{ flex: 1 }}
-                  className={classes.inputField}
-                />
-                <button
-                  type="button"
-                  onClick={generateCaptcha}
-                  style={{ marginLeft: "-30px",  }}
+                  fullWidth
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
                 >
-                  <Refresh />
-                </button>
-              </FormControl>
+                  <input
+                    type="text"
+                    readOnly
+                    value={captcha}
+                    style={{ flex: 1 }}
+                    className={classes.inputField}
+                  />
+                  <button
+                    type="button"
+                    onClick={generateCaptcha}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      background: "none",
+                      border: "none",
+                      fontSize: "14px",
+                      color: "#bdbdbd",
+                    }}
+                  >
+                    <Refresh />
+                  </button>
+                </FormControl>
               <FormControl fullWidth>
                 <Field name="captchaInput" validate={validateCaptcha(captcha)}>
                   {({ input, meta }) => (
