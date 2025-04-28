@@ -69,7 +69,7 @@ const RapidusHome = () => {
             </div>
         
         <div className='try'>  
-        <h2>Favourite Function </h2>
+        <h2>Favourite Function     </h2>
          </div>
           <div className="fav">
           
