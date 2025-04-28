@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     height: "400px",
-    marginTop:'10px'
+    marginTop: "10px",
   },
   styleButton: {
     backgroundColor: "#328037",
@@ -39,16 +39,16 @@ const useStyles = makeStyles({
     borderRadius: "3px",
     height: "25px",
     cursor: "pointer",
-    "&:hover":{
+    "&:hover": {
       backgroundColor: "#076b10",
-    }
+    },
   },
   inputField: {
     borderRadius: "5px",
     border: "1px solid #328037",
     padding: "8px",
   },
-  form:{
+  form: {
     display: "flex",
     marginBottom: "20px",
     flexDirection: "row",
@@ -56,13 +56,12 @@ const useStyles = makeStyles({
     justifyContent: "center",
     gap: "20px",
   },
-  divElement:{
+  divElement: {
     display: "flex",
     flexDirection: "column",
     gap: "10px",
     flex: 1,
-  }
-
+  },
 });
 
 const LoginPage = ({ setLoginState }) => {
@@ -72,18 +71,29 @@ const LoginPage = ({ setLoginState }) => {
   const [userInput, setUserInput] = useState("");
   const submitRef = useRef(null);
   const { instance, accounts } = useMsal();
-    console.log("Payank isLoggedIn", instance, accounts);
+  const [isLoggedIn, setIsLoggedIn] = useState(accounts.length > 0);
+  
+
+  useEffect(() => {
+    instance
+      .handleRedirectPromise()
+      .then((response) => {
+        if (response) {
+          setIsLoggedIn(true);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [instance]);
 
 
   useEffect(() => {
-    instance.handleRedirectPromise().then((response) => {
-    if (response) {
-      console.log("Payank Logged in:", response.account);
+    if (isLoggedIn) {
+      history.push("/rapidusHome");
     }
-    }).catch((err) => {
-    console.error(err);
-    });
-    }, [instance]);
+   
+  }, [isLoggedIn]);
 
   const generateCaptcha = () => {
     const random = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -99,7 +109,8 @@ const LoginPage = ({ setLoginState }) => {
 
   const isEmail = (value) =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-      ? "Invalid email address": undefined;
+      ? "Invalid email address"
+      : undefined;
 
   const hasLength8 = (value) =>
     value && value.length !== 8 ? "User ID must be 8 characters" : undefined;
@@ -113,191 +124,183 @@ const LoginPage = ({ setLoginState }) => {
       ? "Invalid CAPTCHA"
       : undefined;
 
-   const validatePassword = (value) => !value? "Required" : undefined;
+  const validatePassword = (value) => (!value ? "Required" : undefined);
 
   const onSubmit = (values) => {
- 
-      setLoginState(true);
-      localStorage.setItem("logIn", "true");
-      instance.loginRedirect({
-        scopes: ["User.Read"], // Microsoft Graph scope to read profile
-      });
-      history.push("/rapidusHome");
-    
+    instance.loginRedirect({
+      scopes: ["User.Read"], 
+    });
   };
 
   return (
     <>
-    
-    <FormGroup
-      className={classes.container}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap:'15px'
-        }}
-      >
-        <img src={Rapidus_logo} width={200} alt="Rapidus Logo" />
-        <Typography variant="h6" style={{ marginTop: "-30px" }}>
-          Welcome to Rapidus Customer Portal
-        </Typography>
-      </div>
+      <FormGroup className={classes.container}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "15px",
+          }}
+        >
+          <img src={Rapidus_logo} width={200} alt="Rapidus Logo" />
+          <Typography variant="h6" style={{ marginTop: "-30px" }}>
+            Welcome to Rapidus Customer Portal
+          </Typography>
+        </div>
 
-      <Form
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <form
-            onSubmit={handleSubmit}
-            className={classes.form}
-          >
-            <div
-              className={classes.divElement}
-            >
-              <Field
-                name="email"
-                validate={(value) => required(value) || isEmail(value)}
-              >
-                {({ input, meta }) => (
-                  <FormControl fullWidth>
-                    <label>Email</label>
-                    <input
-                      {...input}
-                      className={classes.inputField}
-                      placeholder="Enter Email"
-                    />
-                    {meta.touched && meta.error && (
-                      <Box className={classes.component}>{meta.error}</Box>
-                    )}
-                  </FormControl>
-                )}
-              </Field>
-
-              <Field
-                name="userId"
-                validate={(value) => required(value) || hasLength8(value)}
-              >
-                {({ input, meta }) => (
-                  <FormControl fullWidth>
-                    <label>User ID</label>
-                    <input
-                      {...input}
-                      className={classes.inputField}
-                      placeholder="Enter UserId"
-                    />
-                    {meta.touched && meta.error && (
-                      <Box className={classes.component}>{meta.error}</Box>
-                    )}
-                  </FormControl>
-                )}
-              </Field>
-
-              <Field name="password" validate={(value) => required(value)|| validatePassword(value)}>
-                {({ input, meta }) => (
-                  <FormControl fullWidth>
-                    <label>Password</label>
-                    <input
-                      {...input}
-                      type="password"
-                      className={classes.inputField}
-                      placeholder="Enter Password"
-                    />
-                    {meta.touched && meta.error && (
-                      <Box className={classes.component}>{meta.error}</Box>
-                    )}
-                  </FormControl>
-                )}
-              </Field>
-
-              <FormControl>
-                <Link
-                  style={{
-                    color: "#23a0e8",
-                    fontSize: "15px",
-                    fontWeight: "bold",
-                  }}
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit} className={classes.form}>
+              <div className={classes.divElement}>
+                <Field
+                  name="email"
+                  validate={(value) => required(value) || isEmail(value)}
                 >
-                  Forgot Password?
-                </Link>
-              </FormControl>
-            </div>
-
-            <div
-              className={classes.divElement}
-            >
-              <FormControl
-              fullWidth
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  width: "100%",
-                }}
-              >
-                <input
-                  type="text"
-                  readOnly
-                  value={captcha}
-                  style={{ flex: 1 }}
-                  className={classes.inputField}
-                />
-                <button
-                  type="button"
-                  onClick={generateCaptcha}
-                  style={{ marginLeft: "-30px",  }}
-                >
-                  <Refresh />
-                </button>
-              </FormControl>
-              <FormControl fullWidth>
-                <Field name="captchaInput" validate={validateCaptcha(captcha)}>
                   {({ input, meta }) => (
-                    <>
+                    <FormControl fullWidth>
+                      <label>Email</label>
                       <input
                         {...input}
                         className={classes.inputField}
-                        type="text"
-                        placeholder="Enter Captcha"
+                        placeholder="Enter Email"
                       />
                       {meta.touched && meta.error && (
                         <Box className={classes.component}>{meta.error}</Box>
                       )}
-                    </>
+                    </FormControl>
                   )}
                 </Field>
-              </FormControl>
 
-              <FormControl
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                <input type="checkbox" />
-                <label>Remember my User ID</label>
-              </FormControl>
-              <FormControl >
-                <Button
-                  type="submit"
-                  className={classes.styleButton}
-                  ref={submitRef}
+                <Field
+                  name="userId"
+                  validate={(value) => required(value) || hasLength8(value)}
                 >
-                  Login
-                </Button>
+                  {({ input, meta }) => (
+                    <FormControl fullWidth>
+                      <label>User ID</label>
+                      <input
+                        {...input}
+                        className={classes.inputField}
+                        placeholder="Enter UserId"
+                      />
+                      {meta.touched && meta.error && (
+                        <Box className={classes.component}>{meta.error}</Box>
+                      )}
+                    </FormControl>
+                  )}
+                </Field>
 
-                <b style={{ fontSize: "10px" }}>
-                  Need help? Please check Help or Contact Us
-                </b>
-              </FormControl>
-            </div>
-            
-          </form>
-        )}
-      />
-    </FormGroup>
+                <Field
+                  name="password"
+                  validate={(value) =>
+                    required(value) || validatePassword(value)
+                  }
+                >
+                  {({ input, meta }) => (
+                    <FormControl fullWidth>
+                      <label>Password</label>
+                      <input
+                        {...input}
+                        type="password"
+                        className={classes.inputField}
+                        placeholder="Enter Password"
+                      />
+                      {meta.touched && meta.error && (
+                        <Box className={classes.component}>{meta.error}</Box>
+                      )}
+                    </FormControl>
+                  )}
+                </Field>
+
+                <FormControl>
+                  <Link
+                    style={{
+                      color: "#23a0e8",
+                      fontSize: "15px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Forgot Password?
+                  </Link>
+                </FormControl>
+              </div>
+
+              <div className={classes.divElement}>
+                <FormControl
+                  fullWidth
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
+                >
+                  <input
+                    type="text"
+                    readOnly
+                    value={captcha}
+                    style={{ flex: 1 }}
+                    className={classes.inputField}
+                  />
+                  <button
+                    type="button"
+                    onClick={generateCaptcha}
+                    style={{ marginLeft: "-30px" }}
+                  >
+                    <Refresh />
+                  </button>
+                </FormControl>
+                <FormControl fullWidth>
+                  <Field
+                    name="captchaInput"
+                    validate={validateCaptcha(captcha)}
+                  >
+                    {({ input, meta }) => (
+                      <>
+                        <input
+                          {...input}
+                          className={classes.inputField}
+                          type="text"
+                          placeholder="Enter Captcha"
+                        />
+                        {meta.touched && meta.error && (
+                          <Box className={classes.component}>{meta.error}</Box>
+                        )}
+                      </>
+                    )}
+                  </Field>
+                </FormControl>
+
+                <FormControl
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <input type="checkbox" />
+                  <label>Remember my User ID</label>
+                </FormControl>
+                <FormControl>
+                  <Button
+                    type="submit"
+                    className={classes.styleButton}
+                    ref={submitRef}
+                  >
+                    Login
+                  </Button>
+
+                  <b style={{ fontSize: "10px" }}>
+                    Need help? Please check Help or Contact Us
+                  </b>
+                </FormControl>
+              </div>
+            </form>
+          )}
+        />
+      </FormGroup>
     </>
   );
 };

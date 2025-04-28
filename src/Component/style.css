@@ -153,7 +153,8 @@ body {
   margin-top: 2px;
   width: 100%;       /* Make the heading take the full width */
   display: flex;
-  
+  font-weight: 500;
+
 }
 
 .featured-content {
@@ -247,7 +248,7 @@ padding-top: 24px;
 
 .Tanaka{
   /* height: 3000px; */
-  max-height: 510px;
+  height: 530px;
   text-align: left;
   background-color: #f0f0f0;
   padding: 12px;
@@ -264,7 +265,7 @@ margin-left: 18px;
 }
 
 .fav{
-  height: 190px;
+  height: 215px;
   text-align: left;
   background-color: #f0f0f0;
   padding: 12px;

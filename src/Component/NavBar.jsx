@@ -11,13 +11,13 @@ const useStyle = makeStyles({
 
 
 
-const NavBar = () => {
+const NavBar = ({ title}) => {
     const classes = useStyle();
     return (
         <AppBar position="static"  elevation={0} >
             <div className={classes.header}></div>
             <div style={{display:"flex", flexDirection:"row", alignItems:"center",background:'white', justifyContent:"space-between" }} >
-      <h2 style={{marginLeft:'40px', color:"#328037"}}>Wireframe(Login Screen)</h2>
+      <h2 style={{marginLeft:'40px', color:"#328037"}}>{title}</h2>
       <img src={Rapidus_logo} style={{marginRight:'20px', width:'20%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} />
     </div>
         </AppBar>
