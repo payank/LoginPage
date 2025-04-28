@@ -63,9 +63,9 @@ const CustomNavBar = () => {
   
   let title = "Wireframe(Login Screen)";
   if (location.pathname === "/rapidusHome") {
-    title = "Wireframe(Rapidus Home)";
+    title = "Wireframe(Home 1/3)";
   } else if (location.pathname === "/rapidusCalculator") {
-    title = "Wireframe(Rapidus Calculator)";
+    title = "Wireframe(Design Portal_10. Gross die Estimate(Mask Field Utilization Estimate)";
   }
 
   return <NavBar title={title} />;
