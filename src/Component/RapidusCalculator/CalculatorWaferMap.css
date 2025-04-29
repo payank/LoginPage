@@ -26,7 +26,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  gap: 155px;
+  gap: 50px;
   font-size: 15px;
   color: rgb(50, 128, 55);
 }
@@ -36,7 +36,7 @@
   border: 1px solid #131413;
   font-size: 15px;
   width : auto;
-  max-width:140px;
+  max-width:215px;
   transition: all 0.3s ease;
   background: white;
 
@@ -46,7 +46,7 @@
   padding: 10px 15px;
   border: 1px solid #131413;
   font-size: 15px;
-  width : 52%;
+  width : 65%;
   transition: all 0.3s ease;
   background: white;
   height: 10px;

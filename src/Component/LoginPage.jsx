@@ -176,12 +176,6 @@ const LoginPage = ({ setLoginState }) => {
 
       <Form
         onSubmit={onSubmit}
-        initialValues={{
-          email: "payank@gmail.com",
-          userId: "12345678",
-          password: "12345678",
-          captchaInput: "",
-        }}
 
         render={({ handleSubmit }) => (
           <form
