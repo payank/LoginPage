@@ -1,5 +1,4 @@
 import { AppBar } from "@mui/material";
-import { NavLink } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 
 const useStyle = makeStyles({
@@ -13,7 +12,7 @@ const useStyle = makeStyles({
 const Footer = () => {
   const classes = useStyle();
   return (
-    <AppBar position="static"  elevation={0}>
+    <AppBar position="static" elevation={0}>
       <div
         style={{
           display: 'flex',

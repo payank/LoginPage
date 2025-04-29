@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
-  Typography,
   FormGroup,
   FormControl,
   Box,
@@ -9,14 +8,13 @@ import {
 import { Form, Field } from "react-final-form";
 import { Link } from "react-router-dom";
 import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
-import { useMsal } from "@azure/msal-react";
 import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles({
   component: {
     color: "#ff0000",
   },
-  wrapper: { 
-    height: "60vh", 
+  wrapper: {
+    height: "60vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -39,7 +37,7 @@ const useStyles = makeStyles({
     borderRadius: "3px",
     height: "25px",
     cursor: "pointer",
-    "&:hover":{
+    "&:hover": {
       backgroundColor: "#076b10",
     }
   },
@@ -48,14 +46,14 @@ const useStyles = makeStyles({
     border: "1px solid #328037",
     padding: "8px",
   },
-  form:{
+  form: {
     display: "flex",
     // marginBottom: "20px",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
   },
-  divElement:{
+  divElement: {
     display: "flex",
     flexDirection: "column",
     gap: "10px",
@@ -64,80 +62,81 @@ const useStyles = makeStyles({
 
 });
 
-const ForgotPage = ({ }) => {
+const ForgotPage = () => {
   const classes = useStyles();
   const submitRef = useRef(null);
 
   const required = (value) => (value ? undefined : "Required");
   const isEmail = (value) =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-      ? "Invalid email address": undefined;
+      ? "Invalid email address" : undefined;
 
   const onSubmit = (values) => {
- 
+
   };
 
   return (
     <div className={classes.wrapper}>
-    <FormGroup
-      className={classes.container}
-    >
+      <FormGroup
+        className={classes.container}
+      >
         <div style={{
-            width: "70%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "350px",}}>
-        <img src={Rapidus_logo} width={200} alt="Rapidus Logo" />
-       <b style={{ fontSize:'25px', color:'green'}}>Forgot Password?</b>
-<p style={{ textAlign:'center', fontSize:'13px'}}>Enter email address associated with your account and well send email with instruction to reset your password </p>
-      <Form
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <form
-            onSubmit={handleSubmit}
-            className={classes.form}
-          >
-            <div
-              className={classes.divElement}
-            >
-              <Field
-                name="email"
-                validate={(value) => required(value) || isEmail(value)}
+          width: "70%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "350px",
+        }}>
+          <img src={Rapidus_logo} width={200} alt="Rapidus Logo" />
+          <b style={{ fontSize: '25px', color: 'green' }}>Forgot Password?</b>
+          <p style={{ textAlign: 'center', fontSize: '13px' }}>Enter email address associated with your account and well send email with instruction to reset your password </p>
+          <Form
+            onSubmit={onSubmit}
+            render={({ handleSubmit }) => (
+              <form
+                onSubmit={handleSubmit}
+                className={classes.form}
               >
-                {({ input, meta }) => (
-                  <FormControl fullWidth>
-                    <label>Email</label>
-                    <input
-                      {...input}
-                      className={classes.inputField}
-                      placeholder="Enter Email"
-                    />
-                    {meta.touched && meta.error && (
-                      <Box className={classes.component}>{meta.error}</Box>
-                    )}
-                  </FormControl>
-                )}
-              </Field>
-              <FormControl >
-                <Button
-                  type="submit"
-                  className={classes.styleButton}
-                  ref={submitRef}
+                <div
+                  className={classes.divElement}
                 >
-                  Login
-                </Button>
-              </FormControl>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                Back to Login
-              </Link>
-            </div>
-          </form>
-        )}
-      />
-      </div>
-    </FormGroup>
+                  <Field
+                    name="email"
+                    validate={(value) => required(value) || isEmail(value)}
+                  >
+                    {({ input, meta }) => (
+                      <FormControl fullWidth>
+                        <label>Email</label>
+                        <input
+                          {...input}
+                          className={classes.inputField}
+                          placeholder="Enter Email"
+                        />
+                        {meta.touched && meta.error && (
+                          <Box className={classes.component}>{meta.error}</Box>
+                        )}
+                      </FormControl>
+                    )}
+                  </Field>
+                  <FormControl >
+                    <Button
+                      type="submit"
+                      className={classes.styleButton}
+                      ref={submitRef}
+                    >
+                      Login
+                    </Button>
+                  </FormControl>
+                  <Link to="/" style={{ textDecoration: "none" }}>
+                    Back to Login
+                  </Link>
+                </div>
+              </form>
+            )}
+          />
+        </div>
+      </FormGroup>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 const SidebarNav = () => {
   const location = useLocation();
 
@@ -20,6 +19,7 @@ const SidebarNav = () => {
       <ul>
         <div className="active">
           <img
+            alt="rapidus-logo"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj-38wv8s_hOvue2DIVKf1sqwW5b5m75e-bRU2DubgOtrIVR5jVtN2vz8ggXmvj-UA_Zw&usqp=CAU"
             style={{
               width: "100%",
