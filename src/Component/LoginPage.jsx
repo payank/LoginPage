@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import { Typography,FormControl, FormGroup, Box, Button } from "@mui/material";
 import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
-// import { Refresh } from "@material-ui/icons";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import { useMsal } from "@azure/msal-react";
 
 const useStyles = makeStyles({
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
 
 const LoginPage = ({ setLoginState }) => {
   const classes = useStyles();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [captcha, setCaptcha] = useState("");
   const [userInput, setUserInput] = useState("");
   const submitRef = useRef(null);
@@ -85,7 +85,7 @@ const LoginPage = ({ setLoginState }) => {
     useEffect(() => {
       if (isLoggedIn) {
        
-        history.push("/rapidusHome");
+        navigate("/rapidusHome");
       }
     }, [isLoggedIn]);
 
@@ -282,7 +282,7 @@ const LoginPage = ({ setLoginState }) => {
                       color: "#bdbdbd",
                     }}
                   >
-                    {/* <Refresh /> */}
+                    <RefreshIcon />
                   </button>
                 </FormControl>
               <FormControl fullWidth>
