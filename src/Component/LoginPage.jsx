@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     width: "50%",
     margin: "0 0 0 25%",
     "& > *": {
-      marginTop: 20,
+      // marginTop: 20,
     },
     border: "2px solid #305e02",
     display: "flex",
@@ -309,13 +309,13 @@ const LoginPage = ({ setLoginState }) => {
                   <label>Remember my User ID</label>
                 </FormControl>
                 <FormControl >
-                  <Button
+                  <button
                     type="submit"
                     className={classes.styleButton}
                     ref={submitRef}
                   >
                     Login
-                  </Button>
+                  </button>
 
                   <b style={{ fontSize: "10px" }}>
                     Need help? Please check Help or Contact Us

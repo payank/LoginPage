@@ -120,13 +120,13 @@ const ForgotPage = () => {
                     )}
                   </Field>
                   <FormControl >
-                    <Button
+                    <button
                       type="submit"
                       className={classes.styleButton}
                       ref={submitRef}
                     >
-                      Login
-                    </Button>
+                      Send Email
+                    </button>
                   </FormControl>
                   <Link to="/" style={{ textDecoration: "none" }}>
                     Back to Login
