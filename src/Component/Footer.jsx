@@ -1,5 +1,6 @@
-import { AppBar, Toolbar, makeStyles } from "@material-ui/core";
+import { AppBar } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
 
 const useStyle = makeStyles({
   footer: {

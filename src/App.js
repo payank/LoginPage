@@ -1,18 +1,13 @@
-import AllUsers from "./Component/AllUsers";
-import AddUser from "./Component/AddUser";
-import EditUser from "./Component/EditUser";
 import NavBar from "./Component/NavBar";
 import NotFound from "./Component/NotFound";
 import LoginPage from "./Component/LoginPage";
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom";
 import {
   BrowserRouter,
   Route,
-  Switch,
-  Redirect,
-  Prompt,
+  Routes,
+  Navigate,
 } from "react-router-dom";
-import { useState } from "react";
 import { useMsal } from '@azure/msal-react';
 import Footer from "./Component/Footer";
 import RapidusHome from "./Component/FirstPage";
@@ -29,26 +24,21 @@ function App() {
       <BrowserRouter>
         <CustomNavBar />
         <div style={{ flex: 1 }}>
-          <Switch>
+          <Routes>
+
+            <Route path="/" element={<LoginPage />} />
             <Route
-              exact
-              path="/"
-              render={(req) => {
-                return <LoginPage/>;
-              }}
-            />
-                       <Route
               path="/rapidusHome"
-              render={() => (accounts.length > 0 ? <RapidusHome /> : <Redirect to="/" />)}
+              element={accounts.length > 0 ? <RapidusHome /> : <Navigate to="/" />}
             />
             <Route
               path="/rapidusCalculator"
-              render={() => (accounts.length > 0 ? <RapidusCalculator /> : <Redirect to="/" />)}
+              element={accounts.length > 0 ? <RapidusCalculator /> : <Navigate to="/" />}
             />
-            <Route exact path="/forgotPage" component={ForgotPage} />
+            <Route path="/forgotPage" element={<ForgotPage />} />
 
-            <Route component={NotFound} />
-          </Switch>
+            <Route element={NotFound} />
+          </Routes>
         </div>
         <Footer />
       </BrowserRouter>
@@ -57,7 +47,7 @@ function App() {
 }
 const CustomNavBar = () => {
   const location = useLocation();
-  
+
   let title = "Wireframe(Login Screen)";
   if (location.pathname === "/rapidusHome") {
     title = "Wireframe(Home 1/3)";

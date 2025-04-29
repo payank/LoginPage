@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, makeStyles } from '@material-ui/core';
+import { AppBar } from '@mui/material';
+import { makeStyles } from "@mui/styles";
 import { NavLink } from 'react-router-dom';
 import Rapidus_logo from '../Assets/Images/Rapidus_logo.png';
 const useStyle = makeStyles({

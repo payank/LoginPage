@@ -2,8 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 const SidebarNav = () => {
-  const [clicked, setClicked] = useState(false);
-
   const location = useLocation();
 
   const getActiveLink = () => {

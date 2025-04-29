@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   Typography,
-  makeStyles,
   FormGroup,
   FormControl,
   Box,
   Button,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Form, Field } from "react-final-form";
 import { Link } from "react-router-dom";
 import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
 import { useMsal } from "@azure/msal-react";
+import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles({
   component: {
     color: "#ff0000",
