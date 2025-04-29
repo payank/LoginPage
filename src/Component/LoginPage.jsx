@@ -1,18 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from 'axios';
-import {
-  Typography,
-  makeStyles,
-  FormGroup,
-  FormControl,
-  Box,
-  Button,
-} from "@material-ui/core";
 import { Form, Field } from "react-final-form";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 import { Link } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
+import { Typography,FormControl, FormGroup, Box, Button } from "@mui/material";
 import Rapidus_logo from "../Assets/Images/Rapidus_logo.png";
-import { Refresh } from "@material-ui/icons";
+// import { Refresh } from "@material-ui/icons";
 import { useMsal } from "@azure/msal-react";
 
 const useStyles = makeStyles({
@@ -68,7 +63,7 @@ const useStyles = makeStyles({
 
 const LoginPage = ({ setLoginState }) => {
   const classes = useStyles();
-  const history = useHistory();
+  const history = useNavigate();
   const [captcha, setCaptcha] = useState("");
   const [userInput, setUserInput] = useState("");
   const submitRef = useRef(null);
@@ -287,7 +282,7 @@ const LoginPage = ({ setLoginState }) => {
                       color: "#bdbdbd",
                     }}
                   >
-                    <Refresh />
+                    {/* <Refresh /> */}
                   </button>
                 </FormControl>
               <FormControl fullWidth>
