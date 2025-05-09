@@ -40,7 +40,7 @@ function App() {
             <Route element={NotFound} />
           </Routes>
         </div>
-        <Footer />
+    <Footer />
       </BrowserRouter>
     </div>
   );
@@ -55,7 +55,7 @@ const CustomNavBar = () => {
     title = "Wireframe(Design Portal_10. Gross die Estimate(Mask Field Utilization Estimate)";
   }
 
-  return <NavBar title={title} />;
+  return location.pathname !== "/" && <NavBar title={title} />;
 };
 
 export default App;
