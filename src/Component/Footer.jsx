@@ -1,5 +1,6 @@
 import { AppBar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useLocation } from "react-router-dom";
 
 const useStyle = makeStyles({
   footer: {
@@ -11,6 +12,10 @@ const useStyle = makeStyles({
 
 const Footer = () => {
   const classes = useStyle();
+  const location = useLocation();
+  if (location.pathname !== "/") {
+    return null;
+  }
   return (
     <AppBar position="static" elevation={0}>
       <div
