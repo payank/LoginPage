@@ -13,7 +13,7 @@ const useStyle = makeStyles({
 const Footer = () => {
   const classes = useStyle();
   const location = useLocation();
-  if (location.pathname !== "/") {
+  if (location.pathname === "/") {
     return null;
   }
   return (
