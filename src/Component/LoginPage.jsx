@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
@@ -7,11 +6,13 @@ import { Typography, FormControl, Box, Button } from "@mui/material";
 import Rapidus_logo from "../Assets/Images/Logo.png";
 import Login_Image from "../Assets/Images/Login_Image.png";
 import Language_Image from "../Assets/Images/Language.png";
-import RefreshIcon from '@mui/icons-material/Refresh';
+import RefreshIcon from "@mui/icons-material/Refresh";
 import { useMsal } from "@azure/msal-react";
-import Autocomplete from '@mui/material/Autocomplete';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
+import Autocomplete from "@mui/material/Autocomplete";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import { useIntl, FormattedMessage } from "react-intl";
+import { useLocale } from "../i18n/localeContext";
 
 const useStyles = makeStyles({
   root: {
@@ -211,21 +212,25 @@ const useStyles = makeStyles({
 
 const LoginPage = ({ setLoginState }) => {
   const classes = useStyles();
+  const { locale, setLocale } = useLocale("en");
   const navigate = useNavigate();
   const [captcha, setCaptcha] = useState("");
-  const [language, setLanguage] = useState("en");
   const submitRef = useRef(null);
   const { instance, accounts } = useMsal();
   const [isLoggedIn, setIsLoggedIn] = useState(accounts.length > 0);
+  const intl = useIntl();
 
   useEffect(() => {
-    instance.handleRedirectPromise().then((response) => {
-      if (response) {
-        setIsLoggedIn(true);
-      }
-    }).catch((err) => {
-      console.error(err);
-    });
+    instance
+      .handleRedirectPromise()
+      .then((response) => {
+        if (response) {
+          setIsLoggedIn(true);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, [instance]);
 
   useEffect(() => {
@@ -243,20 +248,23 @@ const LoginPage = ({ setLoginState }) => {
     generateCaptcha();
   }, []);
 
-  const required = (value) => (value ? undefined : "Required");
+  const required = (value) =>
+    value ? undefined : intl.formatMessage({ id: "required" });
 
   const isEmail = (value) =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-      ? "Invalid email address" : undefined;
+      ? intl.formatMessage({ id: "invalidEmail" })
+      : undefined;
 
   const validateCaptcha = (currentCaptcha) => (value) =>
     !value
-      ? "Required"
+      ? intl.formatMessage({ id: "required" })
       : value.toUpperCase() !== currentCaptcha
-        ? "Invalid CAPTCHA"
-        : undefined;
+      ? intl.formatMessage({ id: "invalidCaptcha" })
+      : undefined;
 
-  const validatePassword = (value) => !value ? "Required" : undefined;
+  const validatePassword = (value) =>
+    !value ? intl.formatMessage({ id: "required" }) : undefined;
 
   const onSubmit = (values) => {
     instance.loginRedirect({
@@ -266,11 +274,10 @@ const LoginPage = ({ setLoginState }) => {
 
   const languageOptions = [
     { code: "en", label: "En" },
-    { code: "hn", label: "Hn" },
+    { code: "ja", label: "Ja" },
     { code: "fr", label: "Fr" },
     { code: "es", label: "Es" },
     { code: "de", label: "De" },
-    // Add more as needed
   ];
 
   return (
@@ -281,58 +288,60 @@ const LoginPage = ({ setLoginState }) => {
           <div className={classes.logoLangRow}>
             <img src={Rapidus_logo} alt="Rapidus Logo" className={classes.logo} />
             <Autocomplete
-  options={languageOptions}
-  getOptionLabel={(option) => option.label}
-  value={languageOptions.find(opt => opt.code === language)}
-  onChange={(_, newValue) => setLanguage(newValue ? newValue.code : "")}
-  disableClearable
-  sx={{
-    minWidth: 90,
-    marginLeft: 2,
-    '& .MuiOutlinedInput-root': {
-      paddingRight: '8px',
-      '& fieldset': {
-        border: 'none',
-      },
-    },
-    background: 'transparent',
-  }}
-  renderInput={(params) => (
-    <TextField
-      {...params}
-      variant="outlined"
-      size="small"
-      label=""
-      InputProps={{
-        ...params.InputProps,
-        startAdornment: (
-          <>
-            <InputAdornment position="start">
-              <img
-                src={Language_Image}
-                alt="Language"
-                style={{ width: 20, height: 20, marginRight: -4 }}
-              />
-            </InputAdornment>
-            {params.InputProps.startAdornment}
-          </>
-        ),
-        notched: false,
-      }}
-      sx={{
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': {
-            border: 'none',
-          },
-        },
-        background: 'transparent',
-      }}
-    />
-  )}
-/>
+              options={languageOptions}
+              getOptionLabel={(option) => option.label}
+              value={languageOptions.find((opt) => opt.code === locale)}
+              onChange={(_, newValue) =>
+                setLocale(newValue ? newValue.code : "")
+              }
+              disableClearable
+              sx={{
+                minWidth: 90,
+                marginLeft: 2,
+                "& .MuiOutlinedInput-root": {
+                  paddingRight: "8px",
+                  "& fieldset": {
+                    border: "none",
+                  },
+                },
+                background: "transparent",
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  size="small"
+                  label=""
+                  InputProps={{
+                    ...params.InputProps,
+                    startAdornment: (
+                      <>
+                        <InputAdornment position="start">
+                          <img
+                            src={Language_Image}
+                            alt="Language"
+                            style={{ width: 20, height: 20, marginRight: -4 }}
+                          />
+                        </InputAdornment>
+                        {params.InputProps.startAdornment}
+                      </>
+                    ),
+                    notched: false,
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        border: "none",
+                      },
+                    },
+                    background: "transparent",
+                  }}
+                />
+              )}
+            />
           </div>
           <Typography variant="h6" align="left" marginBottom="24px">
-            Welcome to Rapidus Customer Portal
+            <FormattedMessage id="welcomeMessage" />
           </Typography>
           <div className={classes.loginContainer}>
             <Form
@@ -345,11 +354,13 @@ const LoginPage = ({ setLoginState }) => {
                   >
                     {({ input, meta }) => (
                       <FormControl fullWidth>
-                        <label>E-mail</label>
+                        <label>
+                          <FormattedMessage id="email" />
+                        </label>
                         <input
                           {...input}
                           className={classes.inputField}
-                          placeholder="Enter Email"
+                          placeholder={intl.formatMessage({ id: "emailPlaceholder" })}
                         />
                         {meta.touched && meta.error && (
                           <Box className={classes.errorText}>{meta.error}</Box>
@@ -357,15 +368,24 @@ const LoginPage = ({ setLoginState }) => {
                       </FormControl>
                     )}
                   </Field>
-                  <Field name="password" validate={(value) => required(value) || validatePassword(value)}>
+                  <Field
+                    name="password"
+                    validate={(value) =>
+                      required(value) || validatePassword(value)
+                    }
+                  >
                     {({ input, meta }) => (
                       <FormControl fullWidth>
-                        <label>Password</label>
+                        <label>
+                          <FormattedMessage id="password" />
+                        </label>
                         <input
                           {...input}
                           type="password"
                           className={classes.inputField}
-                          placeholder="Enter Password"
+                          placeholder={intl.formatMessage({
+                            id: "passwordPlaceholder",
+                          })}
                         />
                         {meta.touched && meta.error && (
                           <Box className={classes.errorText}>{meta.error}</Box>
@@ -377,7 +397,9 @@ const LoginPage = ({ setLoginState }) => {
                   <div className={classes.rememberForgotRow}>
                     <div className={classes.rememberRow}>
                       <input type="checkbox" id="rememberUserId" />
-                      <label htmlFor="rememberUserId">Remember me</label>
+                      <label htmlFor="rememberUserId">
+                        <FormattedMessage id="rememberMe" />
+                      </label>
                     </div>
                     <Link
                       style={{
@@ -388,11 +410,14 @@ const LoginPage = ({ setLoginState }) => {
                       }}
                       to="/forgotPage"
                     >
-                      Forgot Password?
+                      <FormattedMessage id="forgotPassword" />
                     </Link>
                   </div>
                   {/* Captcha row with centered input and proper refresh arrangement */}
-                  <Field name="captchaInput" validate={validateCaptcha(captcha)}>
+                  <Field
+                    name="captchaInput"
+                    validate={validateCaptcha(captcha)}
+                  >
                     {({ input, meta }) => (
                       <>
                         <div className={classes.captchaRow}>
@@ -412,7 +437,9 @@ const LoginPage = ({ setLoginState }) => {
                             {...input}
                             className={classes.captchaInputField}
                             type="text"
-                            placeholder="Enter Captcha"
+                            placeholder={intl.formatMessage({
+                              id: "captchaPlaceholder",
+                            })}
                           />
                         </div>
                         {meta.touched && meta.error && (
@@ -428,14 +455,16 @@ const LoginPage = ({ setLoginState }) => {
                     variant="contained"
                     sx={{
                       backgroundColor: "#076b10",
-                      "&:hover": { backgroundColor: "#055a0c" }
+                      "&:hover": { backgroundColor: "#055a0c" },
                     }}
                     fullWidth
                   >
-                    Login
+                    <FormattedMessage id="login" />
                   </Button>
                   <div className={classes.helpText}>
-                    <b>Need help? Please check Help or Contact Us</b>
+                    <b>
+                      <FormattedMessage id="helpText" />
+                    </b>
                   </div>
                 </form>
               )}
@@ -452,22 +481,17 @@ const LoginPage = ({ setLoginState }) => {
             className={classes.rightImage}
           />
           <div className={classes.overlayTextBox}>
-            Welcome to semiconductor
+            <FormattedMessage id="overlayText" />
           </div>
         </div>
         <Typography style={{ marginTop: "32px", color: "white" }}>
-          Secure Access Portal for Rapidus Admin,<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Customer Admin, and Members
+          <FormattedMessage id="secureAccess" />
         </Typography>
         <div>
-          <Typography style={{ marginTop: "32px", color: "white", fontSize:"12px" }}>
-            Our Secure Access Portal offers seamless, encrypted entry to project<br/>
-            dashboard, technical documentation, and support service. Optimize<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            your workflow, stay connected to the latest semiconductor<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            innovation, and manage operations with complete confidence.
+          <Typography
+            style={{ marginTop: "32px", color: "white", fontSize: "12px" }}
+          >
+            <FormattedMessage id="secureAccessDescription" />
           </Typography>
         </div>
       </div>
