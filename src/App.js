@@ -23,7 +23,7 @@ function App() {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <BrowserRouter>
-        {/* <CustomNavBar /> */}
+        
         <div style={{ flex: 1 }}>
           <Routes>
 
@@ -50,17 +50,4 @@ function App() {
     </div>
   );
 }
-const CustomNavBar = () => {
-  const location = useLocation();
-
-  let title = "Wireframe(Login Screen)";
-  if (location.pathname === "/rapidusHome") {
-    title = "Wireframe(Home 1/3)";
-  } else if (location.pathname === "/rapidusCalculator") {
-    title = "Wireframe(Design Portal_10. Gross die Estimate(Mask Field Utilization Estimate)";
-  }
-
-  return <NavBar title={title} />;
-};
-
 export default App;

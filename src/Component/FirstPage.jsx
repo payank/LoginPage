@@ -1,8 +1,10 @@
-import React from "react";
+import React,{ useState }  from "react";
 import "./style.css";
 import arrow from "../Assets/Images/Arrow.svg";
 import SearchbarNav from "./SearchbarNav";
+import Chatbot from "./Chatbot";
 import SidebarNav from "./SidebarNav";
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ChatIcon from "@mui/icons-material/Chat";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -17,6 +19,11 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import { colors } from "@mui/material";
 
 const RapidusHome = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const handleIconClick = () => {
+    setIsChatOpen(true);
+  };
   const IconBox = ({ icon }) => (
     <div
       style={{
@@ -75,20 +82,25 @@ const RapidusHome = () => {
                 </a>
                 <div
                   style={{
+                    marginRight: '-73px',
                     display: "flex",
                     alignItems: "center",
-                    gap: "8px",
+                    gap: "18px",
                     paddingBottom: "4px",
                   }}
                 >
+                  <div>
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
                     alt="lock icon"
-                    style={{ width: "16px", height: "16px" }}
+                    style={{ width: "16px", height: "16px" ,paddingRight: '5px'}}
                   />
                   <span style={{ fontWeight: 500 }}>
                     Privilege Document Report
                   </span>
+                  </div>
+                 <span> <InsertDriveFileIcon/> </span>
+                 <span> <TrendingUpIcon /> </span>
                 </div>
               </div>
             </div>
@@ -459,7 +471,9 @@ const RapidusHome = () => {
                   </li>
                 </ul>
               </div>
+              
               <div
+              onClick={handleIconClick}
                 style={{
                   width: "40px",
                   height: "40px",
@@ -474,6 +488,8 @@ const RapidusHome = () => {
               >
                 <ChatIcon />
               </div>
+              {isChatOpen && <Chatbot />}
+              {isChatOpen && <Chatbot onClose={() => setIsChatOpen(false)} />}
             </div>
           </div>
         </main>
