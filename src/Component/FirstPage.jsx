@@ -1,10 +1,11 @@
-import React,{ useState }  from "react";
+import React, { useState } from "react";
+import { FormattedMessage } from "react-intl"; // Import FormattedMessage
 import "./style.css";
 import arrow from "../Assets/Images/Arrow.svg";
 import SearchbarNav from "./SearchbarNav";
 import Chatbot from "./Chatbot";
 import SidebarNav from "./SidebarNav";
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChatIcon from "@mui/icons-material/Chat";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -15,8 +16,7 @@ import NatureIcon from "@mui/icons-material/Nature";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
-import Inventory2Icon from "@mui/icons-material/Inventory2";
-import { colors } from "@mui/material";
+import Inventory2Icon from "@mui/icons-material/Inventory2"; import { colors } from "@mui/material";
 
 const RapidusHome = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -59,7 +59,10 @@ const RapidusHome = () => {
                 marginTop: "20px",
               }}
             >
-              <h3 style={{ paddingTop: "10px" }}>What's New</h3>
+
+              <h3 style={{ paddingTop: "10px" }}>
+                <FormattedMessage id="whatsNew" defaultMessage="What's New" />
+              </h3>
 
               <div
                 style={{
@@ -78,7 +81,7 @@ const RapidusHome = () => {
                     paddingRight: "12px",
                   }}
                 >
-                  More
+                  <FormattedMessage id="more" defaultMessage="More" />
                 </a>
                 <div
                   style={{
@@ -90,17 +93,20 @@ const RapidusHome = () => {
                   }}
                 >
                   <div>
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
-                    alt="lock icon"
-                    style={{ width: "16px", height: "16px" ,paddingRight: '5px'}}
-                  />
-                  <span style={{ fontWeight: 500 }}>
-                    Privilege Document Report
-                  </span>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
+                      alt="lock icon"
+                      style={{ width: "16px", height: "16px", paddingRight: '5px' }}
+                    />
+                    <span style={{ fontWeight: 500 }}>
+                      <FormattedMessage
+                        id="privilegeDocumentReport"
+                        defaultMessage="Privilege Document Report"
+                      />
+                    </span>
                   </div>
-                 <span> <InsertDriveFileIcon/> </span>
-                 <span> <TrendingUpIcon /> </span>
+                  <span> <InsertDriveFileIcon /> </span>
+                  <span> <TrendingUpIcon /> </span>
                 </div>
               </div>
             </div>
@@ -109,27 +115,43 @@ const RapidusHome = () => {
               <div className="first">
                 <div className="content">
                   01
-                  <h3>Featured Content Name</h3>
+                  <h3><FormattedMessage
+                    id="featuredContentName"
+                    defaultMessage="Featured Content Name"
+                  /></h3>
                   <text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
+                    <FormattedMessage
+                      id="featuredContentDescription"
+                      defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    />
                     <a
                       href="https://your-link-here.com"
                       style={{ textDecoration: "none", color: "#ffffff" }}
                     >
-                      <strong>Learn more</strong>
+                      <strong><FormattedMessage
+                        id="learnMore"
+                        defaultMessage="Learn more"
+                      /></strong>
                     </a>
                   </text>
                 </div>
               </div>
               <div className="second">
                 <div className="content">
-                  <strong> Updates</strong>
+                  <strong>
+                    <FormattedMessage id="updates" defaultMessage="Updates" />
+                  </strong>
                   <p style={{ paddingTop: "-10px" }}>
-                    Rapidus Customer Portal will be unavailable from 2025/4/1,
-                    3:00pm to 5:00pm
+                    <FormattedMessage
+                      id="updatesDescription"
+                      defaultMessage="Rapidus Customer Portal will be unavailable from 2025/4/1, 3:00pm to 5:00pm"
+                    />
                   </p>
                   <div style={{ marginTop: "3px" }}>
-                    <button className="red">Notice</button>
+                    <button className="red">
+                      <FormattedMessage id="notice" defaultMessage="Notice" />
+
+                    </button>
                     <span
                       style={{
                         color: "grey",
@@ -137,7 +159,10 @@ const RapidusHome = () => {
                         marginRight: "5px",
                       }}
                     >
-                      2025/2/1
+                      <FormattedMessage
+                        id="updateDate"
+                        defaultMessage="2025/2/1"
+                      />
                     </span>
                   </div>
                 </div>
@@ -145,20 +170,33 @@ const RapidusHome = () => {
 
               <div className="third">
                 <div className="content">
-                  <strong> Online Notifications</strong>
+                  <strong> <FormattedMessage
+                    id="onlineNotifications"
+                    defaultMessage="Online Notifications"
+                  /></strong>
 
                   <p style={{ paddingTop: "-10px" }}>
-                    Rapidus Customer Portal will be unavailable from 2026/4/1
-                    3:00 to ...
+                    8                    <FormattedMessage
+                      id="onlineNotificationsDescription"
+                      defaultMessage="Rapidus Customer Portal will be unavailable from 2026/4/1 3:00 to ..."
+                    />
                   </p>
 
-                  <div style={{ color: "grey" }}>2025/2/1</div>
+                  <div style={{ color: "grey" }}>
+                    <FormattedMessage
+                      id="notificationDate"
+                      defaultMessage="2025/2/1"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
             <h3 style={{ marginLeft: "22px", marginTop: "20px" }}>
-              Favourite Function
+              <FormattedMessage
+                id="favouriteFunction"
+                defaultMessage="Favourite Function"
+              />
             </h3>
             <div className="second-container">
               <div className="one">
@@ -172,9 +210,15 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong>Document AAA</strong>
+                  <strong><FormattedMessage
+                    id="documentAAA"
+                    defaultMessage="Document AAA"
+                  /></strong>
                   <br />
-                  <span style={{ color: "grey" }}>Document</span>
+                  <span style={{ color: "grey" }}><FormattedMessage
+                    id="document"
+                    defaultMessage="Document"
+                  /></span>
                 </div>
               </div>
               <div className="two">
@@ -351,7 +395,7 @@ const RapidusHome = () => {
                   height: "424px",
                   marginTop: "-185px",
                   paddingLeft: '10px',
-                  
+
                 }}
               >
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -471,9 +515,9 @@ const RapidusHome = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div
-              onClick={handleIconClick}
+                onClick={handleIconClick}
                 style={{
                   width: "40px",
                   height: "40px",

@@ -20,9 +20,14 @@ import { FormattedMessage } from "react-intl";
 const SidebarNav = () => {
   const { instance } = useMsal();
   const handleLogout = () => {
-    instance.logoutRedirect({
-      postLogoutRedirectUri: "/",
-    });
+    // Clear session storage
+    sessionStorage.clear();
+
+    // // Perform logout
+    // instance.logoutRedirect({
+    //   postLogoutRedirectUri: "/", // This can be removed or modified
+    // });
+    window.location.href = "/";
   };
 
   const IconBox = ({ icon }) => (

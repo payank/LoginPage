@@ -280,6 +280,13 @@ const LoginPage = () => {
     { code: "de", label: "De" },
   ];
 
+
+  const handleLocaleChange = (_, newValue) => {
+    const newLocale = newValue ? newValue.code : "en";
+    setLocale(newLocale);
+    localStorage.setItem("locale", newLocale); // Save locale to local storage
+  };
+
   return (
     <div className={classes.root}>
       {/* Left: Logo, Language Selector, Typography, and Form */}
@@ -291,9 +298,7 @@ const LoginPage = () => {
               options={languageOptions}
               getOptionLabel={(option) => option.label}
               value={languageOptions.find((opt) => opt.code === locale)}
-              onChange={(_, newValue) =>
-                setLocale(newValue ? newValue.code : "")
-              }
+               onChange={handleLocaleChange}
               disableClearable
               sx={{
                 minWidth: 90,

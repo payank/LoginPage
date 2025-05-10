@@ -3,7 +3,9 @@ import React, { createContext, useState, useContext } from "react";
 const LocaleContext = createContext();
 
 export const LocaleProvider = ({ children }) => {
-  const [locale, setLocale] = useState("en"); // Default locale
+
+  const savedLocale = localStorage.getItem("locale") || "en";
+  const [locale, setLocale] = useState(savedLocale); 
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale }}>
