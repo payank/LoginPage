@@ -260,8 +260,8 @@ const LoginPage = () => {
     !value
       ? intl.formatMessage({ id: "required" })
       : value.toUpperCase() !== currentCaptcha
-      ? intl.formatMessage({ id: "invalidCaptcha" })
-      : undefined;
+        ? intl.formatMessage({ id: "invalidCaptcha" })
+        : undefined;
 
   const validatePassword = (value) =>
     !value ? intl.formatMessage({ id: "required" }) : undefined;
@@ -485,13 +485,13 @@ const LoginPage = () => {
           </div>
         </div>
         <Typography style={{ marginTop: "32px", color: "white" }}>
-          <FormattedMessage id="secureAccess" />
+          <FormattedMessage id="secureAccess" values={{ indent: <><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>, }} />
         </Typography>
         <div>
           <Typography
             style={{ marginTop: "32px", color: "white", fontSize: "12px" }}
           >
-            <FormattedMessage id="secureAccessDescription" />
+            <FormattedMessage id="secureAccessDescription" values={{ br: <br />, indent: <><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>, }} />
           </Typography>
         </div>
       </div>
