@@ -19,7 +19,7 @@ const SidebarNav = () => {
   const { instance} = useMsal();
   const handleLogout = () => {
     instance.logoutRedirect({
-      postLogoutRedirectUri: "/", // or "/login" if you have a dedicated route
+      postLogoutRedirectUri: "/", 
     });
   };
   const IconBox = ({ icon }) => (
