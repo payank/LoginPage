@@ -15,29 +15,31 @@ import PeopleIcon from "@mui/icons-material/People";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useMsal } from "@azure/msal-react";
+import { FormattedMessage } from "react-intl";
+
 const SidebarNav = () => {
-  const { instance} = useMsal();
+  const { instance } = useMsal();
   const handleLogout = () => {
     instance.logoutRedirect({
-      postLogoutRedirectUri: "/", 
+      postLogoutRedirectUri: "/",
     });
   };
+
   const IconBox = ({ icon }) => (
     <div
       style={{
         width: "20px",
         height: "20px",
-
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-
         padding: "4px",
       }}
     >
       {icon}
     </div>
   );
+
   const location = useLocation();
 
   const getActiveLink = () => {
@@ -53,13 +55,14 @@ const SidebarNav = () => {
   };
 
   const activeLink = getActiveLink();
+
   return (
     <nav className="side-nav">
       <ul>
         <div className="active">
           <img
             alt="rapidus-logo"
-           src={whitelogo} 
+            src={whitelogo}
             style={{
               width: "100%",
               height: "21px",
@@ -68,7 +71,7 @@ const SidebarNav = () => {
             }}
           />
         </div>
-        <br></br>
+        <br />
         <Link
           to="/rapidusHome"
           style={{ textDecoration: "none", color: "white" }}
@@ -83,10 +86,12 @@ const SidebarNav = () => {
           >
             <IconBox
               icon={
-                <DashboardIcon style={{ color: "white", fontSize: "16px", marginTop: "2px" }} />
+                <DashboardIcon
+                  style={{ color: "white", fontSize: "16px", marginTop: "2px" }}
+                />
               }
             />
-            What's New
+            <FormattedMessage id="sidebar.whatsNew" defaultMessage="What's New" />
           </li>
         </Link>
 
@@ -100,18 +105,21 @@ const SidebarNav = () => {
             }`}
             style={{
               display: "flex",
-              
               color: "white",
             }}
           >
             <IconBox
               icon={
                 <InsertDriveFileIcon
-                  style={{ color: "white", fontSize: "16px" ,marginTop: "-6px"}}
+                  style={{
+                    color: "white",
+                    fontSize: "16px",
+                    marginTop: "-6px",
+                  }}
                 />
               }
             />
-            Document
+            <FormattedMessage id="sidebar.document" defaultMessage="Document" />
           </li>
         </Link>
 
@@ -123,18 +131,21 @@ const SidebarNav = () => {
             className={`white-box ${activeLink === "design" ? "clicked" : ""}`}
             style={{
               display: "flex",
-              
               color: "white",
             }}
           >
             <IconBox
               icon={
                 <DashboardCustomizeIcon
-                  style={{ color: "white", fontSize: "16px" ,marginTop: "-6px"}}
+                  style={{
+                    color: "white",
+                    fontSize: "16px",
+                    marginTop: "-6px",
+                  }}
                 />
               }
             />
-            Design Portal
+            <FormattedMessage id="sidebar.designPortal" defaultMessage="Design Portal" />
           </li>
         </Link>
 
@@ -142,150 +153,194 @@ const SidebarNav = () => {
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
             icon={
-              <DirectionsBusIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />
+              <DirectionsBusIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
             }
           />
-          MPW (Shuttle)
+          <FormattedMessage id="sidebar.mpwShuttle" defaultMessage="MPW (Shuttle)" />
         </li>
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
             icon={
-              <Inventory2Icon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />
+              <Inventory2Icon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
             }
           />
-          Tapeout
+          <FormattedMessage id="sidebar.tapeout" defaultMessage="Tapeout" />
         </li>
         <li
           className="white-box"
           style={{
             display: "flex",
-            
-            color: "white",
-          }}
-        >
-          <IconBox
-            icon={<LayersIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />}
-          />
-          Product Info & Instruction
-        </li>
-        <li
-          className="white-box"
-          style={{
-            display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
             icon={
-              <AssignmentIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />
+              <LayersIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
             }
           />
-          Production & Logistic Report
+          <FormattedMessage id="sidebar.productInfo" defaultMessage="Product Info & Instruction" />
         </li>
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
-            icon={<PieChartIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />}
+            icon={
+              <AssignmentIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
+            }
           />
-          Eng Data Analysis
+          <FormattedMessage id="sidebar.productionLogistics" defaultMessage="Production & Logistic Report" />
+        </li>
+        <li
+          className="white-box"
+          style={{
+            display: "flex",
+            color: "white",
+          }}
+        >
+          <IconBox
+            icon={
+              <PieChartIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
+            }
+          />
+          <FormattedMessage id="sidebar.engDataAnalysis" defaultMessage="Eng Data Analysis" />
         </li>
 
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
-            icon={<BarChartIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />}
+            icon={
+              <BarChartIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
+            }
           />
-          Quality & Reliability
+          <FormattedMessage id="sidebar.qualityReliability" defaultMessage="Quality & Reliability" />
         </li>
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
-            icon={<PeopleIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />}
+            icon={
+              <PeopleIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
+            }
           />
-          Customer Service
+          <FormattedMessage id="sidebar.customerService" defaultMessage="Customer Service" />
         </li>
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
           <IconBox
-            icon={<SettingsIcon style={{ color: "white", fontSize: "16px",marginTop: "-6px" }} />}
+            icon={
+              <SettingsIcon
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
+              />
+            }
           />
-          Settings
+          <FormattedMessage id="sidebar.settings" defaultMessage="Settings" />
         </li>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        
-        
-        
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
         >
-           <img
-            alt="rapidus-logo"
-           src={userphoto} 
-           
-          />
-            <div style={{ marginLeft: '8px' }}>
-        <div> User name</div>
-        <div style={{ fontSize: '10px', opacity: 0.8 }}>Designation</div>
-      </div>
-          
+          <img alt="user-photo" src={userphoto} />
+          <div style={{ marginLeft: "8px" }}>
+            <div>
+              <FormattedMessage id="sidebar.userName" defaultMessage="User Name" />
+            </div>
+            <div style={{ fontSize: "10px", opacity: 0.8 }}>
+              <FormattedMessage id="sidebar.designation" defaultMessage="Designation" />
+            </div>
+          </div>
         </li>
 
         <li
           className="white-box"
           style={{
             display: "flex",
-            
             color: "white",
           }}
           onClick={handleLogout}
@@ -293,14 +348,19 @@ const SidebarNav = () => {
           <IconBox
             icon={
               <PowerSettingsNewIcon
-                style={{ color: "white", fontSize: "16px",marginTop: "-6px" }}
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "-6px",
+                }}
               />
             }
           />
-          Logout
+          <FormattedMessage id="sidebar.logout" defaultMessage="Logout" />
         </li>
       </ul>
     </nav>
   );
 };
+
 export default SidebarNav;

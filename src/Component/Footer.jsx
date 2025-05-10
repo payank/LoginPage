@@ -1,5 +1,4 @@
 import { AppBar } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
 // const useStyle = makeStyles({
 //   footer: {

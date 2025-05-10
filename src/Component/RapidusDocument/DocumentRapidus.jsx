@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useTable, useGlobalFilter } from "react-table";
 import "./DocumentRapidus.css";
 import CloseIcon from "@mui/icons-material/Close";
@@ -121,7 +121,6 @@ const DocumentTablePage = () => {
     headerGroups,
     rows,
     prepareRow,
-    state,
     setGlobalFilter: setFilter,
   } = tableInstance;
 

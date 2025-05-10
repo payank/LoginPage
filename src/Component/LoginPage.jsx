@@ -210,7 +210,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LoginPage = ({ setLoginState }) => {
+const LoginPage = () => {
   const classes = useStyles();
   const { locale, setLocale } = useLocale("en");
   const navigate = useNavigate();
