@@ -14,8 +14,14 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import PeopleIcon from "@mui/icons-material/People";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-
+import { useMsal } from "@azure/msal-react";
 const SidebarNav = () => {
+  const { instance} = useMsal();
+  const handleLogout = () => {
+    instance.logoutRedirect({
+      postLogoutRedirectUri: "/", // or "/login" if you have a dedicated route
+    });
+  };
   const IconBox = ({ icon }) => (
     <div
       style={{
@@ -282,6 +288,7 @@ const SidebarNav = () => {
             
             color: "white",
           }}
+          onClick={handleLogout}
         >
           <IconBox
             icon={
