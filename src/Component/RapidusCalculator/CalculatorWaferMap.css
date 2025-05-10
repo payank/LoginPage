@@ -1,74 +1,83 @@
-.wafer-controls {
+.container-design {
   display: flex;
-  gap: 15px;
-  padding: 25px;
-  max-width: 1000px;
-  margin: 0 auto;
-  height: calc(100vh - 50px);
-  box-sizing: border-box;
+  padding: 40px;
+  background-color: #f3f3f3;
 }
 
-.param-grid {
-  flex: 1 1 50%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 5px;
-  padding: 30px;
-  background: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  height: 450px;
+.left-panel {
+  flex: 1;
+  padding-right: 40px;
 }
 
+.left-panel h2 {
+  margin-bottom: 20px;
+}
 
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
 
-.param-grid label {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+.input-group {
+  display: flex;
   align-items: center;
-  gap: 50px;
-  font-size: 15px;
-  color: rgb(50, 128, 55);
 }
 
-.param-grid select {
-  padding: 10px 15px;
-  border: 1px solid #131413;
-  font-size: 15px;
-  width : auto;
-  max-width:215px;
-  transition: all 0.3s ease;
-  background: white;
-
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  background-color: white;
 }
 
-.param-grid input {
-  padding: 10px 15px;
-  border: 1px solid #131413;
-  font-size: 15px;
-  width : 65%;
-  transition: all 0.3s ease;
-  background: white;
-  height: 10px;
-
+.input-group span {
+  margin-left: 8px;
+  font-size: 14px;
+  color: gray;
 }
 
-@media (max-width: 768px) {
-  .wafer-controls {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-  }
-  
-  .param-grid,
-  .wafer-map-container {
-    flex: none;
-    width: 100%;
-    min-width: auto;
-    padding: 25px;
-  }
-  
-  .wafer-map-container {
-    height: 500px;
-  }
+.left-panel button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #064b23;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 340px;
+}
+
+.right-panel {
+  flex: 1;
+  text-align: center;
+}
+
+.dpw {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.wafer-image {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.rapidus-logo {
+  margin-top: 16px;
+}
+
+.download-link {
+  margin-top: 10px;
+  display: inline-block;
+  color: #064b23;
+  text-decoration: underline;
+  font-weight: 500;
 }
