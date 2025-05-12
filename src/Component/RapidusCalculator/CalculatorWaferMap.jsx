@@ -57,12 +57,12 @@ const CalculatorWaferMap = () => {
   const MM_TO_PIXEL = 10;
 
   const [params, setParams] = useState({
-    waferSize: 400,
-    dieWidth: 20,
+    waferSize: 500,
+    dieWidth: 10,
     dieHeight: 20,
-    xScribeWidth: 2,
-    yScribeWidth: 2,
-    waferEdgeExclusion: 6,
+    xScribeWidth: 0,
+    yScribeWidth: 0,
+    waferEdgeExclusion: 4,
   });
 
   const [resultData, setResultData] = useState(() => generateDies(params));
