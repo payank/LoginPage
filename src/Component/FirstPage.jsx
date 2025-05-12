@@ -63,7 +63,7 @@ const RapidusHome = () => {
               }}
             >
 
-              <h3 style={{ paddingTop: "10px" }}>
+              <h3 style={{ paddingTop: "10px"}}>
                 <FormattedMessage id="whatsNew" defaultMessage="What's New" />
               </h3>
 
@@ -129,7 +129,7 @@ const RapidusHome = () => {
                     />
                     <button
                       onClick={()=> {}}
-                      style={{ textDecoration: "none", color: "#ffffff" }}
+                      style={{ border: "none",color: "#ffffff", marginLeft: "100px", backgroundColor:'#1D242B' } }
                     >
                       <strong><FormattedMessage
                         id="learnMore"
@@ -150,7 +150,7 @@ const RapidusHome = () => {
                       defaultMessage="Rapidus Customer Portal will be unavailable from 2025/4/1, 3:00pm to 5:00pm"
                     />
                   </p>
-                  <div style={{ marginTop: "3px" }}>
+                  <div style={{ marginTop: "3px"}}>
                     <button className="red">
                       <FormattedMessage id="notice" defaultMessage="Notice" />
 
@@ -213,10 +213,10 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong><FormattedMessage
+                  <span><FormattedMessage
                     id="documentAAA"
                     defaultMessage="Document AAA"
-                  /></strong>
+                  /></span>
                   <br />
                   <span style={{ color: "grey" }}><FormattedMessage
                     id="document"
@@ -235,7 +235,7 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong>Document BBB</strong>
+                  <span>Document BBB</span>
                   <br />
                   <span style={{ color: "grey" }}>Document</span>
                 </div>
@@ -251,7 +251,7 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
+                  <span><FormattedMessage id="content.name" defaultMessage="Content Name" /></span>
                   <br />
                   <span style={{ color: "grey" }}><FormattedMessage id="common.designPortal" defaultMessage="Design Portal" /></span>
                 </div>
@@ -267,7 +267,7 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
+                  <span><FormattedMessage id="content.name" defaultMessage="Content Name" /></span>
                   <br />
                   <span style={{ color: "grey" }}><FormattedMessage id="sidebar.mpwShuttle" defaultMessage="MPW (Shuttle)" /></span>
                 </div>
@@ -283,7 +283,7 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
+                  <span><FormattedMessage id="content.name" defaultMessage="Content Name" /></span>
                   <br />
                   <span style={{ color: "grey" }}>Tapeout</span>
                 </div>
@@ -299,7 +299,7 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
+                  <span><FormattedMessage id="content.name" defaultMessage="Content Name" /></span>
                   <br />
                   <span style={{ color: "grey" }}><FormattedMessage id="common.designPortal" defaultMessage="Design Portal" /></span>
                 </div>
@@ -417,7 +417,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong><FormattedMessage id="serviceOverview" defaultMessage="Service Overview"/></strong>
+                      <span><FormattedMessage id="serviceOverview" defaultMessage="Service Overview"/></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -437,7 +437,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong><FormattedMessage id="videos" defaultMessage="Videos"/></strong>
+                      <span><FormattedMessage id="videos" defaultMessage="Videos"/></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -457,7 +457,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong><FormattedMessage id="helpCenter" defaultMessage="Help Center"/></strong>
+                      <span><FormattedMessage id="helpCenter" defaultMessage="Help Center"/></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -477,7 +477,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong><FormattedMessage id="eshConflictMinerals" defaultMessage="ESH & Conflict Minerals"/></strong>
+                      <span><FormattedMessage id="eshConflictMinerals" defaultMessage="ESH & Conflict Minerals"/></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -497,7 +497,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong><FormattedMessage id="esgAtRapidus" defaultMessage="ESG at Rapidus"/></strong>
+                      <span><FormattedMessage id="esgAtRapidus" defaultMessage="ESG at Rapidus"/></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -511,7 +511,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong><FormattedMessage id="rapidusCalendars" defaultMessage="Rapidus Calendars"/></strong>
+                      <span><FormattedMessage id="rapidusCalendars" defaultMessage="Rapidus Calendars"/></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
