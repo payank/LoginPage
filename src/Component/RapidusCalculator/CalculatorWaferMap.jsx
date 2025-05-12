@@ -1,14 +1,13 @@
 import WaferMap from "./WaferMap";
 import React, { useState, useMemo } from "react";
 import Rapidus_logo from "../../Assets/Images/Rapidus_logo.png";
+import "./CalculatorWaferMap.css";
 
 const getDieStatus = (distance, maxRadius) => {
   const failProbability = Math.min(1, (distance / maxRadius) * 1.5);
   return Math.random() < failProbability ? "fail" : "pass";
 };
-const PIXEL_TO_MM = 0.1;
 const generateDies = (params) => {
-  const MM_TO_PIXEL = 10;
 
   const {
     waferSize,
@@ -60,11 +59,11 @@ const CalculatorWaferMap = () => {
 
   const [params, setParams] = useState({
     waferSize: 400,
-    dieWidth: 50,
-    dieHeight: 50,
+    dieWidth: 20,
+    dieHeight: 20,
     xScribeWidth: 2,
     yScribeWidth: 2,
-    waferEdgeExclusion: 20,
+    waferEdgeExclusion: 6,
   });
 
   const [resultData, setResultData] = useState(() => generateDies(params));

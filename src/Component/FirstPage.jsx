@@ -9,7 +9,6 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChatIcon from "@mui/icons-material/Chat";
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -19,7 +18,6 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
-import { Form } from "react-final-form";
 
 const RapidusHome = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);

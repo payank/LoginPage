@@ -13,7 +13,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useLocale } from "../i18n/localeContext";
-import Checkbox from "./Common/Checkbox";
 
 const useStyles = makeStyles({
   root: {
