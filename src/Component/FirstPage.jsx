@@ -16,7 +16,7 @@ import NatureIcon from "@mui/icons-material/Nature";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
-import Inventory2Icon from "@mui/icons-material/Inventory2"; import { colors } from "@mui/material";
+import Inventory2Icon from "@mui/icons-material/Inventory2";
 
 const RapidusHome = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -72,8 +72,8 @@ const RapidusHome = () => {
                   marginRight: "100px",
                 }}
               >
-                <a
-                  href="#"
+                <button
+                  onClick={() => { }}
                   style={{
                     color: "#000",
                     textDecoration: "none",
@@ -82,7 +82,7 @@ const RapidusHome = () => {
                   }}
                 >
                   <FormattedMessage id="more" defaultMessage="More" />
-                </a>
+                </button>
                 <div
                   style={{
                     marginRight: '-73px',

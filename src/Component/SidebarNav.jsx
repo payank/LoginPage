@@ -14,11 +14,11 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import PeopleIcon from "@mui/icons-material/People";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import { useMsal } from "@azure/msal-react";
+// import { useMsal } from "@azure/msal-react";
 import { FormattedMessage } from "react-intl";
 
 const SidebarNav = () => {
-  const { instance } = useMsal();
+  // const { instance } = useMsal();
   const handleLogout = () => {
     // Clear session storage
     sessionStorage.clear();
@@ -105,9 +105,8 @@ const SidebarNav = () => {
           style={{ textDecoration: "none", color: "white" }}
         >
           <li
-            className={`white-box ${
-              activeLink === "document" ? "clicked" : ""
-            }`}
+            className={`white-box ${activeLink === "document" ? "clicked" : ""
+              }`}
             style={{
               display: "flex",
               color: "white",

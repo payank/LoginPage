@@ -175,7 +175,12 @@ const DocumentTablePage = () => {
               return (
                 <tr {...row.getRowProps()}>
                   <td>
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      style={{
+                        accentColor: "#00401a",
+                      }}
+                    />
                   </td>
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -193,9 +198,12 @@ const DocumentTablePage = () => {
           />
           <div className="filter-header">
             <h3>Filter Settings</h3>
-            <a href="#" style={{ color: "#3b82f6", textDecoration: "none" }}>
+            <button
+              onClick={() => { }}
+              style={{ color: "#3b82f6", textDecoration: "none", background: "none", border: "none", cursor: "pointer" }}
+            >
               Clear
-            </a>
+            </button>
           </div>
 
           <div className="filter-group">
@@ -203,13 +211,19 @@ const DocumentTablePage = () => {
               <strong>Doc Group</strong>
             </p>
             <label>
-              <input type="checkbox" /> Design Rule
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> Design Rule
             </label>
             <label>
-              <input type="checkbox" /> DRC Commend File
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> DRC Commend File
             </label>
             <label>
-              <input type="checkbox" /> OASIS Layer Usage Description
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> OASIS Layer Usage Description
             </label>
           </div>
 
@@ -218,13 +232,19 @@ const DocumentTablePage = () => {
               <strong>EDA Partner</strong>
             </p>
             <label>
-              <input type="checkbox" /> Cadence
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> Cadence
             </label>
             <label>
-              <input type="checkbox" /> Magma
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> Magma
             </label>
             <label>
-              <input type="checkbox" /> Mentor Graphic
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> Mentor Graphic
             </label>
           </div>
 
@@ -233,10 +253,14 @@ const DocumentTablePage = () => {
               <strong>Eff. Date</strong>
             </p>
             <label>
-              <input type="checkbox" /> Within 3 months
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> Within 3 months
             </label>
             <label>
-              <input type="checkbox" /> Within 3 to 6 months
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> Within 3 to 6 months
             </label>
           </div>
         </div>

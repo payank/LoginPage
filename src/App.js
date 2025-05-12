@@ -1,7 +1,5 @@
-import NavBar from "./Component/NavBar";
 import NotFound from "./Component/NotFound";
 import LoginPage from "./Component/LoginPage";
-import { useLocation } from "react-router-dom";
 import {
   BrowserRouter,
   Route,
@@ -23,7 +21,7 @@ function App() {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <BrowserRouter>
-        
+
         <div style={{ flex: 1 }}>
           <Routes>
 
@@ -36,7 +34,7 @@ function App() {
               path="/rapidusCalculator"
               element={accounts.length > 0 ? <RapidusCalculator /> : <Navigate to="/" />}
             />
-             <Route
+            <Route
               path="/rapidusDocument"
               element={accounts.length > 0 ? <RapidusDocument /> : <Navigate to="/" />}
             />

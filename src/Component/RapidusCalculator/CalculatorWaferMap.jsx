@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import "./CalculatorWaferMap.css";
-import graph from '../../Assets/Images/Graph.jpg'; 
-import Rapidus_logo from "../../Assets/Images/Rapidus_logo.png"; 
+import graph from '../../Assets/Images/Graph.jpg';
+import Rapidus_logo from "../../Assets/Images/Rapidus_logo.png";
 
 const CalculatorWaferMap = () => {
   const [dieWidth, setDieWidth] = useState(10);
   const [dieHeight, setDieHeight] = useState(10);
   const [grossDie, setGrossDie] = useState(624);
   const [mfu, setMfu] = useState("85%");
-  const dpw = 505; 
+  const dpw = 505;
 
   const calculateDie = () => {
-    const waferRadius = 150; 
+    const waferRadius = 150;
     const waferArea = Math.PI * waferRadius * waferRadius;
-  
+
     const dieArea = dieWidth * dieHeight;
     const grossDies = Math.floor(waferArea / dieArea);
-    const usableDies = Math.floor(grossDies * 0.85); 
-  
+    const usableDies = Math.floor(grossDies * 0.85);
+
     const mfuPercent = Math.round((usableDies / grossDies) * 100);
-  
+
     setGrossDie(grossDies);
     setMfu(`${mfuPercent}%`);
   };
-  
+
 
   return (
     <div className="container-design">
@@ -70,7 +70,15 @@ const CalculatorWaferMap = () => {
         <div className="rapidus-logo">
           <img src={Rapidus_logo} alt="Rapidus" height="30" />
         </div>
-        <a href="#" download className="download-link">Download the Map</a>
+        <button
+          onClick={() => {
+
+          }}
+          className="download-link"
+          style={{ color: "#3b82f6", textDecoration: "none", background: "none", border: "none", cursor: "pointer" }}
+        >
+          Download the Map
+        </button>
       </div>
     </div>
   );
