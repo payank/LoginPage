@@ -67,12 +67,15 @@
     text-align: left;
   }
   
+  .doc-table{
+    height: 100%;
+  }
   .filter-panel {
     margin-top: -130px;
-    height: 580px;
-    width: 28%;
+    /* height: 580px; */
+    /* width: 28%; */
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 16px;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
   }
