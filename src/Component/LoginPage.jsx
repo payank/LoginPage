@@ -13,6 +13,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useLocale } from "../i18n/localeContext";
+import Checkbox from "./Common/Checkbox";
 
 const useStyles = makeStyles({
   root: {
@@ -401,7 +402,9 @@ const LoginPage = () => {
                   {/* Inline row for Forgot Password and Remember Me */}
                   <div className={classes.rememberForgotRow}>
                     <div className={classes.rememberRow}>
-                      <input type="checkbox" id="rememberUserId" />
+                      <input type="checkbox" id="rememberUserId" style={{
+                        accentColor: "#00401a",
+                      }} />
                       <label style={{ marginTop: '2px' }} htmlFor="rememberUserId">
                         <FormattedMessage id="rememberMe" />
                       </label>
