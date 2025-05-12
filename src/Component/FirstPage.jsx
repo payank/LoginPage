@@ -400,8 +400,8 @@ const RapidusHome = () => {
                   backgroundColor: "#f9f9f9",
                   padding: "20px",
                   borderRadius: "12px",
-                  width: "280px",
-                  height: "424px",
+                  width: "300px",
+                  height: "415px",
                   marginTop: "-175px",
                   paddingLeft: '10px',
 
