@@ -58,7 +58,6 @@ const useStyles = makeStyles({
     fontSize: "1rem",
     background: "#fff",
     color: "#076b10",
-    fontWeight: 600,
     outline: "none",
     marginLeft: 16,
     cursor: "pointer",
@@ -345,7 +344,7 @@ const LoginPage = () => {
               )}
             />
           </div>
-          <Typography variant="h6" align="left" marginBottom="24px">
+          <Typography variant="h6" align="left" marginBottom="0px" marginTop="10%">
             <FormattedMessage id="welcomeMessage" />
           </Typography>
           <div className={classes.loginContainer}>
@@ -412,7 +411,6 @@ const LoginPage = () => {
                       style={{
                         color: "#00401A",
                         fontSize: "15px",
-                        fontWeight: "bold",
                       }}
                       to="/forgotPage"
                     >

@@ -8,32 +8,42 @@ import Checkbox from "../Common/Checkbox"; // Import the reusable Checkbox compo
 import { FormattedMessage, useIntl } from "react-intl";
 
 const columns = [
-  { Header: <FormattedMessage id="docNo" defaultMessage="Doc. No."/>, accessor: "docNo" },
-  { Header: <FormattedMessage id="version" defaultMessage="Version"/>, accessor: "version" },
-  { Header: <FormattedMessage id="titleDoc" defaultMessage="Title Doc."/>, accessor: "title" },
-  { Header: <FormattedMessage id="group" defaultMessage="Group"/>, accessor: "group" },
-  { Header: <FormattedMessage id="EDAPartner" defaultMessage="EDA Partner"/>, accessor: "partner" },
+  { Header: <FormattedMessage id="docNo" defaultMessage="Doc. No." />, accessor: "docNo" },
+  { Header: <FormattedMessage id="version" defaultMessage="Version" />, accessor: "version" },
+  { Header: <FormattedMessage id="titleDoc" defaultMessage="Title Doc." />, accessor: "title" },
+  { Header: <FormattedMessage id="group" defaultMessage="Group" />, accessor: "group" },
+  { Header: <FormattedMessage id="EDAPartner" defaultMessage="EDA Partner" />, accessor: "partner" },
 ];
 
 const DocumentTablePage = () => {
-  const globalFilter = (rows, columnIds, filterValue) => {
+
+  const [isChecked, setIsChecked] = useState(false);
+  const globalFilter = (rows,columnIds, filterValue) => {
     if (typeof filterValue !== 'string') return rows;
-  
+
     const search = filterValue.toLowerCase();
     return rows.filter((row) => {
       const docNo = String(row.values.docNo || "").toLowerCase();
       const title = String(row.values.title || "").toLowerCase();
-  
+
       return docNo.includes(search) || title.includes(search);
     });
   };
   const [searchInput, setSearchInput] = useState("");
+  const [data, setData] = useState(MockDocumentData);
   const intl = useIntl();
 
   const tableInstance = useTable(
-    { columns, data: MockDocumentData, globalFilter },
+    { columns, data, globalFilter },
     useGlobalFilter
   );
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+    const filteredData = event.target.checked ? MockDocumentData.filter((item) => item.partner === "Cadence")  : MockDocumentData;
+    setData(filteredData);
+  };
+
 
   const {
     getTableProps,
@@ -50,7 +60,7 @@ const DocumentTablePage = () => {
       <div className="top-bar">
         <input
           type="text"
-          placeholder={intl.formatMessage({id:'searchDoc', defaultMessage:'search Doc No. or Title'})}
+          placeholder={intl.formatMessage({ id: 'searchDoc', defaultMessage: 'search Doc No. or Title' })}
           className="search-bar-new"
           value={searchInput}
           onChange={(e) => {
@@ -60,7 +70,7 @@ const DocumentTablePage = () => {
           }}
         />
         <div style={{ paddingRight: "340px" }}>
-          <button className="outline-btn"><FormattedMessage id="downloadStatus" defaultMessage="View Download Status"/></button>
+          <button className="outline-btn"><FormattedMessage id="downloadStatus" defaultMessage="View Download Status" /></button>
           <button className="solid-btn">Add to DocCart</button>
         </div>
       </div>
@@ -101,7 +111,7 @@ const DocumentTablePage = () => {
                         accentColor: "#00401a",
                       }}
                     />
-                    
+
                   </td>
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -118,9 +128,9 @@ const DocumentTablePage = () => {
             sx={{ color: "black", marginLeft: "260px", marginTop: "-9px" }}
           />
           <div className="filter-header">
-            <p style={{ fontSize:'20px'}}><FormattedMessage id="filterSettings" defaultMessage="Filter Settings"/></p>
+            <p style={{ fontSize:'20px' }}><FormattedMessage id="filterSettings" defaultMessage="Filter Settings" /></p>
             <button
-              onClick={() => {}}
+              onClick={() => { }}
               style={{
                 color: "#3b82f6",
                 textDecoration: "none",
@@ -129,7 +139,7 @@ const DocumentTablePage = () => {
                 cursor: "pointer",
               }}
             >
-              <FormattedMessage id="clear" defaultMessage="Clear"/>
+              <FormattedMessage id="clear" defaultMessage="Clear" />
             </button>
           </div>
 
@@ -138,29 +148,27 @@ const DocumentTablePage = () => {
               <strong>Doc Group</strong>
             </p>
             <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> <FormattedMessage id="designRule" defaultMessage="Design Rule"/>
+              <input type="checkbox" style={{ accentColor: "#00401a" }} /> <FormattedMessage id="designRule" defaultMessage="Design Rule" />
             </label>
             <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> <FormattedMessage id="DRCCommandFile" defaultMessage="DRC Commend File"/>
+              <input type="checkbox" style={{ accentColor: "#00401a" }} /> <FormattedMessage id="DRCCommandFile" defaultMessage="DRC Commend File" />
             </label>
             <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> <FormattedMessage id="OASISLayerUsageDescription" defaultMessage="OASIS Layer Usage Description"/>
+              <input type="checkbox" style={{ accentColor: "#00401a" }} /> <FormattedMessage id="OASISLayerUsageDescription" defaultMessage="OASIS Layer Usage Description" />
             </label>
           </div>
 
           <div className="filter-group">
             <p>
-              <strong><FormattedMessage id="EDAPartner" defaultMessage="EDA Partner"/></strong>
+              <strong><FormattedMessage id="EDAPartner" defaultMessage="EDA Partner" /></strong>
             </p>
-            <Checkbox label="Cadence" />
-            <Checkbox label="Magma" />
-            <Checkbox label="Mentor Graphic" />
+            {/* <Checkbox label="Cadence" checked={isChecked} onChange={handleCheckboxChange}/> */}
+            <label>
+              <input type="checkbox" style={{ accentColor: "#00401a" }}  checked={isChecked} onChange={handleCheckboxChange}/> 
+              Cadence
+            </label>
+            <Checkbox label="Synopsys" />
+            <Checkbox label="Siemens" />
           </div>
 
           <div className="filter-group">

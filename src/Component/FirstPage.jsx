@@ -58,10 +58,11 @@ const RapidusHome = () => {
                 alignItems: "center",
                 margin: "0 22px",
                 marginTop: "20px",
+                marginBottom: "-10px",
               }}
             >
 
-              <h3 style={{ paddingTop: "10px"}}>
+              <h3 style={{ paddingTop: "10px" }}>
                 <FormattedMessage id="whatsNew" defaultMessage="What's New" />
               </h3>
 
@@ -116,84 +117,92 @@ const RapidusHome = () => {
               <div className="first">
                 <div className="content">
                   01
-                  <h3><FormattedMessage
+                  <h4 style={{ fontWeight: "normal" }}><FormattedMessage
                     id="featuredContentName"
                     defaultMessage="Featured Content Name"
-                  /></h3>
-                  <p>
+                  /></h4>
+                  <h5 style={{ fontWeight: "normal" }}>
                     <FormattedMessage
                       id="featuredContentDescription"
-                      defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                      defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit...."
                     />
                     <button
-                      onClick={()=> {}}
-                      style={{ border: "none",color: "#ffffff", marginLeft: "100px", backgroundColor:'#1D242B' } }
+                      onClick={() => { }}
+                      style={{ border: "none", color: "#00401A", }}
                     >
                       <strong><FormattedMessage
                         id="learnMore"
                         defaultMessage="Learn more"
                       /></strong>
                     </button>
-                  </p>
+                  </h5>
                 </div>
               </div>
               <div className="second">
                 <div className="content">
-                  <strong>
-                    <FormattedMessage id="updates" defaultMessage="Updates" />
-                  </strong>
-                  <p style={{ paddingTop: "-10px" }}>
+                  <FormattedMessage id="updates" defaultMessage="Updates" />
+                  <h5 style={{ fontWeight: "normal", paddingTop: "-10px" }} >
                     <FormattedMessage
                       id="updatesDescription"
                       defaultMessage="Rapidus Customer Portal will be unavailable from 2025/4/1, 3:00pm to 5:00pm"
                     />
-                  </p>
-                  <div style={{ marginTop: "3px"}}>
+                  </h5>
+                  <div style={{ marginTop: "3px" }}>
                     <button className="red">
                       <FormattedMessage id="notice" defaultMessage="Notice" />
-
                     </button>
-                    <span
+                    <h5
                       style={{
                         color: "grey",
                         float: "right",
-                        marginRight: "5px",
+                        marginRight: "12px",
+                        fontWeight: "normal",
+                        marginTop: "0px"
                       }}
                     >
                       <FormattedMessage
                         id="updateDate"
                         defaultMessage="2025/2/1"
                       />
-                    </span>
+                    </h5>
                   </div>
                 </div>
               </div>
 
               <div className="third">
                 <div className="content">
-                  <strong> <FormattedMessage
+                  <FormattedMessage
                     id="onlineNotifications"
                     defaultMessage="Online Notifications"
-                  /></strong>
+                  />
 
-                  <p style={{ paddingTop: "-10px" }}>
+
+                  <h5 style={{ fontWeight: "normal", paddingTop: "-10px" }} >
                     8                    <FormattedMessage
                       id="onlineNotificationsDescription"
                       defaultMessage="Rapidus Customer Portal will be unavailable from 2026/4/1 3:00 to ..."
                     />
-                  </p>
+                  </h5>
 
-                  <div style={{ color: "grey" }}>
+                  <h5
+                    style={{
+                      color: "grey",
+                      float: "right",
+                      marginRight: "12px",
+                      fontWeight: "normal",
+                      marginTop: "0px"
+                    }}
+                  >
                     <FormattedMessage
                       id="notificationDate"
                       defaultMessage="2025/2/1"
                     />
-                  </div>
+                  </h5>
                 </div>
               </div>
             </div>
 
-            <h3 style={{ marginLeft: "22px", marginTop: "20px" }}>
+            <h3 style={{ marginLeft: "22px", marginBottom: "10px" }}>
               <FormattedMessage
                 id="favouriteFunction"
                 defaultMessage="Favourite Function"
@@ -308,43 +317,42 @@ const RapidusHome = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginLeft: "20px",
-                marginTop: "-16px",
+                marginLeft: "25px",
               }}
             >
               <h3><FormattedMessage id="youMightAlsoLike" defaultMessage="You might also like" /></h3>
-              <h3 style={{ marginRight: "90px" }}><FormattedMessage id="informationCenter" defaultMessage="Information Center"  /></h3>
+              <h3 style={{ marginRight: "183px" }}><FormattedMessage id="informationCenter" defaultMessage="Information Center" /></h3>
             </div>
 
             <div className="third-container">
               <div className="a">
                 <div className="newcontent">
-                  <span><FormattedMessage id="newTapeoutProcedure" defaultMessage="Rapidus new tapeout procedure"/></span>
+                  <span><FormattedMessage id="newTapeoutProcedure" defaultMessage="Rapidus new tapeout procedure" /></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
               <div className="b">
                 <div className="newcontent">
-                  <span> <FormattedMessage id="queryLotHandlingRequest" defaultMessage="Query Lot Handling Request"/></span>
+                  <span> <FormattedMessage id="queryLotHandlingRequest" defaultMessage="Query Lot Handling Request" /></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
               <div className="c">
                 <div className="newcontent">
-                  <span><FormattedMessage id="customerDeliverySchedule" defaultMessage="Customer Delivery Schedule"/></span>
+                  <span><FormattedMessage id="customerDeliverySchedule" defaultMessage="Customer Delivery Schedule" /></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
               <div className="d">
                 <div className="newcontent">
-                  <span><FormattedMessage id="designGuidelineCalibration" defaultMessage="Design Guideline & Calibration"/></span>
+                  <span><FormattedMessage id="designGuidelineCalibration" defaultMessage="Design Guideline & Calibration" /></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
             </div>
 
-            <h3 style={{ marginLeft: "22px", marginTop: "13px" }}>
-              <FormattedMessage id="tapeoutDashboard" defaultMessage="Tapeout Dashboard"/>
+            <h3 style={{ marginLeft: "22px" ,  marginBottom: "10px" }}>
+              <FormattedMessage id="tapeoutDashboard" defaultMessage="Tapeout Dashboard" />
             </h3>
 
             <div className="wrapper" style={{ display: "flex" }}>
@@ -352,10 +360,10 @@ const RapidusHome = () => {
                 <table className="custom-table">
                   <thead>
                     <tr>
-                      <th> <FormattedMessage id="mtSubmission" defaultMessage="MT Submission"/></th>
-                      <th> <FormattedMessage id="maskRelease" defaultMessage="Mask Release for Jobview TransID."/></th>
-                      <th><FormattedMessage id="jvStatus" defaultMessage="JV Status"/></th>
-                      <th><FormattedMessage id="firstMaskStatus" defaultMessage="1st Mask Status"/></th>
+                      <th> <FormattedMessage id="mtSubmission" defaultMessage="MT Submission" /></th>
+                      <th> <FormattedMessage id="maskRelease" defaultMessage="Mask Release for Jobview TransID." /></th>
+                      <th><FormattedMessage id="jvStatus" defaultMessage="JV Status" /></th>
+                      <th><FormattedMessage id="firstMaskStatus" defaultMessage="1st Mask Status" /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -364,7 +372,7 @@ const RapidusHome = () => {
                       <td>AAAA11111111</td>
                       <td><FormattedMessage id="waitForCustReview" defaultMessage="Wait for Cust. Review" /></td>
                       <td>
-                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available"/></span>
+                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available" /></span>
                       </td>
                     </tr>
                     <tr>
@@ -372,7 +380,7 @@ const RapidusHome = () => {
                       <td>AAAA11111111</td>
                       <td><FormattedMessage id="waitForCustReview" defaultMessage="Wait for Cust. Review" /></td>
                       <td>
-                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available"/></span>
+                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available" /></span>
                       </td>
                     </tr>
                     <tr>
@@ -380,7 +388,7 @@ const RapidusHome = () => {
                       <td>AAAA11111111</td>
                       <td><FormattedMessage id="waitForCustReview" defaultMessage="Wait for Cust. Review" /></td>
                       <td>
-                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available"/></span>
+                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available" /></span>
                       </td>
                     </tr>
                   </tbody>
@@ -394,7 +402,7 @@ const RapidusHome = () => {
                   borderRadius: "12px",
                   width: "280px",
                   height: "424px",
-                  marginTop: "-185px",
+                  marginTop: "-175px",
                   paddingLeft: '10px',
 
                 }}
@@ -410,12 +418,12 @@ const RapidusHome = () => {
                     <IconBox
                       icon={
                         <AppsOutlinedIcon
-                          style={{fontSize: "16px" }}
+                          style={{ fontSize: "16px" }}
                         />
                       }
                     />
                     <div>
-                      <span><FormattedMessage id="serviceOverview" defaultMessage="Service Overview"/></span>
+                      <span><FormattedMessage id="serviceOverview" defaultMessage="Service Overview" /></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -435,7 +443,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <span><FormattedMessage id="videos" defaultMessage="Videos"/></span>
+                      <span><FormattedMessage id="videos" defaultMessage="Videos" /></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -455,7 +463,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <span><FormattedMessage id="helpCenter" defaultMessage="Help Center"/></span>
+                      <span><FormattedMessage id="helpCenter" defaultMessage="Help Center" /></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -475,7 +483,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <span><FormattedMessage id="eshConflictMinerals" defaultMessage="ESH & Conflict Minerals"/></span>
+                      <span><FormattedMessage id="eshConflictMinerals" defaultMessage="ESH & Conflict Minerals" /></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -495,7 +503,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <span><FormattedMessage id="esgAtRapidus" defaultMessage="ESG at Rapidus"/></span>
+                      <span><FormattedMessage id="esgAtRapidus" defaultMessage="ESG at Rapidus" /></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -509,7 +517,7 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <span><FormattedMessage id="rapidusCalendars" defaultMessage="Rapidus Calendars"/></span>
+                      <span><FormattedMessage id="rapidusCalendars" defaultMessage="Rapidus Calendars" /></span>
                       <br />
                       <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
@@ -530,7 +538,7 @@ const RapidusHome = () => {
                   justifyContent: "center",
                   color: "white",
                   bottom: "25px",
-                  right:'0px'
+                  right: '0px'
                 }}
               >
                 <ChatIcon />

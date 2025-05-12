@@ -48,7 +48,7 @@ export const messages = {
     "more": "More",
     "privilegeDocumentReport": "Privilege Document Report",
     "featuredContentName": "Featured Content Name",
-    "featuredContentDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "featuredContentDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit....",
     "learnMore": "Learn more",
     "updates": "Updates",
     "updatesDescription": "Rapidus Customer Portal will be unavailable from 2025/4/1, 3:00pm to 5:00pm",
@@ -80,7 +80,9 @@ export const messages = {
     "helpCenter": "Help Center",
     "eshConflictMinerals": "ESH & Conflict Minerals",
     "esgAtRapidus": "ESG at Rapidus",
-    "rapidusCalendars": "Rapidus Calendars"
+    "rapidusCalendars": "Rapidus Calendars",
+    "footer.allRightsReserved": "All rights reserved Rapidus 2025",
+    "footer.privacyPolicy": "Privacy Policy | Terms of Use"
   },
   "fr": {
     "clear": "claire",
@@ -163,7 +165,9 @@ export const messages = {
     "helpCenter": "Centre d'aide",
     "eshConflictMinerals": "ESH et minéraux de conflit",
     "esgAtRapidus": "ESG chez Rapidus",
-    "rapidusCalendars": "Calendriers Rapidus"
+    "rapidusCalendars": "Calendriers Rapidus",
+    "footer.allRightsReserved": "Tous droits réservés Rapidus 2025",
+    "footer.privacyPolicy": "Politique de confidentialité | Conditions d'utilisation"
   },
   "es": {
     "clear": "Claro",
@@ -246,7 +250,10 @@ export const messages = {
      "helpCenter": "Centro de ayuda",
      "eshConflictMinerals": "ESH y minerales en conflicto",
      "esgAtRapidus": "ESG en Rapidus",
-     "rapidusCalendars": "Calendarios de Rapidus"
+     "rapidusCalendars": "Calendarios de Rapidus",
+     "footer.allRightsReserved": "Todos los derechos reservados Rapidus 2025",
+    "footer.privacyPolicy": "Política de privacidad | Términos de uso",
+    
   },
   "de": {
     "clear": "Klar",
@@ -328,7 +335,10 @@ export const messages = {
   "helpCenter": "Hilfecenter",
   "eshConflictMinerals": "ESH & Konfliktmineralien",
   "esgAtRapidus": "ESG bei Rapidus",
-  "rapidusCalendars": "Rapidus-Kalender"
+  "rapidusCalendars": "Rapidus-Kalender",
+  "footer.allRightsReserved": "Alle Rechte vorbehalten Rapidus 2025",
+  "footer.privacyPolicy": "Datenschutzrichtlinie | Nutzungsbedingungen",
+    
   },
   "ja": {
     "clear": "クリア",
@@ -410,6 +420,8 @@ export const messages = {
   "helpCenter": "ヘルプセンター",
   "eshConflictMinerals": "ESHと紛争鉱物",
   "esgAtRapidus": "RapidusにおけるESG",
-  "rapidusCalendars": "Rapidusカレンダー"
+  "rapidusCalendars": "Rapidusカレンダー",
+  "footer.allRightsReserved": "すべての権利を保有する Rapidus 2025",
+  "footer.privacyPolicy": "プライバシーポリシー | 利用規約"
   }
 };

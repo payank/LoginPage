@@ -5,11 +5,8 @@ const Checkbox = ({ label }) => {
     <label>
       <input
         type="checkbox"
-        style={{
-          accentColor: "#00401a",
-        }}
-      />{" "}
-      {label}
+        style={{ accentColor: "#00401a" }}
+      />      {label}
     </label>
   );
 };
