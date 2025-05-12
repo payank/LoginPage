@@ -92,7 +92,7 @@ const SidebarNav = () => {
             <IconBox
               icon={
                 <DashboardIcon
-                  style={{ color: "white", fontSize: "16px", marginTop: "2px" }}
+                  style={{ color: "white", fontSize: "16px", marginTop: "3px" }}
                 />
               }
             />
@@ -110,6 +110,7 @@ const SidebarNav = () => {
             style={{
               display: "flex",
               color: "white",
+              alignItems: "center",
             }}
           >
             <IconBox
@@ -118,7 +119,7 @@ const SidebarNav = () => {
                   style={{
                     color: "white",
                     fontSize: "16px",
-                    marginTop: "-6px",
+                    marginTop: "3px",
                   }}
                 />
               }
@@ -136,6 +137,7 @@ const SidebarNav = () => {
             style={{
               display: "flex",
               color: "white",
+              alignItems: "center",
             }}
           >
             <IconBox
@@ -144,7 +146,7 @@ const SidebarNav = () => {
                   style={{
                     color: "white",
                     fontSize: "16px",
-                    marginTop: "-6px",
+                    marginTop: "3px",
                   }}
                 />
               }
@@ -158,6 +160,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -166,7 +169,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -178,6 +181,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -186,7 +190,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -198,6 +202,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -206,7 +211,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -218,6 +223,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -226,7 +232,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -238,6 +244,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -246,7 +253,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -259,6 +266,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -267,7 +275,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -279,6 +287,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -287,7 +296,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -299,6 +308,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <IconBox
@@ -307,7 +317,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }
@@ -328,6 +338,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
         >
           <img alt="user-photo" src={userphoto} />
@@ -346,6 +357,7 @@ const SidebarNav = () => {
           style={{
             display: "flex",
             color: "white",
+            alignItems: "center",
           }}
           onClick={handleLogout}
         >
@@ -355,7 +367,7 @@ const SidebarNav = () => {
                 style={{
                   color: "white",
                   fontSize: "16px",
-                  marginTop: "-6px",
+                  marginTop: "3px",
                 }}
               />
             }

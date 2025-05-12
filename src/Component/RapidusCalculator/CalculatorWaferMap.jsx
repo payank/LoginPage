@@ -2,7 +2,6 @@ import WaferMap from "./WaferMap";
 import React, { useState, useMemo } from "react";
 import Rapidus_logo from "../../Assets/Images/Rapidus_logo.png";
 import "./CalculatorWaferMap.css";
-
 const getDieStatus = (distance, maxRadius) => {
   const failProbability = Math.min(1, (distance / maxRadius) * 1.5);
   return Math.random() < failProbability ? "fail" : "pass";
@@ -114,8 +113,9 @@ const CalculatorWaferMap = () => {
       <div className="left-panel">
         <h2>Gross Die Estimate / MFU Estimate</h2>
 
-        <label>Wafer Size</label>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>Wafer Size</p>
           <select
             name="waferSize"
             value={params.waferSize === 400 ? 8 : 12}
@@ -127,8 +127,9 @@ const CalculatorWaferMap = () => {
           <span>inches</span>
         </div>
 
-        <label>Die Width</label>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>Die Width</p>
           <input
             type="number"
             name="dieWidth"
@@ -141,8 +142,9 @@ const CalculatorWaferMap = () => {
           <span>mm</span>
         </div>
 
-        <label>Die Height</label>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>Die Height</p>
           <input
             type="number"
             name="dieHeight"
@@ -155,8 +157,9 @@ const CalculatorWaferMap = () => {
           <span>mm</span>
         </div>
 
-        <label>Y Scribe</label>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>Y Scribe</p>
           <input
             type="number"
             name="yScribeWidth"
@@ -168,8 +171,9 @@ const CalculatorWaferMap = () => {
           <span>px</span>
         </div>
 
-        <label>Edge Exclusion</label>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>Edge Exclusion</p>
           <input
             type="number"
             name="waferEdgeExclusion"
@@ -180,12 +184,14 @@ const CalculatorWaferMap = () => {
           />
           <span>px</span>
         </div>
-        <button className="calculate" onClick={() => setResultData(generateWaferData)}>
+        <div className="input-group">
+        <button  onClick={() => setResultData(generateWaferData)} >
           Calculate
         </button>
-
-        <label>Gross Die</label>
+        </div>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>Gross Die</p>
           <input
             type="text"
             value={`${resultData.length} pcs`}
@@ -194,15 +200,16 @@ const CalculatorWaferMap = () => {
           <span>pcs</span>
         </div>
 
-        <label>MFU</label>
+        
         <div className="input-group">
+        <p style={{marginBottom:'2px'}}>MFU</p>
           <input type="text" value="85%" readOnly />
         </div>
       </div>
 
       <div className="right-panel">
         <p className="dpw">
-        DPW ({params.waferSize === 400 ? '8"' : '12"' }): {params.waferSize}
+        DPW ({params.waferSize === 400 ? '8"' : '12"' }): {resultData.length}
       </p>
         <WaferMap
         data={resultData}
