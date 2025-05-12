@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import { FormattedMessage,useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 const SearchbarNav = () => {
   const location = useLocation();
@@ -33,7 +33,8 @@ const SearchbarNav = () => {
       justifyContent: 'center',
       borderRadius: '8px',
       padding: '4px',
-      marginLeft: '10px'
+      marginLeft: '10px',
+      cursor: 'pointer',
     }}>
       {icon}
     </div>

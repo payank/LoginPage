@@ -98,6 +98,7 @@ const DocumentTablePage = () => {
                         accentColor: "#00401a",
                       }}
                     />
+                    
                   </td>
                   {row.cells.map((cell) => (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
