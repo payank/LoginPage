@@ -524,10 +524,12 @@ const RapidusHome = () => {
                   borderRadius: "50%",
                   backgroundColor: "green",
                   display: "flex",
+                  position: "fixed",
                   alignItems: "center",
                   justifyContent: "center",
                   color: "white",
-                  marginTop: "270px",
+                  bottom: "25px",
+                  right:'0px'
                 }}
               >
                 <ChatIcon />
