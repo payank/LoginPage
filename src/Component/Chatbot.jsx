@@ -72,12 +72,15 @@ const Chatbot = ({ onClose }) => {
       };
       const command = new QueryCommand(params);
       const response = await kendraClient.send(command);
+      console.log("Payank:", response);
 
       const topAnswer = response.ResultItems?.[0]?.DocumentExcerpt?.Text || "No results found.";
+      const topAnswerTitle = topAnswer.match(/1\..*?\?\s+([\s\S]*?)\s*2\./);
+      const response1 = topAnswerTitle ? topAnswerTitle[1].trim() : '';
 
       const botMsg = {
         from: "bot",
-        content: topAnswer,
+        content: response1 || topAnswer,
         source: response?.source
       };
       setMessages((prev) => [...prev, botMsg]);
@@ -136,10 +139,9 @@ const Chatbot = ({ onClose }) => {
               className={`chat-bubble ${msg.from === "user" ? "user-bubble" : "bot-group"
                 }`}
             >
-                 {msg.from === "bot"
+              {msg.from === "bot"
               ? parseBotResponse(msg.content)
               : msg.content}
-              <div>{msg.content}</div>
 
               {msg.isOptions && (
                 <div className="chat-options">

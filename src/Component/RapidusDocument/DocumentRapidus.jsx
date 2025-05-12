@@ -88,22 +88,25 @@ const DocumentTablePage = () => {
         {/* Table */}
         <table {...getTableProps()} className="doc-table">
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroups.map((headerGroup, idx) => (
+              <tr key={idx}  {...headerGroup.getHeaderGroupProps()}>
                 <th></th>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
+                {headerGroup.headers.map((column) =>  { 
+                  const { key, ...restHeaderGroupProps } = headerGroup.getHeaderGroupProps();
+                return (
+                  <th key={key} {...restHeaderGroupProps}>
                     {column.render("Header")}
                   </th>
-                ))}
+                )})}
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {rows.map((row, idx) => {
               prepareRow(row);
+              const { key=idx, ...restProps } = row.getRowProps();
               return (
-                <tr {...row.getRowProps()}>
+                <tr key={key} {...restProps}>
                   <td>
                     <input
                       type="checkbox"
@@ -113,8 +116,8 @@ const DocumentTablePage = () => {
                     />
 
                   </td>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  {row.cells.map((cell, idx) => (
+                    <td key={idx} {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   ))}
                 </tr>
               );
