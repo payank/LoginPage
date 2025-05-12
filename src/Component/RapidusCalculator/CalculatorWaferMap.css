@@ -33,6 +33,16 @@ label {
   border: 1px solid #c5c5c5;
   border-radius: 8px;
   background-color: white;
+  
+}
+
+.input-group select {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  background-color: white;
 }
 
 .input-group span {
@@ -50,11 +60,13 @@ label {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-left: 340px;
+  margin-left: 310px;
+  width: 130px;
 }
 
 .right-panel {
   flex: 1;
+  padding-top: 50px;
   text-align: center;
 }
 
@@ -78,7 +90,7 @@ label {
 .download-link {
   margin-top: 10px;
   display: inline-block;
-  color: #064b23;
+  color: #00401A;
   text-decoration: underline;
   font-weight: 500;
 }
