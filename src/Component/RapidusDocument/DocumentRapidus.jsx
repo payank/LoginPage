@@ -3,93 +3,8 @@ import { useTable, useGlobalFilter } from "react-table";
 import "./DocumentRapidus.css";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
-
-const data = [
-  {
-    docNo: "A-B11-01",
-    version: "2.0",
-    title: "Document AAA",
-    group: "Design Rule",
-    partner: "Cadence",
-  },
-  {
-    docNo: "A-F25-03",
-    version: "1.0",
-    title: "Document BBB",
-    group: "Design Rule",
-    partner: "Magma",
-  },
-  {
-    docNo: "A-B11-01",
-    version: "2.0",
-    title: "Document AAA",
-    group: "Design Rule",
-    partner: "Cadence",
-  },
-  {
-    docNo: "A-F25-03",
-    version: "1.0",
-    title: "Document BBB",
-    group: "Design Rule",
-    partner: "Magma",
-  },
-  {
-    docNo: "A-B11-01",
-    version: "2.0",
-    title: "Document AAA",
-    group: "Design Rule",
-    partner: "Cadence",
-  },
-  {
-    docNo: "A-F25-03",
-    version: "1.0",
-    title: "Document BBB",
-    group: "Design Rule",
-    partner: "Magma",
-  },
-  {
-    docNo: "A-F25-03",
-    version: "1.0",
-    title: "Document BBB",
-    group: "Design Rule",
-    partner: "Magma",
-  },
-  {
-    docNo: "A-B11-01",
-    version: "2.0",
-    title: "Document AAA",
-    group: "Design Rule",
-    partner: "Cadence",
-  },
-  {
-    docNo: "A-F25-03",
-    version: "1.0",
-    title: "Document BBB",
-    group: "Design Rule",
-    partner: "Magma",
-  },
-  {
-    docNo: "A-B11-01",
-    version: "2.0",
-    title: "Document AAA",
-    group: "Design Rule",
-    partner: "Cadence",
-  },
-  {
-    docNo: "A-F25-03",
-    version: "1.0",
-    title: "Document BBB",
-    group: "Design Rule",
-    partner: "Magma",
-  },
-  {
-    docNo: "A-B11-01",
-    version: "2.0",
-    title: "Document AAA",
-    group: "Design Rule",
-    partner: "Cadence",
-  },
-];
+import MockDocumentData from "./const.js";
+import Checkbox from "../Common/Checkbox"; // Import the reusable Checkbox component
 
 const columns = [
   { Header: "Doc. No.", accessor: "docNo" },
@@ -100,7 +15,7 @@ const columns = [
 ];
 
 const DocumentTablePage = () => {
-  const globalFilter = (rows, columnIds, filterValue) => {
+  const globalFilter = (rows, filterValue) => {
     return rows.filter((row) => {
       const docNo = row.values.docNo.toLowerCase();
       const title = row.values.title.toLowerCase();
@@ -111,7 +26,7 @@ const DocumentTablePage = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const tableInstance = useTable(
-    { columns, data, globalFilter },
+    { columns, data: MockDocumentData, globalFilter },
     useGlobalFilter
   );
 
@@ -199,8 +114,14 @@ const DocumentTablePage = () => {
           <div className="filter-header">
             <h3>Filter Settings</h3>
             <button
-              onClick={() => { }}
-              style={{ color: "#3b82f6", textDecoration: "none", background: "none", border: "none", cursor: "pointer" }}
+              onClick={() => {}}
+              style={{
+                color: "#3b82f6",
+                textDecoration: "none",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+              }}
             >
               Clear
             </button>
@@ -210,58 +131,26 @@ const DocumentTablePage = () => {
             <p>
               <strong>Doc Group</strong>
             </p>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> Design Rule
-            </label>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> DRC Commend File
-            </label>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> OASIS Layer Usage Description
-            </label>
+            <Checkbox label="Design Rule" />
+            <Checkbox label="DRC Commend File" />
+            <Checkbox label="OASIS Layer Usage Description" />
           </div>
 
           <div className="filter-group">
             <p>
               <strong>EDA Partner</strong>
             </p>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> Cadence
-            </label>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> Magma
-            </label>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> Mentor Graphic
-            </label>
+            <Checkbox label="Cadence" />
+            <Checkbox label="Magma" />
+            <Checkbox label="Mentor Graphic" />
           </div>
 
           <div className="filter-group">
             <p>
               <strong>Eff. Date</strong>
             </p>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> Within 3 months
-            </label>
-            <label>
-              <input type="checkbox" style={{
-                accentColor: "#00401a",
-              }} /> Within 3 to 6 months
-            </label>
+            <Checkbox label="Within 3 months" />
+            <Checkbox label="Within 3 to 6 months" />
           </div>
         </div>
       </div>
