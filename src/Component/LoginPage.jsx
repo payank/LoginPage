@@ -298,7 +298,7 @@ const LoginPage = () => {
               options={languageOptions}
               getOptionLabel={(option) => option.label}
               value={languageOptions.find((opt) => opt.code === locale)}
-               onChange={handleLocaleChange}
+              onChange={handleLocaleChange}
               disableClearable
               sx={{
                 minWidth: 90,
@@ -402,7 +402,7 @@ const LoginPage = () => {
                   <div className={classes.rememberForgotRow}>
                     <div className={classes.rememberRow}>
                       <input type="checkbox" id="rememberUserId" />
-                      <label htmlFor="rememberUserId">
+                      <label style={{ marginTop: '2px' }} htmlFor="rememberUserId">
                         <FormattedMessage id="rememberMe" />
                       </label>
                     </div>
@@ -411,7 +411,6 @@ const LoginPage = () => {
                         color: "#00401A",
                         fontSize: "15px",
                         fontWeight: "bold",
-                        textDecoration: "none",
                       }}
                       to="/forgotPage"
                     >
@@ -467,9 +466,14 @@ const LoginPage = () => {
                     <FormattedMessage id="login" />
                   </Button>
                   <div className={classes.helpText}>
-                    <b>
-                      <FormattedMessage id="helpText" />
-                    </b>
+                    <FormattedMessage id="helpText" values={{
+                      helpLink: (chunks) => <Link style={{
+                        color: "#00401A", fontWeight: "bold",
+                      }} to="/help">{chunks}</Link>,
+                      contactLink: (chunks) => <Link style={{
+                        color: "#00401A", fontWeight: "bold",
+                      }} to="/contact">{chunks}</Link>,
+                    }} />
                   </div>
                 </form>
               )}

@@ -39,8 +39,9 @@ function App() {
               element={accounts.length > 0 ? <RapidusDocument /> : <Navigate to="/" />}
             />
             <Route path="/forgotPage" element={<ForgotPage />} />
-
-            <Route element={NotFound} />
+            <Route path="/help" element={<ForgotPage />} />
+            <Route path="/contact" element={<ForgotPage />} />
+            <Route path="*" element={<NotFound/>} />
           </Routes>
         </div>
         <Footer />

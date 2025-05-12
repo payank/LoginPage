@@ -127,7 +127,7 @@ const ForgotPage = () => {
                       Send Email
                     </button>
                   </FormControl>
-                  <Link to="/" style={{ textDecoration: "none" }}>
+                  <Link to="/" style={{ textDecoration: "none", color: "#00401A" }}>
                     Back to Login
                   </Link>
                 </div>
