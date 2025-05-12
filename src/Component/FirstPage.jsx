@@ -7,8 +7,10 @@ import Chatbot from "./Chatbot";
 import SidebarNav from "./SidebarNav";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChatIcon from "@mui/icons-material/Chat";
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -17,6 +19,7 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
+import { Form } from "react-final-form";
 
 const RapidusHome = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -105,7 +108,7 @@ const RapidusHome = () => {
                       />
                     </span>
                   </div>
-                  <span> <InsertDriveFileIcon /> </span>
+                  <span> <InsertDriveFileOutlinedIcon /> </span>
                   <span> <TrendingUpIcon /> </span>
                 </div>
               </div>
@@ -248,9 +251,9 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong>Content Name</strong>
+                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
                   <br />
-                  <span style={{ color: "grey" }}>Design Portal</span>
+                  <span style={{ color: "grey" }}><FormattedMessage id="common.designPortal" defaultMessage="Design Portal" /></span>
                 </div>
               </div>
               <div className="four">
@@ -264,9 +267,9 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong>Content Name</strong>
+                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
                   <br />
-                  <span style={{ color: "grey" }}>MPW(Shuttle)</span>
+                  <span style={{ color: "grey" }}><FormattedMessage id="sidebar.mpwShuttle" defaultMessage="MPW (Shuttle)" /></span>
                 </div>
               </div>
               <div className="five">
@@ -280,7 +283,7 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong>Content Name</strong>
+                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
                   <br />
                   <span style={{ color: "grey" }}>Tapeout</span>
                 </div>
@@ -296,9 +299,9 @@ const RapidusHome = () => {
                   />
                 </div>
                 <div className="text">
-                  <strong>Content Name</strong>
+                  <strong><FormattedMessage id="content.name" defaultMessage="Content Name" /></strong>
                   <br />
-                  <span style={{ color: "grey" }}>Design Portal</span>
+                  <span style={{ color: "grey" }}><FormattedMessage id="common.designPortal" defaultMessage="Design Portal" /></span>
                 </div>
               </div>
             </div>
@@ -311,39 +314,39 @@ const RapidusHome = () => {
                 marginTop: "-16px",
               }}
             >
-              <h3>You might also like</h3>
-              <h3 style={{ marginRight: "90px" }}>Information Center</h3>
+              <h3><FormattedMessage id="youMightAlsoLike" defaultMessage="You might also like" /></h3>
+              <h3 style={{ marginRight: "90px" }}><FormattedMessage id="informationCenter" defaultMessage="Information Center"  /></h3>
             </div>
 
             <div className="third-container">
               <div className="a">
                 <div className="newcontent">
-                  <span>Rapidus new tapeout proced...</span>
+                  <span><FormattedMessage id="newTapeoutProcedure" defaultMessage="Rapidus new tapeout procedure"/></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
               <div className="b">
                 <div className="newcontent">
-                  <span>Query Lot Handling Request</span>
+                  <span> <FormattedMessage id="queryLotHandlingRequest" defaultMessage="Query Lot Handling Request"/></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
               <div className="c">
                 <div className="newcontent">
-                  <span>Customer Delivery Schedule</span>
+                  <span><FormattedMessage id="customerDeliverySchedule" defaultMessage="Customer Delivery Schedule"/></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
               <div className="d">
                 <div className="newcontent">
-                  <span>Design Guideline & Calibration</span>
+                  <span><FormattedMessage id="designGuidelineCalibration" defaultMessage="Design Guideline & Calibration"/></span>
                   <img alt="arrow" src={arrow} className="arrow-icon" />
                 </div>
               </div>
             </div>
 
             <h3 style={{ marginLeft: "22px", marginTop: "13px" }}>
-              Tapeout Dashboard
+              <FormattedMessage id="tapeoutDashboard" defaultMessage="Tapeout Dashboard"/>
             </h3>
 
             <div className="wrapper" style={{ display: "flex" }}>
@@ -351,35 +354,35 @@ const RapidusHome = () => {
                 <table className="custom-table">
                   <thead>
                     <tr>
-                      <th>MT Submission</th>
-                      <th>Mask Release for Jobview TransID.</th>
-                      <th>JV Status</th>
-                      <th>1st Mask Status</th>
+                      <th> <FormattedMessage id="mtSubmission" defaultMessage="MT Submission"/></th>
+                      <th> <FormattedMessage id="maskRelease" defaultMessage="Mask Release for Jobview TransID."/></th>
+                      <th><FormattedMessage id="jvStatus" defaultMessage="JV Status"/></th>
+                      <th><FormattedMessage id="firstMaskStatus" defaultMessage="1st Mask Status"/></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>ABC1234-001</td>
                       <td>AAAA11111111</td>
-                      <td>Wait for Cust. Review</td>
+                      <td><FormattedMessage id="waitForCustReview" defaultMessage="Wait for Cust. Review" /></td>
                       <td>
-                        <span className="status-badge">Not Available</span>
+                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available"/></span>
                       </td>
                     </tr>
                     <tr>
                       <td>ABC1234-001</td>
                       <td>AAAA11111111</td>
-                      <td>Wait for Cust. Review</td>
+                      <td><FormattedMessage id="waitForCustReview" defaultMessage="Wait for Cust. Review" /></td>
                       <td>
-                        <span className="status-badge">Not Available</span>
+                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available"/></span>
                       </td>
                     </tr>
                     <tr>
                       <td>ABC1234-001</td>
                       <td>AAAA11111111</td>
-                      <td>Wait for Cust. Review</td>
+                      <td><FormattedMessage id="waitForCustReview" defaultMessage="Wait for Cust. Review" /></td>
                       <td>
-                        <span className="status-badge">Not Available</span>
+                        <span className="status-badge"><FormattedMessage id="notAvailable" defaultMessage="Not Available"/></span>
                       </td>
                     </tr>
                   </tbody>
@@ -408,15 +411,15 @@ const RapidusHome = () => {
                   >
                     <IconBox
                       icon={
-                        <DashboardIcon
-                          style={{ color: "black", fontSize: "16px" }}
+                        <AppsOutlinedIcon
+                          style={{fontSize: "16px" }}
                         />
                       }
                     />
                     <div>
-                      <strong>Service Overview</strong>
+                      <strong><FormattedMessage id="serviceOverview" defaultMessage="Service Overview"/></strong>
                       <br />
-                      <small>Related text to Heading</small>
+                      <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
                   </li>
                   <li
@@ -434,9 +437,9 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong>Videos</strong>
+                      <strong><FormattedMessage id="videos" defaultMessage="Videos"/></strong>
                       <br />
-                      <small>Related text to Heading</small>
+                      <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
                   </li>
                   <li
@@ -454,9 +457,9 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong>Help Center</strong>
+                      <strong><FormattedMessage id="helpCenter" defaultMessage="Help Center"/></strong>
                       <br />
-                      <small>Related text to Heading</small>
+                      <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
                   </li>
                   <li
@@ -474,9 +477,9 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong>ESH & Conflict Minerals</strong>
+                      <strong><FormattedMessage id="eshConflictMinerals" defaultMessage="ESH & Conflict Minerals"/></strong>
                       <br />
-                      <small>Related text to Heading</small>
+                      <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
                   </li>
                   <li
@@ -494,9 +497,9 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong>ESG at Rapidus</strong>
+                      <strong><FormattedMessage id="esgAtRapidus" defaultMessage="ESG at Rapidus"/></strong>
                       <br />
-                      <small>Related text to Heading</small>
+                      <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
                   </li>
                   <li style={{ display: "flex", alignItems: "center" }}>
@@ -508,9 +511,9 @@ const RapidusHome = () => {
                       }
                     />
                     <div>
-                      <strong>Rapidus Calendars</strong>
+                      <strong><FormattedMessage id="rapidusCalendars" defaultMessage="Rapidus Calendars"/></strong>
                       <br />
-                      <small>Related text to Heading</small>
+                      <small><FormattedMessage id="relatedTextToHeading" defaultMessage="Related text to Heading" /></small>
                     </div>
                   </li>
                 </ul>

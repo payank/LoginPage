@@ -149,7 +149,7 @@ const SidebarNav = () => {
                 />
               }
             />
-            <FormattedMessage id="sidebar.designPortal" defaultMessage="Design Portal" />
+            <FormattedMessage id="common.designPortal" defaultMessage="Design Portal" />
           </li>
         </Link>
 

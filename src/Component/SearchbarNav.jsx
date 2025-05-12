@@ -1,13 +1,15 @@
 import React from 'react';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import StarIcon from '@mui/icons-material/Star';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import { useLocation } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
-import InfoIcon from '@mui/icons-material/Info';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import { FormattedMessage,useIntl } from 'react-intl';
 
 const SearchbarNav = () => {
   const location = useLocation();
+  const intl = useIntl();
   let title = '';
 
   if (location.pathname === "/rapidusHome") {
@@ -21,10 +23,11 @@ const SearchbarNav = () => {
   }
 
   const IconBox = ({ icon }) => (
+    
     <div style={{
       width: '28px',
       height: '28px',
-      border: '2px solid black',
+      border: '1px solid gray',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -55,15 +58,15 @@ const SearchbarNav = () => {
         display: 'flex',
         // alignItems: 'center',
         border: '1px solid #ccc',
-        borderRadius: '4px',
+        borderRadius: '15px',
         padding: '4px 8px',
-        margin: '0 20px',
+        marginLeft: '25%',
         background: 'white'
       }}>
         <SearchIcon style={{ color: '#888' }} />
         <input
           type="text"
-          placeholder="Search Function or Document"
+          placeholder={intl.formatMessage({ id: 'search', defaultMessage: 'Search Function or Document' })}
           style={{
             border: 'none',
             outline: 'none',
@@ -76,10 +79,10 @@ const SearchbarNav = () => {
 
       
       <div style={{ flex: '1', display: 'flex', justifyContent: 'flex-end' }}>
-        <IconBox icon={<ShoppingCartIcon style={{ color: 'black', fontSize: '16px' }} />} />
-        <IconBox icon={<StarIcon style={{ color: 'black', fontSize: '16px' }} />} />
-        <IconBox icon={<InfoIcon style={{ color: 'black', fontSize: '16px' }} />} />
-        <IconBox icon={<NotificationsIcon style={{ color: 'black', fontSize: '16px' }} />} />
+        <IconBox icon={<ShoppingCartOutlinedIcon style={{  fontSize: '16px' }} />} />
+        <IconBox icon={<StarOutlineOutlinedIcon style={{  fontSize: '16px' }} />} />
+        <IconBox icon={<InfoOutlinedIcon style={{  fontSize: '16px' }} />} />
+        <IconBox icon={<NotificationsOutlinedIcon style={{ fontSize: '16px' }} />} />
       </div>
     </section>
   );

@@ -7,11 +7,11 @@ import MockDocumentData from "./const.js";
 import Checkbox from "../Common/Checkbox"; // Import the reusable Checkbox component
 
 const columns = [
-  { Header: "Doc. No.", accessor: "docNo" },
-  { Header: "Version", accessor: "version" },
-  { Header: "Title Doc.", accessor: "title" },
-  { Header: "Group", accessor: "group" },
-  { Header: "EDA Partner", accessor: "partner" },
+  { Header: <FormattedMessage id="docNo" defaultMessage="Doc. No."/>, accessor: "docNo" },
+  { Header: <FormattedMessage id="version" defaultMessage="Version"/>, accessor: "version" },
+  { Header: <FormattedMessage id="titleDoc" defaultMessage="Title Doc."/>, accessor: "title" },
+  { Header: <FormattedMessage id="group" defaultMessage="Group"/>, accessor: "group" },
+  { Header: <FormattedMessage id="EDAPartner" defaultMessage="EDA Partner"/>, accessor: "partner" },
 ];
 
 const DocumentTablePage = () => {
@@ -24,6 +24,7 @@ const DocumentTablePage = () => {
     });
   };
   const [searchInput, setSearchInput] = useState("");
+  const intl = useIntl();
 
   const tableInstance = useTable(
     { columns, data: MockDocumentData, globalFilter },
@@ -45,7 +46,7 @@ const DocumentTablePage = () => {
       <div className="top-bar">
         <input
           type="text"
-          placeholder="Search Doc No. or Title"
+          placeholder={intl.formatMessage({id:'searchDoc', defaultMessage:'search Doc No. or Title'})}
           className="search-bar-new"
           value={searchInput}
           onChange={(e) => {
@@ -55,7 +56,7 @@ const DocumentTablePage = () => {
           }}
         />
         <div style={{ paddingRight: "340px" }}>
-          <button className="outline-btn">View Download Status</button>
+          <button className="outline-btn"><FormattedMessage id="downloadStatus" defaultMessage="View Download Status"/></button>
           <button className="solid-btn">Add to DocCart</button>
         </div>
       </div>
@@ -63,8 +64,8 @@ const DocumentTablePage = () => {
       {/* home */}
       <div className="breadcrumb">
         {" "}
-        <HomeIcon
-          style={{ color: "black", fontSize: "20px", marginBottom: "-4px" }}
+        <HomeOutlinedIcon
+          style={{ fontSize: "20px", marginBottom: "-4px" }}
         />{" "}
         Home / Document / All files
       </div>
@@ -112,7 +113,7 @@ const DocumentTablePage = () => {
             sx={{ color: "black", marginLeft: "260px", marginTop: "-9px" }}
           />
           <div className="filter-header">
-            <h3>Filter Settings</h3>
+            <p style={{ fontSize:'20px'}}><FormattedMessage id="filterSettings" defaultMessage="Filter Settings"/></p>
             <button
               onClick={() => {}}
               style={{
@@ -123,7 +124,7 @@ const DocumentTablePage = () => {
                 cursor: "pointer",
               }}
             >
-              Clear
+              <FormattedMessage id="clear" defaultMessage="Clear"/>
             </button>
           </div>
 
@@ -131,14 +132,26 @@ const DocumentTablePage = () => {
             <p>
               <strong>Doc Group</strong>
             </p>
-            <Checkbox label="Design Rule" />
-            <Checkbox label="DRC Commend File" />
-            <Checkbox label="OASIS Layer Usage Description" />
+            <label>
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> <FormattedMessage id="designRule" defaultMessage="Design Rule"/>
+            </label>
+            <label>
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> <FormattedMessage id="DRCCommandFile" defaultMessage="DRC Commend File"/>
+            </label>
+            <label>
+              <input type="checkbox" style={{
+                accentColor: "#00401a",
+              }} /> <FormattedMessage id="OASISLayerUsageDescription" defaultMessage="OASIS Layer Usage Description"/>
+            </label>
           </div>
 
           <div className="filter-group">
             <p>
-              <strong>EDA Partner</strong>
+              <strong><FormattedMessage id="EDAPartner" defaultMessage="EDA Partner"/></strong>
             </p>
             <Checkbox label="Cadence" />
             <Checkbox label="Magma" />
