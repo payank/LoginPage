@@ -27,6 +27,10 @@ const Chatbot = ({ onClose }) => {
 
   const kendraClient = new KendraClient({
     region: "us-east-1",
+    credentials: {
+      secretAccessKey: "CF6FMQQ6yIChssSKsjkR8VLJKZ2Jn50f7P+FaZLE",
+      accessKeyId: "AKIA4ZQOICUQUQV5TC7Q",
+    }
   });
 
 
