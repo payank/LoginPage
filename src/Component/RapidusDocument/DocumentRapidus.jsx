@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useTable, useGlobalFilter } from "react-table";
 import "./DocumentRapidus.css";
 import CloseIcon from "@mui/icons-material/Close";
-import HomeIcon from "@mui/icons-material/Home";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MockDocumentData from "./const.js";
 import Checkbox from "../Common/Checkbox"; // Import the reusable Checkbox component
+import { FormattedMessage, useIntl } from "react-intl";
 
 const columns = [
   { Header: <FormattedMessage id="docNo" defaultMessage="Doc. No."/>, accessor: "docNo" },

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Chatbot.css";
 import chatprofile from "../Assets/Images/ChatProfile.svg";
+import userphoto from '../Assets/Images/UserPhoto.svg';
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SendIcon from "@mui/icons-material/Send";
@@ -94,10 +95,10 @@ const Chatbot = ({ onClose }) => {
             className={`chat-row ${msg.from === "user" ? "right" : ""}`}
             key={index}
           >
-            {msg.from !== "user" && (
+            {(
               <img
                 alt="avatar"
-                src={chatprofile}
+                src={msg.from === 'user' ? userphoto: chatprofile}
                 style={{
                   width: "26px",
                   height: "26px",
@@ -118,6 +119,7 @@ const Chatbot = ({ onClose }) => {
                     "Product info & Instruction",
                     "Design Portal",
                     "Eng Data Analysis",
+                    "How can I download a technology roadmap document?"
                   ].map((option) => (
                     <button
                       key={option}

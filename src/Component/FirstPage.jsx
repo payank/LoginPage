@@ -127,15 +127,15 @@ const RapidusHome = () => {
                       id="featuredContentDescription"
                       defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     />
-                    <a
-                      href="https://your-link-here.com"
+                    <button
+                      onClick={()=> {}}
                       style={{ textDecoration: "none", color: "#ffffff" }}
                     >
                       <strong><FormattedMessage
                         id="learnMore"
                         defaultMessage="Learn more"
                       /></strong>
-                    </a>
+                    </button>
                   </p>
                 </div>
               </div>
