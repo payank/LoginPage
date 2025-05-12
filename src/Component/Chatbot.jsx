@@ -4,6 +4,8 @@ import chatprofile from "../Assets/Images/ChatProfile.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SendIcon from "@mui/icons-material/Send";
+import { KendraClient, QueryCommand } from "@aws-sdk/client-kendra";
+
 
 const Chatbot = ({ onClose }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -22,27 +24,41 @@ const Chatbot = ({ onClose }) => {
     },
   ]);
 
+
+  const kendraClient = new KendraClient({
+    region: "us-east-1",
+    credentials: {
+      secretAccessKey: "CF6FMQQ6yIChssSKsjkR8VLJKZ2Jn50f7P+FaZLE",
+      accessKeyId: "AKIA4ZQOICUQUQV5TC7Q",
+      // sessionToken: accessToken,
+    }
+  });
+
+
   const handleUserMessage = async (text) => {
     const userMsg = { from: "user", content: text };
     setMessages((prev) => [...prev, userMsg]);
 
     try {
-      const res = await fetch("https://your-backend-api.com/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: text }),
-      });
 
-      const data = await res.json();
+      const params = {
+        IndexId: "d51cf5ea-4980-4b0b-ac0d-2305cdef1b6f",
+        QueryText: text
+      };
+      const command = new QueryCommand(params);
+      const response = await kendraClient.send(command);
+
+      const topAnswer = response.ResultItems?.[0]?.DocumentExcerpt?.Text || "No results found.";
+
       const botMsg = {
         from: "bot",
-        content: data.reply || "Sorry, I didn't understand that.",
+        content: topAnswer,
+        source: response?.source
       };
       setMessages((prev) => [...prev, botMsg]);
+
     } catch (err) {
-      console.error("Error:", err);
+      console.error("Payank:", err);
       setMessages((prev) => [
         ...prev,
         {
@@ -92,9 +108,8 @@ const Chatbot = ({ onClose }) => {
               />
             )}
             <div
-              className={`chat-bubble ${
-                msg.from === "user" ? "user-bubble" : "bot-group"
-              }`}
+              className={`chat-bubble ${msg.from === "user" ? "user-bubble" : "bot-group"
+                }`}
             >
               <div>{msg.content}</div>
 
@@ -107,9 +122,8 @@ const Chatbot = ({ onClose }) => {
                   ].map((option) => (
                     <button
                       key={option}
-                      className={`chat-option-btn ${
-                        selectedOption === option ? "selected" : "secondary"
-                      }`}
+                      className={`chat-option-btn ${selectedOption === option ? "selected" : "secondary"
+                        }`}
                       onClick={() => {
                         setSelectedOption(option);
                         handleUserMessage(option);

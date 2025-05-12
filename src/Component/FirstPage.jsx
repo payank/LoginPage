@@ -119,7 +119,7 @@ const RapidusHome = () => {
                     id="featuredContentName"
                     defaultMessage="Featured Content Name"
                   /></h3>
-                  <text>
+                  <p>
                     <FormattedMessage
                       id="featuredContentDescription"
                       defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -133,7 +133,7 @@ const RapidusHome = () => {
                         defaultMessage="Learn more"
                       /></strong>
                     </a>
-                  </text>
+                  </p>
                 </div>
               </div>
               <div className="second">
