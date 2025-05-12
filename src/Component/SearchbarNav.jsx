@@ -46,7 +46,9 @@ const SearchbarNav = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '10px 20px',
-      background: '#f5f5f5'
+      background: '#f5f5f5',
+      position: 'sticky',
+      top: '0px'
     }}>
     
       <div style={{ flex: '1' }}>

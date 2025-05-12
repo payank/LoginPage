@@ -14,11 +14,21 @@ body {
 }
 
 .side-nav {
+    position: fixed;
+  top: 0;
+  left: 0;
   width: 180px;
+  height: 100vh; 
   background: #00401a;
   border-right: 1px solid #ccc;
   padding: 10px 0;
   justify-content: center;
+  z-index: 1000;
+  overflow-y: auto; 
+}
+
+.side-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .side-nav .white-box {
@@ -34,6 +44,8 @@ body {
   margin-top: -20px;
   margin-bottom: 0px;
   background-color: #f1f1f1;
+  /* margin-left: 180px;  */
+  
 }
 
 .box-container {
@@ -209,6 +221,7 @@ body {
 .content-area {
   flex: 3;
   background: white;
+  margin-left: 180px; 
 }
 
 .red {

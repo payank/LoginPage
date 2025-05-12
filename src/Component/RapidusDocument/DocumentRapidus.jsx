@@ -16,11 +16,14 @@ const columns = [
 ];
 
 const DocumentTablePage = () => {
-  const globalFilter = (rows, filterValue) => {
+  const globalFilter = (rows, columnIds, filterValue) => {
+    if (typeof filterValue !== 'string') return rows;
+  
+    const search = filterValue.toLowerCase();
     return rows.filter((row) => {
-      const docNo = row.values.docNo.toLowerCase();
-      const title = row.values.title.toLowerCase();
-      const search = filterValue.toLowerCase();
+      const docNo = String(row.values.docNo || "").toLowerCase();
+      const title = String(row.values.title || "").toLowerCase();
+  
       return docNo.includes(search) || title.includes(search);
     });
   };

@@ -6,7 +6,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SendIcon from "@mui/icons-material/Send";
 import { KendraClient, QueryCommand } from "@aws-sdk/client-kendra";
-
+import { Link } from "react-router-dom";
 
 const Chatbot = ({ onClose }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -33,6 +33,31 @@ const Chatbot = ({ onClose }) => {
       accessKeyId: "AKIA4ZQOICUQUQV5TC7Q",
     }
   });
+
+  const parseBotResponse = (text) => {
+    const regex = /\b(document)\b/gi;
+    const parts = text.split(regex);
+
+    return parts.map((part, index) => {
+      if (part.toLowerCase() === "document") {
+        return (
+          <Link
+            key={index}
+            to="/rapidusDocument"
+            style={{
+              color: "#00401A",
+              fontWeight: "bold",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
+          >
+            {part}
+          </Link>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  };
 
 
   const handleUserMessage = async (text) => {
@@ -111,6 +136,9 @@ const Chatbot = ({ onClose }) => {
               className={`chat-bubble ${msg.from === "user" ? "user-bubble" : "bot-group"
                 }`}
             >
+                 {msg.from === "bot"
+              ? parseBotResponse(msg.content)
+              : msg.content}
               <div>{msg.content}</div>
 
               {msg.isOptions && (
