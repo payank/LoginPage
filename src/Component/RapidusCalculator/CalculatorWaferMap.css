@@ -1,14 +1,13 @@
 .container-design {
   height: 920px;
   display: flex;
-  padding: 40px;
+  padding: 20px 40px 40px 40px;
   background-color: #f3f3f3;
 }
 
 .left-panel {
   flex: 1;
-  padding-right: 40px;
-  padding-bottom: -10px;
+  padding-right: 50px;
 }
 
 .left-panel h2 {
@@ -30,27 +29,31 @@ label {
   /* margin-bottom: -10px; */
   /* justify-content: flex-end; */
   padding-bottom:-20px;
+  margin-left: 10px;
 }
 
 .input-group input {
   flex: 1;
-  padding: 10px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   font-size: 16px;
   border: 1px solid #c5c5c5;
   border-radius: 8px;
   background-color: white;
-  width: 75%;
-  
+  width: 50%;
 }
 
 .input-group select {
   flex: 1;
-  padding: 10px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   font-size: 16px;
   border: 1px solid #c5c5c5;
   border-radius: 8px;
   background-color: white;
-  width: 79%;
+  width: 53%;
 }
 
 .input-group span {
@@ -60,21 +63,20 @@ label {
 }
 
 .left-panel button {
-  margin-top: 20px;
-  padding: 12px 24px;
+  margin-top: 10px;
+  margin-left: 32%;
+  padding: 10px 10px;
   background-color: #064b23;
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-left: 46%;
-  width: 160px;
+  width: 100px;
 }
 
 .right-panel {
   flex: 1;
-  padding-top: 50px;
   text-align: center;
 }
 
