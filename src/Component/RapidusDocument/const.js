@@ -21,8 +21,8 @@ const MockDocumentData = [
     partner: "Cadence",
   },
   {
-    docNo: "RP_2N_GN_DRC_RF_1.0r_B",
-    version: "1.0r_B",
+    docNo: "RP_2N_GN_DRC_RF_1.0_B",
+    version: "1.0_B",
     title: "RP_2N_GN_DRC_RF",
     group: 'Design_Rule',
     partner: "Synopsys",
