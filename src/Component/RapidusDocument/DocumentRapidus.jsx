@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTable, useGlobalFilter } from "react-table";
 import "./DocumentRapidus.css";
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,8 +17,9 @@ const columns = [
 
 const DocumentTablePage = () => {
 
-  const [isChecked, setIsChecked] = useState(false);
-  const globalFilter = (rows,columnIds, filterValue) => {
+  const [edaPartnerCheckbox, setEdaPartnerCheckbox] = useState({ "Cadence": false, "Synopsys": false, "Siemens": false });
+  const [docGroupCheckbox, setDocGroupCheckbox] = useState({ "Design_Rule": false, "DRC_Command_File": false, "OASIS_Layer_Usage_Description": false });
+  const globalFilter = (rows, columnIds, filterValue) => {
     if (typeof filterValue !== 'string') return rows;
 
     const search = filterValue.toLowerCase();
@@ -38,12 +39,34 @@ const DocumentTablePage = () => {
     useGlobalFilter
   );
 
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
-    const filteredData = event.target.checked ? MockDocumentData.filter((item) => item.partner === "Cadence")  : MockDocumentData;
-    setData(filteredData);
-  };
+  useEffect(() => {
+    if (Object.values(edaPartnerCheckbox).every((value) => value === false)) {
+      setData(MockDocumentData);
+    } else {
+      const partnerArray = Object.entries(edaPartnerCheckbox);
+      const filteredData = MockDocumentData.filter((item) => partnerArray.some((ele) => (ele[0] == item.partner) && ele[1]));
+      setData(filteredData);
+    }
+  }, [edaPartnerCheckbox]);
 
+
+  useEffect(() => {
+    if (Object.values(docGroupCheckbox).every((value) => value === false)) {
+      setData(MockDocumentData);
+    } else {
+      const partnerArray = Object.entries(docGroupCheckbox);
+      const filteredData = MockDocumentData.filter((item) => partnerArray.some((ele) => (ele[0] == item.group) && ele[1]));
+      setData(filteredData);
+    }
+  }, [docGroupCheckbox]);
+
+
+  const handleChangeEDAPartner = (event, partner) => {
+    setEdaPartnerCheckbox((prevState) => ({ ...prevState, [partner]: event.target.checked }));
+  };
+  const handleChangeDocGroup = (event, partner) => {
+    setDocGroupCheckbox((prevState) => ({ ...prevState, [partner]: event.target.checked }));
+  };
 
   const {
     getTableProps,
@@ -70,7 +93,9 @@ const DocumentTablePage = () => {
           }}
         />
         <div style={{ paddingRight: "340px" }}>
-          <button className="outline-btn"><FormattedMessage id="downloadStatus" defaultMessage="View Download Status" /></button>
+          <button className="outline-btn">
+            <FormattedMessage id="downloadStatus" defaultMessage="View Download Status" />
+            </button>
           <button className="solid-btn">Add to DocCart</button>
         </div>
       </div>
@@ -91,20 +116,21 @@ const DocumentTablePage = () => {
             {headerGroups.map((headerGroup, idx) => (
               <tr key={idx}  {...headerGroup.getHeaderGroupProps()}>
                 <th></th>
-                {headerGroup.headers.map((column) =>  { 
+                {headerGroup.headers.map((column) => {
                   const { key, ...restHeaderGroupProps } = headerGroup.getHeaderGroupProps();
-                return (
-                  <th key={key} {...restHeaderGroupProps}>
-                    {column.render("Header")}
-                  </th>
-                )})}
+                  return (
+                    <th key={key} {...restHeaderGroupProps}>
+                      {column.render("Header")}
+                    </th>
+                  )
+                })}
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row, idx) => {
               prepareRow(row);
-              const { key=idx, ...restProps } = row.getRowProps();
+              const { key = idx, ...restProps } = row.getRowProps();
               return (
                 <tr key={key} {...restProps}>
                   <td>
@@ -131,7 +157,7 @@ const DocumentTablePage = () => {
             sx={{ color: "black", marginLeft: "260px", marginTop: "-9px" }}
           />
           <div className="filter-header">
-            <p style={{ fontSize:'20px' }}><FormattedMessage id="filterSettings" defaultMessage="Filter Settings" /></p>
+            <p style={{ fontSize: '20px' }}><FormattedMessage id="filterSettings" defaultMessage="Filter Settings" /></p>
             <button
               onClick={() => { }}
               style={{
@@ -151,13 +177,16 @@ const DocumentTablePage = () => {
               <strong>Doc Group</strong>
             </p>
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }} /> <FormattedMessage id="designRule" defaultMessage="Design Rule" />
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design} onChange={(e) => handleChangeDocGroup(e, "Design_Rule")} /> 
+                {intl.formatMessage({id:"designRule", defaultMessage:"Design Rule"})}
             </label>
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }} /> <FormattedMessage id="DRCCommandFile" defaultMessage="DRC Commend File" />
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design} onChange={(e) => handleChangeDocGroup(e, "DRC_Command_File")} /> 
+              {intl.formatMessage({id:"DRCCommandFile", defaultMessage:"DRC Commend File"})}
             </label>
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }} /> <FormattedMessage id="OASISLayerUsageDescription" defaultMessage="OASIS Layer Usage Description" />
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design} onChange={(e) => handleChangeDocGroup(e, "OASIS_Layer_Usage_Description")} /> 
+              {intl.formatMessage({id:"OASISLayerUsageDescription" ,defaultMessage:"OASIS Layer Usage Description"})}
             </label>
           </div>
 
@@ -165,13 +194,18 @@ const DocumentTablePage = () => {
             <p>
               <strong><FormattedMessage id="EDAPartner" defaultMessage="EDA Partner" /></strong>
             </p>
-            {/* <Checkbox label="Cadence" checked={isChecked} onChange={handleCheckboxChange}/> */}
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }}  checked={isChecked} onChange={handleCheckboxChange}/> 
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={edaPartnerCheckbox?.Cadence} onChange={(e) => handleChangeEDAPartner(e, "Cadence")} />
               Cadence
             </label>
-            <Checkbox label="Synopsys" />
-            <Checkbox label="Siemens" />
+            <label>
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={edaPartnerCheckbox?.Synopsys} onChange={(e) => handleChangeEDAPartner(e, "Synopsys")} />
+              Synopsys
+            </label>
+            <label>
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={edaPartnerCheckbox?.Siemens} onChange={(e) => handleChangeEDAPartner(e, "Siemens")} />
+              Siemens
+            </label>
           </div>
 
           <div className="filter-group">
