@@ -59,9 +59,9 @@ const CalculatorWaferMap = () => {
   const [params, setParams] = useState({
     waferSize: 500,
     dieWidth: 10,
-    dieHeight: 20,
+    dieHeight: 10,
     xScribeWidth: 0,
-    yScribeWidth: 0,
+    yScribeWidth: 1,
     waferEdgeExclusion: 4,
   });
 
