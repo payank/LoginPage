@@ -62,7 +62,7 @@ const CalculatorWaferMap = () => {
     dieHeight: 10,
     xScribeWidth: 0,
     yScribeWidth: 1,
-    waferEdgeExclusion: 4,
+    waferEdgeExclusion: 6,
   });
 
   const [resultData, setResultData] = useState(() => generateDies(params));
