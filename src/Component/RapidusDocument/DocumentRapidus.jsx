@@ -16,9 +16,10 @@ const columns = [
 ];
 
 const DocumentTablePage = () => {
-
-  const [edaPartnerCheckbox, setEdaPartnerCheckbox] = useState({ "Cadence": false, "Synopsys": false, "Siemens": false });
-  const [docGroupCheckbox, setDocGroupCheckbox] = useState({ "Design_Rule": false, "DRC_Command_File": false, "OASIS_Layer_Usage_Description": false });
+ const default_EDA = { "Cadence": false, "Synopsys": false, "Siemens": false };
+ const default_DOC = { "Design_Rule": false, "DRC_Command_File": false, "OASIS_Layer_Usage_Description": false }
+  const [edaPartnerCheckbox, setEdaPartnerCheckbox] = useState(default_EDA);
+  const [docGroupCheckbox, setDocGroupCheckbox] = useState(default_DOC);
   const globalFilter = (rows, columnIds, filterValue) => {
     if (typeof filterValue !== 'string') return rows;
 
@@ -159,7 +160,12 @@ const DocumentTablePage = () => {
           <div className="filter-header">
             <p style={{ fontSize: '20px' }}><FormattedMessage id="filterSettings" defaultMessage="Filter Settings" /></p>
             <button
-              onClick={() => { }}
+              onClick={() => { 
+                setEdaPartnerCheckbox(default_EDA);
+                setDocGroupCheckbox(default_DOC);
+                setSearchInput("");
+                setFilter("");
+              }}
               style={{
                 color: "#3b82f6",
                 textDecoration: "none",
