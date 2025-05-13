@@ -183,15 +183,15 @@ const DocumentTablePage = () => {
               <strong>Doc Group</strong>
             </p>
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design} onChange={(e) => handleChangeDocGroup(e, "Design_Rule")} /> 
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design_Rule} onChange={(e) => handleChangeDocGroup(e, "Design_Rule")} /> 
                 {intl.formatMessage({id:"designRule", defaultMessage:"Design Rule"})}
             </label>
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design} onChange={(e) => handleChangeDocGroup(e, "DRC_Command_File")} /> 
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.DRC_Command_File} onChange={(e) => handleChangeDocGroup(e, "DRC_Command_File")} /> 
               {intl.formatMessage({id:"DRCCommandFile", defaultMessage:"DRC Commend File"})}
             </label>
             <label>
-              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.Design} onChange={(e) => handleChangeDocGroup(e, "OASIS_Layer_Usage_Description")} /> 
+              <input type="checkbox" style={{ accentColor: "#00401a" }} checked={docGroupCheckbox?.OASIS_Layer_Usage_Description} onChange={(e) => handleChangeDocGroup(e, "OASIS_Layer_Usage_Description")} /> 
               {intl.formatMessage({id:"OASISLayerUsageDescription" ,defaultMessage:"OASIS Layer Usage Description"})}
             </label>
           </div>
